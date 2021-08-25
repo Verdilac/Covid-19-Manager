@@ -16,6 +16,7 @@ import Orders from './components/Dashboard/Orders';
 import Typography from '@material-ui/core/Typography';
 import Deposits from './components/Dashboard/Deposits';
 import ScoreCard from './components/Dashboard/ScoreCard';
+import Chart from './components/Dashboard/Chart';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -32,11 +33,15 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 120,
   },
+  fixedHeightChart: {
+    height: 360,
+  },
 }));
 
 function App() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const fixedHeightChart = clsx(classes.paper, classes.fixedHeightChart);
 
   return (
     <>
@@ -46,36 +51,42 @@ function App() {
         <CssBaseline/>
         <div/>
         <Container maxWidth="false" className={classes.container}>
-          <Grid container item xs={10} spacing={3}>
+          <Grid container lg={12} spacing={3}>
            
             {/* Recent Deposits */}
-            <Grid item xs={10} md={4} lg={3}>
+            <Grid item xs={10} md={4} lg={2}>
               <Paper className={fixedHeightPaper}>
                 <ScoreCard/>
               </Paper>
             </Grid>
 
-            <Grid item xs={10} md={4} lg={3}>
+            <Grid item xs={10} md={4} lg={2}>
               <Paper className={fixedHeightPaper}>
                 <ScoreCard/>
               </Paper>
             </Grid>
 
-            <Grid item xs={10} md={4} lg={3}>
+            <Grid item xs={10} md={4} lg={2}>
               <Paper className={fixedHeightPaper}>
                 <ScoreCard/>
               </Paper>
             </Grid>
 
-            <Grid item xs={10} md={4} lg={3}>
+            <Grid item xs={10} md={4} lg={2}>
               <Paper className={fixedHeightPaper}>
                 <ScoreCard/>
               </Paper>
             </Grid>
 
-            <Grid item xs={10} md={4} lg={3}>
+            <Grid item xs={10} md={4} lg={2}>
               <Paper className={fixedHeightPaper}>
                 <ScoreCard/>
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12} md={8} lg={8}>
+              <Paper className={fixedHeightChart}>
+                <Chart />
               </Paper>
             </Grid>
 

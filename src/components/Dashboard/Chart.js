@@ -4,20 +4,20 @@ import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recha
 import Title from './Title';
 
 // Generate Sales Data
-function createData(time, amount) {
-  return { time, amount };
+function createData(date, amount) {
+  return { date, amount };
 }
 
 const data = [
-  createData('00:00', 0),
-  createData('03:00', 300),
-  createData('06:00', 600),
-  createData('09:00', 800),
-  createData('12:00', 1500),
-  createData('15:00', 2000),
-  createData('18:00', 2400),
-  createData('21:00', 2400),
-  createData('24:00', undefined),
+  createData('16-08-2021', 3625),
+  createData('17-08-2021', 3732),
+  createData('18-08-2021', 3902),
+  createData('19-08-2021', 4509),
+  createData('20-08-2021', 4685),
+  createData('21-08-2021', 4821),
+  createData('22-08-2021', 4988),
+  /*createData('23-08-2021', 2400),
+  createData('24-08-2021', undefined),*/
 ];
 
 export default function Chart() {
@@ -25,7 +25,7 @@ export default function Chart() {
 
   return (
     <React.Fragment>
-      <Title>Today</Title>
+      <Title>Hospital Bed & ICU Availability</Title>
       <ResponsiveContainer>
         <LineChart
           data={data}
@@ -36,17 +36,17 @@ export default function Chart() {
             left: 24,
           }}
         >
-          <XAxis dataKey="time" stroke={theme.palette.text.secondary} />
+          <XAxis dataKey="date" stroke={theme.palette.text.secondary} />
           <YAxis stroke={theme.palette.text.secondary}>
             <Label
               angle={270}
               position="left"
               style={{ textAnchor: 'middle', fill: theme.palette.text.primary }}
             >
-              Sales ($)
+              Use
             </Label>
           </YAxis>
-          <Line type="monotone" dataKey="amount" stroke={theme.palette.primary.main} dot={false} />
+          <Line type="monotone" dataKey="amount" stroke={theme.palette.secondary.main} dot={false} />
         </LineChart>
       </ResponsiveContainer>
     </React.Fragment>
