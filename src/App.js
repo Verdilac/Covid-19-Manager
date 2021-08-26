@@ -87,7 +87,7 @@ function App() {
             <Grid item lg={4}>
               <Paper className={fixedHeightChart}>
 
-              <Grid container direction="column" lg={12} spacing={3}>
+              <Grid container direction="column" justifyContent="space-evenly" alignItems="center" lg={12} spacing={3}>
 
               <Grid item lg={6}>
                 <GaugeChart id="gauge-chart2.0" 
@@ -97,6 +97,7 @@ function App() {
                   width = '50%'
                   height = "180"
                 />
+                <Typography variant="subtitle1">% of Hospital Beds Used</Typography>
               </Grid>
 
               <Grid item lg={6}>
@@ -107,6 +108,7 @@ function App() {
                   width = '50%'
                   height = "180"
                 />
+                <Typography variant="subtitle1">% of ICU Beds Used</Typography>
               </Grid>
               </Grid>    
 
