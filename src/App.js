@@ -13,6 +13,7 @@ import AppBarSearch from './components/AppBars/AppBarSearch';
 import Typography from '@material-ui/core/Typography';
 import ScoreCard from './components/Dashboard/ScoreCard';
 import Chart from './components/Dashboard/Chart';
+import GaugeChart from 'react-gauge-chart'
 
 const useStyles = makeStyles((theme) => ({
 
@@ -83,9 +84,25 @@ function App() {
 
           <Grid container spacing={3}>
 
-            <Grid item xs>
+            <Grid item lg={3}>
               <Paper className={fixedHeightChart}>
-                <Typography variant="caption">Space to add 2 Gauges [In Progress]</Typography>
+
+                <GaugeChart id="gauge-chart2.0" 
+                  nrOfLevels={6} 
+                  percent={0.86}
+                  textColor	= "111111" 
+                  width = '50%'
+                  height = "220"
+                />
+
+                <GaugeChart id="gauge-chart2.1" 
+                  nrOfLevels={6} 
+                  percent={0.86}
+                  textColor	= "111111" 
+                  width = '50%'
+                  height = "220"
+                />
+                  
               </Paper>
             </Grid>
 
