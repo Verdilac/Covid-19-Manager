@@ -11,7 +11,11 @@ import AppBar from './components/AppBars/AppBar';
 import AppBarLogin from './components/AppBars/AppBarLogin';
 import AppBarSearch from './components/AppBars/AppBarSearch';
 import Typography from '@material-ui/core/Typography';
-import ScoreCard from './components/Dashboard/ScoreCard';
+import ScoreCard1 from './components/Dashboard/ScoreCards/ScoreCard1';
+import ScoreCard2 from './components/Dashboard/ScoreCards/ScoreCard2';
+import ScoreCard3 from './components/Dashboard/ScoreCards/ScoreCard3';
+import ScoreCard4 from './components/Dashboard/ScoreCards/ScoreCard4';
+import ScoreCard5 from './components/Dashboard/ScoreCards/ScoreCard5';
 import Chart from './components/Dashboard/Chart';
 import GaugeChart from 'react-gauge-chart'
 
@@ -53,31 +57,31 @@ function App() {
             {/* Recent Deposits */}
             <Grid item xs>
               <Paper className={fixedHeightPaper}>
-                <ScoreCard/>
+                <ScoreCard1/>
               </Paper>
             </Grid>
 
             <Grid item xs>
               <Paper className={fixedHeightPaper}>
-                <ScoreCard/>
+                <ScoreCard2/>
               </Paper>
             </Grid>
 
             <Grid item xs>
               <Paper className={fixedHeightPaper}>
-                <ScoreCard/>
+                <ScoreCard3/>
               </Paper>
             </Grid>
 
             <Grid item xs>
               <Paper className={fixedHeightPaper}>
-                <ScoreCard/>
+                <ScoreCard4/>
               </Paper>
             </Grid>
 
             <Grid item xs>
               <Paper className={fixedHeightPaper}>
-                <ScoreCard/>
+                <ScoreCard5/>
               </Paper>
             </Grid>
           </Grid>
@@ -94,7 +98,7 @@ function App() {
                   nrOfLevels={6} 
                   percent={0.86}
                   textColor	= "111111" 
-                  width = '50%'
+                  width = '100%'
                   height = "180"
                 />
                 <Typography variant="subtitle2">% of Hospital Beds Used</Typography>
@@ -103,9 +107,9 @@ function App() {
               <Grid item lg={6}>
                 <GaugeChart id="gauge-chart2.1" 
                   nrOfLevels={6} 
-                  percent={0.86}
+                  percent={0.90}
                   textColor	= "111111" 
-                  width = '50%'
+                  width = '100%'
                   height = "180"
                 />
                 <Typography variant="subtitle2">% of ICU Beds Used</Typography>

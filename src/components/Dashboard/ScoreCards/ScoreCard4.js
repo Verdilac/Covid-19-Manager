@@ -2,7 +2,7 @@ import React from 'react';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Title from './Title';
+import Title from '../Title';
 
 function preventDefault(event) {
   event.preventDefault();
@@ -18,18 +18,10 @@ export default function ScoreCard() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Title>COVID-19 Treatment Wards</Title>
+      <Title>Available Beds</Title>
       <Typography component="p" variant="h4">
-        4500
+        2986
       </Typography>
-      {/*<Typography color="textSecondary" className={classes.depositContext}>
-        on 15 March, 2019
-      </Typography>
-      <div>
-        <Link color="primary" href="#" onClick={preventDefault}>
-          View balance
-        </Link>
-      </div>*/}
     </React.Fragment>
   );
 }
