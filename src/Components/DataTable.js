@@ -20,7 +20,7 @@ const columns = [
   {
     field: "PassportNo",
     headerName: "PassportNo",
-    width: 150,
+    width: 180,
     editable: true,
   },
   {
@@ -34,6 +34,18 @@ const columns = [
     headerName: "Age",
     type: "number",
     width: 110,
+    editable: true,
+  },
+  {
+    field: "EmailAddress",
+    headerName: "Email Address",
+    width: 180,
+    editable: true,
+  },
+  {
+    field: "PhoneNo",
+    headerName: "Phone No",
+    width: 150,
     editable: true,
   },
   //   {
@@ -69,8 +81,7 @@ const rows = [
 
 const useStyles = makeStyles((theme) => ({
   DataGrid: {
-    margin: theme.spacing(3),
-    marginBottom: theme.spacing(3),
+    marginTop: theme.spacing(3),
     padding: theme.spacing(1),
   },
 }));

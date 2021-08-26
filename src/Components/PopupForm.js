@@ -10,8 +10,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   PopupForm: {
-    margin: theme.spacing(3),
-    marginBottom: theme.spacing(3),
+    // margin: theme.spacing(3),
+    // marginBottom: theme.spacing(3),
     padding: theme.spacing(1),
   },
 }));
@@ -81,6 +81,13 @@ export default function PopupForm() {
             margin="dense"
             id="name"
             label="Nationality"
+            type="text"
+            fullWidth
+          />
+          <TextField
+            margin="dense"
+            id="name"
+            label="Age"
             type="text"
             fullWidth
           />
