@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,10 +10,7 @@ import PersistentDrawerLeft from './components/AppBars/PersistentDrawerLeft';
 import AppBar from './components/AppBars/AppBar';
 import AppBarLogin from './components/AppBars/AppBarLogin';
 import AppBarSearch from './components/AppBars/AppBarSearch';
-import Dashboard from './components/Dashboard/Dashboard';
-import Orders from './components/Dashboard/Orders';
 import Typography from '@material-ui/core/Typography';
-import Deposits from './components/Dashboard/Deposits';
 import ScoreCard from './components/Dashboard/ScoreCard';
 import Chart from './components/Dashboard/Chart';
 
@@ -81,6 +77,15 @@ function App() {
             <Grid item xs>
               <Paper className={fixedHeightPaper}>
                 <ScoreCard/>
+              </Paper>
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={3}>
+
+            <Grid item xs>
+              <Paper className={fixedHeightChart}>
+                <Typography variant="caption">Space to add 2 charts</Typography>
               </Paper>
             </Grid>
 
