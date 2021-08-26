@@ -22,14 +22,6 @@ export default function ScoreCard() {
       <Typography component="p" variant="h4">
         4500
       </Typography>
-      {/*<Typography color="textSecondary" className={classes.depositContext}>
-        on 15 March, 2019
-      </Typography>
-      <div>
-        <Link color="primary" href="#" onClick={preventDefault}>
-          View balance
-        </Link>
-      </div>*/}
     </React.Fragment>
   );
 }
