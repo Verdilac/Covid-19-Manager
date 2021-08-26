@@ -82,11 +82,14 @@ function App() {
             </Grid>
           </Grid>
 
-          <Grid container spacing={3}>
+          <Grid container  spacing={3}>
 
             <Grid item lg={4}>
               <Paper className={fixedHeightChart}>
 
+              <Grid container direction="column" lg={12} spacing={3}>
+
+              <Grid item lg={6}>
                 <GaugeChart id="gauge-chart2.0" 
                   nrOfLevels={6} 
                   percent={0.86}
@@ -94,7 +97,9 @@ function App() {
                   width = '50%'
                   height = "180"
                 />
+              </Grid>
 
+              <Grid item lg={6}>
                 <GaugeChart id="gauge-chart2.1" 
                   nrOfLevels={6} 
                   percent={0.86}
@@ -102,7 +107,9 @@ function App() {
                   width = '50%'
                   height = "180"
                 />
-                  
+              </Grid>
+              </Grid>    
+
               </Paper>
             </Grid>
 
@@ -126,10 +133,3 @@ function App() {
 }
 
 export default App;
- 
-/* Chart {/*
-            {/*<Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <Chart />
-              </Paper>
-            </Grid>*/
