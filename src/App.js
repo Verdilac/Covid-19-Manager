@@ -85,7 +85,7 @@ function App() {
 
             <Grid item xs>
               <Paper className={fixedHeightChart}>
-                <Typography variant="caption">Space to add 2 charts</Typography>
+                <Typography variant="caption">Space to add 2 Gauges [In Progress]</Typography>
               </Paper>
             </Grid>
 
