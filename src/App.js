@@ -51,34 +51,34 @@ function App() {
         <CssBaseline/>
         <div/>
         <Container maxWidth="false" className={classes.container}>
-          <Grid container lg={12} spacing={3}>
+          <Grid container spacing={3}>
            
             {/* Recent Deposits */}
-            <Grid item xs={10} md={4} lg={2}>
+            <Grid item xs>
               <Paper className={fixedHeightPaper}>
                 <ScoreCard/>
               </Paper>
             </Grid>
 
-            <Grid item xs={10} md={4} lg={2}>
+            <Grid item xs>
               <Paper className={fixedHeightPaper}>
                 <ScoreCard/>
               </Paper>
             </Grid>
 
-            <Grid item xs={10} md={4} lg={2}>
+            <Grid item xs>
               <Paper className={fixedHeightPaper}>
                 <ScoreCard/>
               </Paper>
             </Grid>
 
-            <Grid item xs={10} md={4} lg={2}>
+            <Grid item xs>
               <Paper className={fixedHeightPaper}>
                 <ScoreCard/>
               </Paper>
             </Grid>
 
-            <Grid item xs={10} md={4} lg={2}>
+            <Grid item xs>
               <Paper className={fixedHeightPaper}>
                 <ScoreCard/>
               </Paper>
