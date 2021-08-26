@@ -84,7 +84,7 @@ function App() {
 
           <Grid container spacing={3}>
 
-            <Grid item lg={3}>
+            <Grid item lg={4}>
               <Paper className={fixedHeightChart}>
 
                 <GaugeChart id="gauge-chart2.0" 
@@ -92,7 +92,7 @@ function App() {
                   percent={0.86}
                   textColor	= "111111" 
                   width = '50%'
-                  height = "220"
+                  height = "180"
                 />
 
                 <GaugeChart id="gauge-chart2.1" 
@@ -100,7 +100,7 @@ function App() {
                   percent={0.86}
                   textColor	= "111111" 
                   width = '50%'
-                  height = "220"
+                  height = "180"
                 />
                   
               </Paper>
