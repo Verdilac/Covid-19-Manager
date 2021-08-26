@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, CartesianGrid } from 'recharts';
 import Title from './Title';
 
 // Generate Sales Data
@@ -46,7 +46,8 @@ export default function Chart() {
               Use
             </Label>
           </YAxis>
-          <Line type="monotone" dataKey="amount" stroke={theme.palette.secondary.main} dot={false} />
+          <CartesianGrid stroke="#ddd" />
+          <Line type="monotone" dataKey="amount" stroke={theme.palette.secondary.main} dot={true} />
         </LineChart>
       </ResponsiveContainer>
     </React.Fragment>
