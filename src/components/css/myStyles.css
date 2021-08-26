@@ -1,0 +1,11 @@
+.header {
+  display: inline-block;
+  width: 100%;
+  border: 1px solid red;
+}
+.playerOne {
+  float: right;
+}
+.playerTwo {
+  float: left;
+}
