@@ -97,7 +97,7 @@ function App() {
                   width = '50%'
                   height = "180"
                 />
-                <Typography variant="subtitle1">% of Hospital Beds Used</Typography>
+                <Typography variant="subtitle2">% of Hospital Beds Used</Typography>
               </Grid>
 
               <Grid item lg={6}>
@@ -108,7 +108,7 @@ function App() {
                   width = '50%'
                   height = "180"
                 />
-                <Typography variant="subtitle1">% of ICU Beds Used</Typography>
+                <Typography variant="subtitle2">% of ICU Beds Used</Typography>
               </Grid>
               </Grid>    
 
