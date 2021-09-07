@@ -4,7 +4,7 @@ import Main from "./Components/Main";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { red } from "@material-ui/core/colors";
 import { purple } from "@material-ui/core/colors";
-import FirebaseDBConfig from "./FirebaseDBConfig";
+
 
 const theme = createTheme({
   palette: {
@@ -21,7 +21,7 @@ function App() {
       <div className="App">
         <Main></Main>
       </div>
-      <FirebaseDBConfig></FirebaseDBConfig>
+     
     </ThemeProvider>
   );
 }

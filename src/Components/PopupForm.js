@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -7,6 +7,15 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { makeStyles } from "@material-ui/core/styles";
+
+import firebase from "./Firebase";
+import {
+  getFirestore,
+  collection,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
 
 const useStyles = makeStyles((theme) => ({
   PopupForm: {
@@ -28,6 +37,34 @@ export default function PopupForm() {
     setOpen(false);
   };
 
+  //FORM Values
+  const [vfirstName, setvfirstName] = useState("");
+  const [vlastName, setvlastName] = useState("");
+  const [vpassportNumber, setvpassportNumber] = useState("");
+
+  //Functions
+  //This is called when the form submit button is pressed--Will send the data to the firbase firestore
+  const handleAddUser = () => {
+    // console.log(vfirstName, vlastName, vpassportNumber);
+
+    const firestore = getFirestore(firebase).ref("/Foreigners");
+    let data = {
+      Fname: vfirstName,
+      Lname: vlastName,
+      passport_no: vpassportNumber,
+    };
+    const element = firestore.push(data);
+  };
+
+  function test(t) {
+    //defining a function
+    if (t === undefined) {
+      //if t=undefined, call tt
+      console.log(t); //call t
+    }
+    return t;
+  }
+
   return (
     <div>
       <Button
@@ -48,11 +85,16 @@ export default function PopupForm() {
           <DialogContentText>
             Create New Profile For Passenger
           </DialogContentText>
+
           <TextField
             autoFocus
             margin="dense"
             id="name"
             label="First Name"
+            value={vfirstName}
+            onChange={(e) => {
+              setvfirstName(e.target.value);
+            }}
             type="text"
             fullWidth
           />
@@ -60,6 +102,10 @@ export default function PopupForm() {
             margin="dense"
             id="name"
             label="Last Name"
+            onChange={(e) => {
+              setvlastName(e.target.value);
+            }}
+            value={vlastName}
             type="text"
             fullWidth
           />
@@ -67,6 +113,10 @@ export default function PopupForm() {
             margin="dense"
             id="name"
             label="Passport No"
+            value={vpassportNumber}
+            onChange={(e) => {
+              setvpassportNumber(e.target.value);
+            }}
             type="email"
             fullWidth
           />
@@ -103,7 +153,12 @@ export default function PopupForm() {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button
+            onClick={() => {
+              handleAddUser();
+            }}
+            color="primary"
+          >
             Submit
           </Button>
         </DialogActions>

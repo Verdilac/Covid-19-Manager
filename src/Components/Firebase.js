@@ -1,6 +1,9 @@
-import firebase from "firebase";
+import firebase from "firebase/compat/app";
 
-const firebaseConfig = {
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
+
+const firebaseConfig = firebase.initializeApp({
   apiKey: "AIzaSyDLVLap7bNPlWAWKSRmCvU8suNv3HqF0sc",
   authDomain: "covid-19-manager.firebaseapp.com",
   databaseURL:
@@ -10,9 +13,6 @@ const firebaseConfig = {
   messagingSenderId: "171506453976",
   appId: "1:171506453976:web:8d8ff7329a96ef1bbcf6ad",
   measurementId: "G-W7YHG2408V",
-};
-
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+});
 
 export default firebase;
