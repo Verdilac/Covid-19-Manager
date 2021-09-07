@@ -47,13 +47,13 @@ export default function PopupForm() {
   const handleAddUser = () => {
     // console.log(vfirstName, vlastName, vpassportNumber);
 
-    const firestore = getFirestore(firebase).ref("/Foreigners");
+    const firestore = firebase.database().ref("/Foreigners");
     let data = {
       Fname: vfirstName,
       Lname: vlastName,
       passport_no: vpassportNumber,
     };
-    const element = firestore.push(data);
+    firestore.push(data);
   };
 
   function test(t) {
