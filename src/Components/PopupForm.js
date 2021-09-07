@@ -44,7 +44,7 @@ export default function PopupForm() {
 
   //Functions
   //This is called when the form submit button is pressed--Will send the data to the firbase firestore
-  const handleAddUser = () => {
+  const handleAddUser = (e) => {
     // console.log(vfirstName, vlastName, vpassportNumber);
 
     const firestore = firebase.database().ref("/Foreigners");
