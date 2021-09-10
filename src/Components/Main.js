@@ -109,7 +109,6 @@ export default function Main() {
         </Toolbar>
       </AppBar>
       <Container>
-        {/* <img className={classes.image} src={flight_tracker}></img> */}
         <img className={classes.image} src={Flight}></img>
       </Container>
 

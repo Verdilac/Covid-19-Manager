@@ -4,7 +4,7 @@ import Main from "./Components/Main";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { red } from "@material-ui/core/colors";
 import { purple } from "@material-ui/core/colors";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const theme = createTheme({
   palette: {
@@ -21,7 +21,6 @@ function App() {
       <div className="App">
         <Main></Main>
       </div>
-     
     </ThemeProvider>
   );
 }

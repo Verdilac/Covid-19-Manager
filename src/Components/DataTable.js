@@ -1,103 +1,381 @@
 import React from "react";
-import { DataGrid } from "@material-ui/data-grid";
-import { createTheme } from "@material-ui/core";
+import { Table } from "react-bootstrap";
+import { Nav } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import "../App.css";
+import { useState, useEffect } from "react";
+
+//POP UP FORM
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 import { makeStyles } from "@material-ui/core/styles";
+import { shadows } from "@material-ui/system";
 
-const columns = [
-  { field: "id", headerName: "ID", width: 90 },
-  {
-    field: "firstName",
-    headerName: "First name",
-    width: 150,
-    editable: true,
-  },
-  {
-    field: "lastName",
-    headerName: "Last name",
-    width: 150,
-    editable: true,
-  },
-  {
-    field: "PassportNo",
-    headerName: "PassportNo",
-    width: 180,
-    editable: true,
-  },
-  {
-    field: "Nationality",
-    headerName: "Nationality",
-    width: 150,
-    editable: true,
-  },
-  {
-    field: "age",
-    headerName: "Age",
-    type: "number",
-    width: 110,
-    editable: true,
-  },
-  {
-    field: "EmailAddress",
-    headerName: "Email Address",
-    width: 180,
-    editable: true,
-  },
-  {
-    field: "PhoneNo",
-    headerName: "Phone No",
-    width: 150,
-    editable: true,
-  },
-  //   {
-  //     field: "fullName",
-  //     headerName: "Full name",
-  //     description: "This column has a value getter and is not sortable.",
-  //     sortable: false,
-  //     width: 160,
-  //     valueGetter: (params) =>
-  //       `${params.getValue(params.id, "firstName") || ""} ${
-  //         params.getValue(params.id, "lastName") || ""
-  //       }`,
-  //   },
-];
-
-const rows = [
-  {
-    id: 1,
-    lastName: "Snow",
-    firstName: "Jon",
-    Nationality: "American",
-    age: 35,
-  },
-  { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-  { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-  { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-  { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-  { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-  { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-  { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-  { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-];
+//Radio Button
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
+//Accordian
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import Typography from "@material-ui/core/Typography";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import firebase from "./Firebase";
 
 const useStyles = makeStyles((theme) => ({
-  DataGrid: {
-    marginTop: theme.spacing(3),
+  PopupForm: {
+    // margin: theme.spacing(3),
+    // marginBottom: theme.spacing(3),
     padding: theme.spacing(1),
+  },
+  Cusaccordian: {
+    boxShadow: 0,
+    textShadow: 0,
+    border: 0,
+  },
+  Textfeilds: {
+    marginBottom: theme.spacing(2),
   },
 }));
 
 export default function DataTable() {
+  const [nativeData, setnativeData] = useState([]);
+
+  //POP UP
+  const [value, setValue] = React.useState("Foreigner");
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    const firestore = firebase.database().ref("/Native");
+    firestore.on("value", (response) => {
+      const Ndata = response.val();
+      const nativeinfo = [];
+      for (let id in Ndata) {
+        nativeinfo.push({
+          id: id,
+          Passport_no: Ndata[id].Passport_no,
+          Fname: Ndata[id].Fname,
+          Lname: Ndata[id].Lname,
+          Email_address: Ndata[id].Email_address,
+          Age: Ndata[id].Age,
+          Address: Ndata[id].Address,
+          Work_Address: Ndata[id].Work_place_address,
+          Phone_no: Ndata[id].Phone_no,
+          Province: Ndata[id].Province,
+          Qcid: Ndata[id].Qcid,
+        });
+      }
+      setnativeData(nativeinfo);
+      for (let id in Ndata) {
+        console.log(id.Fname);
+      }
+    });
+  }, []);
+
+  /*------------------------------------*/
+  //FORM Values
+  const [vfirstName, setvfirstName] = useState("");
+  const [vlastName, setvlastName] = useState("");
+  const [vpassportNumber, setvpassportNumber] = useState("");
+  const [vemailAddress, setvemailAddress] = useState("");
+  const [vage, setvage] = useState("");
+  const [vaddress, setvaddress] = useState("");
+  const [vphoneNumber, setvphoneNumber] = useState("");
+  const [vQicd, setvQicd] = useState("");
+  //Foreigners
+  const [vdepatureDate, setvdepatureDate] = useState("");
+  const [vvisaDuration, setvvisaDuration] = useState("");
+  const [vareaToBeTraveled, setvareaToBeTraveled] = useState("");
+  //local
+  const [vprovince, setvprovince] = useState("");
+  const [vworkAddress, setvworkAddress] = useState("");
+
+  /*------------------------------------*/
+
   return (
-    <div style={{ height: 400, width: "100%" }}>
-      <DataGrid
-        className={classes.DataGrid}
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        checkboxSelection
-        disableSelectionOnClick
-      />
+    <div>
+      <div>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">New Entry</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Create New Profile For Passenger
+            </DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="First Name"
+              onChange={(e) => {
+                setvfirstName(e.target.value);
+              }}
+              type="text"
+              fullWidth
+            />
+            <TextField
+              margin="dense"
+              id="name"
+              label="Last Name"
+              onChange={(e) => {
+                setvlastName(e.target.value);
+              }}
+              type="text"
+              fullWidth
+            />
+            <TextField
+              margin="dense"
+              id="name"
+              hidden="true"
+              label="Passport No"
+              onChange={(e) => {
+                setvpassportNumber(e.target.value);
+              }}
+              type="email"
+              fullWidth
+            />
+            <TextField
+              margin="dense"
+              id="emailaddress"
+              label="Email Address"
+              type="email"
+              onChange={(e) => {
+                setvemailAddress(e.target.value);
+              }}
+              fullWidth
+            />
+            <TextField
+              margin="dense"
+              id="age"
+              label="Age"
+              onChange={(e) => {
+                setvage(e.target.value);
+              }}
+              type="text"
+              fullWidth
+            />
+            <TextField
+              margin="dense"
+              id="address"
+              label="Address"
+              onChange={(e) => {
+                setvaddress(e.target.value);
+              }}
+              type="email"
+              fullWidth
+            />{" "}
+            <TextField
+              margin="dense"
+              id="phone"
+              label="Phone No"
+              onChange={(e) => {
+                setvphoneNumber(e.target.value);
+              }}
+              type="email"
+              fullWidth
+            />
+            <TextField
+              margin="dense"
+              id="qcid"
+              label="QCID"
+              onChange={(e) => {
+                setvQicd(e.target.value);
+              }}
+              type="text"
+              fullWidth
+            />
+            <Accordion border={0}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                className={classes.Cusaccordian}
+                border={0}
+              >
+                <FormControl
+                  component="fieldset"
+                  className={classes.Cusaccordian}
+                  border={0}
+                >
+                  <RadioGroup
+                    aria-label="Type"
+                    name="Foreigner"
+                    value={value}
+                    onChange={handleChange}
+                    border={0}
+                  >
+                    <FormControlLabel
+                      value="Foreigner"
+                      control={<Radio />}
+                      onClick={handleClickOpen}
+                      label="Foreigner"
+                      className={classes.Cusaccordian}
+                      border={0}
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </AccordionSummary>
+              <AccordionDetails
+                className={classes.Cusaccordian}
+                border={0}
+              ></AccordionDetails>
+              <TextField
+                margin="dense"
+                id="depaturedate"
+                label="Depature Date"
+                onChange={(e) => {
+                  setvdepatureDate(e.target.value);
+                }}
+                type="email"
+                fullWidth
+              />{" "}
+              <TextField
+                margin="dense"
+                id="name"
+                label="Visa Duration"
+                onChange={(e) => {
+                  setvvisaDuration(e.target.value);
+                }}
+                type="email"
+                fullWidth
+              />
+              <TextField
+                margin="dense"
+                id="name"
+                label="Area To be Travalled"
+                onChange={(e) => {
+                  setvareaToBeTraveled(e.target.value);
+                }}
+                type="email"
+                fullWidth
+                className={classes.Textfeilds}
+              />
+            </Accordion>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <FormControl component="fieldset">
+                  <RadioGroup
+                    aria-label="type"
+                    name="local"
+                    value={value}
+                    onChange={handleChange}
+                  >
+                    <FormControlLabel
+                      value="Local"
+                      control={<Radio />}
+                      onClick={handleClickOpen}
+                      label="Local"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </AccordionSummary>
+              <AccordionDetails></AccordionDetails>
+              <TextField
+                margin="dense"
+                id="name"
+                label="Province"
+                onChange={(e) => {
+                  setvprovince(e.target.value);
+                }}
+                type="email"
+                fullWidth
+              />{" "}
+              <TextField
+                margin="dense"
+                id="name"
+                label="WorkPlace Address"
+                onChange={(e) => {
+                  setvworkAddress(e.target.value);
+                }}
+                type="email"
+                fullWidth
+                className={classes.Textfeilds}
+              />{" "}
+            </Accordion>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={() => {}} color="primary">
+              Submit
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+
+      <Table striped bordered hover className="my-3 ">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>PassPort No</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email Address</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Work Address</th>
+            <th>Phone No</th>
+            <th>Province</th>
+            <th>QCID</th>
+          </tr>
+        </thead>
+
+        {nativeData.map((Ndata, index) => {
+          return (
+            <tbody>
+              <tr>
+                <td>{index + 1}</td>
+                <td>{Ndata.Passport_no}</td>
+                <td>{Ndata.Fname}</td>
+                <td>{Ndata.Lname}</td>
+                <td>{Ndata.Email_address}</td>
+                <td>{Ndata.Age}</td>
+                <td>{Ndata.Address}</td>
+                <td>{Ndata.Work_Address}</td>
+                <td>{Ndata.Phone_no}</td>
+                <td>{Ndata.Province}</td>
+                <td>{Ndata.Qcid}</td>
+
+                <td>
+                  <Button variant="primary" onClick={handleClickOpen}>
+                    Update
+                  </Button>{" "}
+                  <Button variant="primary">Delete</Button>{" "}
+                </td>
+              </tr>
+            </tbody>
+          );
+        })}
+      </Table>
     </div>
   );
 }
