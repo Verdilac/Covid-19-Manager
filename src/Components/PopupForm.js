@@ -145,8 +145,6 @@ export default function PopupForm() {
     return travType;
   }
 
-
-
   return (
     <div>
       <Button
@@ -197,7 +195,6 @@ export default function PopupForm() {
           <TextField
             margin="dense"
             id="name"
-            hidden="true"
             label="Passport No"
             onChange={(e) => {
               setvpassportNumber(e.target.value);

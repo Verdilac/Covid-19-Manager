@@ -1,6 +1,7 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import { Nav } from "react-bootstrap";
+import { Nav, Tab, Tabs, Row, Col } from "react-bootstrap";
+import Sonnet from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import "../App.css";
 import { useState, useEffect } from "react";
@@ -28,6 +29,7 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import firebase from "./Firebase";
+import { NoteAdd } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   PopupForm: {
@@ -65,6 +67,45 @@ export default function DataTable() {
   const handleClose = () => {
     setOpen(false);
   };
+  //setting key for foreigner and native tabs
+  const [key, setKey] = useState("home");
+
+  //CRUD OPERATIONS
+  const handleUpdate = () => {
+    const firestore = firebase.database().ref("/Native").child(uid);
+    firestore.update({
+      //took this off id:uid cuze didnt neeed to change the id
+      Passport_no: upassportNumber,
+      Fname: ufirstName,
+      Lname: ulastName,
+      Age: uage,
+      Address: uaddress,
+      Work_place_address: uworkAddress,
+      Email_address: uemailAddress,
+      Phone_no: uphoneNumber,
+      Province: uprovince,
+      Qcid: uQicd,
+    });
+  };
+
+  const handleUpdateClick = (Ndata) => {
+    setuid(Ndata.id);
+    setupassportNumber(Ndata.Passport_no);
+    setufirstName(Ndata.Fname);
+    setulastName(Ndata.Lname);
+    setuemailAddress(Ndata.Email_address);
+    setuage(Ndata.Age);
+    setuaddress(Ndata.Address);
+    setuworkAddress(Ndata.Work_Address);
+    setuphoneNumber(Ndata.Phone_no);
+    setuprovince(Ndata.Province);
+    setuQicd(Ndata.Qcid);
+  };
+
+  const handleDelete = (id) => {
+    const firestore = firebase.database().ref("/Native").child(id);
+    firestore.remove();
+  };
 
   useEffect(() => {
     const firestore = firebase.database().ref("/Native");
@@ -95,21 +136,22 @@ export default function DataTable() {
 
   /*------------------------------------*/
   //FORM Values
-  const [vfirstName, setvfirstName] = useState("");
-  const [vlastName, setvlastName] = useState("");
-  const [vpassportNumber, setvpassportNumber] = useState("");
-  const [vemailAddress, setvemailAddress] = useState("");
-  const [vage, setvage] = useState("");
-  const [vaddress, setvaddress] = useState("");
-  const [vphoneNumber, setvphoneNumber] = useState("");
-  const [vQicd, setvQicd] = useState("");
+  const [ufirstName, setufirstName] = useState("");
+  const [ulastName, setulastName] = useState("");
+  const [upassportNumber, setupassportNumber] = useState("");
+  const [uemailAddress, setuemailAddress] = useState("");
+  const [uage, setuage] = useState("");
+  const [uaddress, setuaddress] = useState("");
+  const [uphoneNumber, setuphoneNumber] = useState("");
+  const [uQicd, setuQicd] = useState("");
+  const [uid, setuid] = useState("");
   //Foreigners
-  const [vdepatureDate, setvdepatureDate] = useState("");
-  const [vvisaDuration, setvvisaDuration] = useState("");
-  const [vareaToBeTraveled, setvareaToBeTraveled] = useState("");
+  const [udepatureDate, setudepatureDate] = useState("");
+  const [uvisaDuration, setuvisaDuration] = useState("");
+  const [uareaToBeTraveled, setuareaToBeTraveled] = useState("");
   //local
-  const [vprovince, setvprovince] = useState("");
-  const [vworkAddress, setvworkAddress] = useState("");
+  const [uprovince, setuprovince] = useState("");
+  const [uworkAddress, setuworkAddress] = useState("");
 
   /*------------------------------------*/
 
@@ -131,8 +173,9 @@ export default function DataTable() {
               margin="dense"
               id="name"
               label="First Name"
+              value={ufirstName}
               onChange={(e) => {
-                setvfirstName(e.target.value);
+                setufirstName(e.target.value);
               }}
               type="text"
               fullWidth
@@ -140,9 +183,10 @@ export default function DataTable() {
             <TextField
               margin="dense"
               id="name"
+              value={ulastName}
               label="Last Name"
               onChange={(e) => {
-                setvlastName(e.target.value);
+                setulastName(e.target.value);
               }}
               type="text"
               fullWidth
@@ -150,10 +194,10 @@ export default function DataTable() {
             <TextField
               margin="dense"
               id="name"
-              hidden="true"
+              value={upassportNumber}
               label="Passport No"
               onChange={(e) => {
-                setvpassportNumber(e.target.value);
+                setupassportNumber(e.target.value);
               }}
               type="email"
               fullWidth
@@ -161,19 +205,21 @@ export default function DataTable() {
             <TextField
               margin="dense"
               id="emailaddress"
+              value={uemailAddress}
               label="Email Address"
               type="email"
               onChange={(e) => {
-                setvemailAddress(e.target.value);
+                setuemailAddress(e.target.value);
               }}
               fullWidth
             />
             <TextField
               margin="dense"
               id="age"
+              value={uage}
               label="Age"
               onChange={(e) => {
-                setvage(e.target.value);
+                setuage(e.target.value);
               }}
               type="text"
               fullWidth
@@ -181,9 +227,10 @@ export default function DataTable() {
             <TextField
               margin="dense"
               id="address"
+              value={uaddress}
               label="Address"
               onChange={(e) => {
-                setvaddress(e.target.value);
+                setuaddress(e.target.value);
               }}
               type="email"
               fullWidth
@@ -191,9 +238,10 @@ export default function DataTable() {
             <TextField
               margin="dense"
               id="phone"
+              value={uphoneNumber}
               label="Phone No"
               onChange={(e) => {
-                setvphoneNumber(e.target.value);
+                setuphoneNumber(e.target.value);
               }}
               type="email"
               fullWidth
@@ -201,9 +249,10 @@ export default function DataTable() {
             <TextField
               margin="dense"
               id="qcid"
+              value={uQicd}
               label="QCID"
               onChange={(e) => {
-                setvQicd(e.target.value);
+                setuQicd(e.target.value);
               }}
               type="text"
               fullWidth
@@ -246,9 +295,10 @@ export default function DataTable() {
               <TextField
                 margin="dense"
                 id="depaturedate"
+                value={udepatureDate}
                 label="Depature Date"
                 onChange={(e) => {
-                  setvdepatureDate(e.target.value);
+                  setudepatureDate(e.target.value);
                 }}
                 type="email"
                 fullWidth
@@ -256,9 +306,10 @@ export default function DataTable() {
               <TextField
                 margin="dense"
                 id="name"
+                value={uvisaDuration}
                 label="Visa Duration"
                 onChange={(e) => {
-                  setvvisaDuration(e.target.value);
+                  setuvisaDuration(e.target.value);
                 }}
                 type="email"
                 fullWidth
@@ -266,9 +317,10 @@ export default function DataTable() {
               <TextField
                 margin="dense"
                 id="name"
+                value={uareaToBeTraveled}
                 label="Area To be Travalled"
                 onChange={(e) => {
-                  setvareaToBeTraveled(e.target.value);
+                  setuareaToBeTraveled(e.target.value);
                 }}
                 type="email"
                 fullWidth
@@ -301,9 +353,10 @@ export default function DataTable() {
               <TextField
                 margin="dense"
                 id="name"
+                value={uprovince}
                 label="Province"
                 onChange={(e) => {
-                  setvprovince(e.target.value);
+                  setuprovince(e.target.value);
                 }}
                 type="email"
                 fullWidth
@@ -311,9 +364,10 @@ export default function DataTable() {
               <TextField
                 margin="dense"
                 id="name"
+                value={uworkAddress}
                 label="WorkPlace Address"
                 onChange={(e) => {
-                  setvworkAddress(e.target.value);
+                  setuworkAddress(e.target.value);
                 }}
                 type="email"
                 fullWidth
@@ -325,12 +379,31 @@ export default function DataTable() {
             <Button onClick={handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={() => {}} color="primary">
-              Submit
+            <Button
+              onClick={() => {
+                handleUpdate();
+              }}
+              color="primary"
+            >
+              Update
             </Button>
           </DialogActions>
         </Dialog>
       </div>
+
+      <Tabs
+        id="controlled-tab-example"
+        activeKey={key}
+        onSelect={(k) => setKey(k)}
+        className="mb-3"
+      >
+        <Tab eventKey="home" title="Home">
+          <h1>hey 1</h1>
+        </Tab>
+        <Tab eventKey="profile" title="Profile">
+          <h1>hey 2</h1>
+        </Tab>
+      </Tabs>
 
       <Table striped bordered hover className="my-3 ">
         <thead>
@@ -366,10 +439,23 @@ export default function DataTable() {
                 <td>{Ndata.Qcid}</td>
 
                 <td>
-                  <Button variant="primary" onClick={handleClickOpen}>
+                  <Button
+                    variant="primary"
+                    onClick={() => {
+                      handleClickOpen();
+                      handleUpdateClick(Ndata);
+                    }}
+                  >
                     Update
                   </Button>{" "}
-                  <Button variant="primary">Delete</Button>{" "}
+                  <Button
+                    variant="danger"
+                    onClick={() => {
+                      handleDelete(Ndata.id);
+                    }}
+                  >
+                    Delete
+                  </Button>{" "}
                 </td>
               </tr>
             </tbody>
