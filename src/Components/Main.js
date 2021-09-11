@@ -15,6 +15,7 @@ import PopupForm from "./PopupForm";
 import flight_tracker from "./flight_tracker.PNG";
 import Flight from "./Flight.PNG";
 import firebase from "../Components/Firebase";
+import DataTableLogic from "./DataTableLogic";
 
 // Sub Component Imports
 import DataTable from "./DataTable";
@@ -108,6 +109,7 @@ export default function Main() {
           )}
         </Toolbar>
       </AppBar>
+
       <Container>
         <img className={classes.image} src={Flight}></img>
       </Container>
@@ -115,7 +117,8 @@ export default function Main() {
       <div>
         {/* <PopupForm className={classes.spacing}></PopupForm> */}
         <BtnSetMain className={classes.btnset}></BtnSetMain>
-        <DataTable></DataTable>
+
+        <DataTableLogic></DataTableLogic>
       </div>
     </div>
   );

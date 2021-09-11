@@ -47,66 +47,109 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DataTable() {
-  const [nativeData, setnativeData] = useState([]);
+export default function DataTable({
+  ufirstName,
+  setufirstName,
+  ulastName,
+  setulastName,
+  upassportNumber,
+  setupassportNumber,
+  uemailAddress,
+  setuemailAddress,
+  uage,
+  setuage,
+  uaddress,
+  setuaddress,
+  uphoneNumber,
+  setuphoneNumber,
+  uQicd,
+  setuQicd,
+  uid,
+  setuid,
+  udepatureDate,
+  setudepatureDate,
+  uvisaDuration,
+  setuvisaDuration,
+  uareaToBeTraveled,
+  setuareaToBeTraveled,
+  uprovince,
+  setuprovince,
+  uworkAddress,
+  setuworkAddress,
+  // key = "Native",
+  // setKey,
+  // handleDelete,
+  nativeData,
+  setnativeData,
+  foreignerData,
+  setforeignerData,
+  value,
+  setValue,
+  handleChange,
+  open,
+  setOpen,
+  handleClickOpen,
+  handleClose,
+  // handleUpdate,
+  handleUpdateClick,
+}) {
 
-  //POP UP
-  const [value, setValue] = React.useState("Foreigner");
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
 
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
   //setting key for foreigner and native tabs
-  const [key, setKey] = useState("home");
+  const [key, setKey] = useState("Native");
 
   //CRUD OPERATIONS
   const handleUpdate = () => {
-    const firestore = firebase.database().ref("/Native").child(uid);
-    firestore.update({
-      //took this off id:uid cuze didnt neeed to change the id
-      Passport_no: upassportNumber,
-      Fname: ufirstName,
-      Lname: ulastName,
-      Age: uage,
-      Address: uaddress,
-      Work_place_address: uworkAddress,
-      Email_address: uemailAddress,
-      Phone_no: uphoneNumber,
-      Province: uprovince,
-      Qcid: uQicd,
-    });
+    if (key === "Native") {
+      const firestore = firebase.database().ref("/Native").child(uid);
+      firestore.update({
+        //took this off id:uid cuze didnt neeed to change the id
+        Passport_no: upassportNumber,
+        Fname: ufirstName,
+        Lname: ulastName,
+        Age: uage,
+        Address: uaddress,
+        Work_place_address: uworkAddress,
+        Email_address: uemailAddress,
+        Phone_no: uphoneNumber,
+        Province: uprovince,
+        Qcid: uQicd,
+      });
+    } else {
+      const firestore = firebase.database().ref("/Foreigner").child(uid);
+      firestore.update({
+        // took this off id:uid cuze didnt neeed to change the id
+        Passport_no: upassportNumber,
+        Fname: ufirstName,
+        Lname: ulastName,
+        Age: uage,
+        Address: uaddress,
+        Email_address: uemailAddress,
+        Phone_no: uphoneNumber,
+        Depature_date: udepatureDate,
+        Vissa_duration: uvisaDuration,
+        Area_to_be_travled: uareaToBeTraveled,
+        Qcid: uQicd,
+      });
+    }
   };
 
-  const handleUpdateClick = (Ndata) => {
-    setuid(Ndata.id);
-    setupassportNumber(Ndata.Passport_no);
-    setufirstName(Ndata.Fname);
-    setulastName(Ndata.Lname);
-    setuemailAddress(Ndata.Email_address);
-    setuage(Ndata.Age);
-    setuaddress(Ndata.Address);
-    setuworkAddress(Ndata.Work_Address);
-    setuphoneNumber(Ndata.Phone_no);
-    setuprovince(Ndata.Province);
-    setuQicd(Ndata.Qcid);
-  };
+
+
 
   const handleDelete = (id) => {
-    const firestore = firebase.database().ref("/Native").child(id);
-    firestore.remove();
+    if (key === "Native") {
+      const firestore = firebase.database().ref("/Native").child(id);
+      firestore.remove();
+    } else {
+      const firestore = firebase.database().ref("/Foreigner").child(id);
+      firestore.remove();
+    }
   };
 
+  //Data Display
   useEffect(() => {
     const firestore = firebase.database().ref("/Native");
     firestore.on("value", (response) => {
@@ -128,32 +171,37 @@ export default function DataTable() {
         });
       }
       setnativeData(nativeinfo);
-      for (let id in Ndata) {
-        console.log(id.Fname);
-      }
     });
   }, []);
 
-  /*------------------------------------*/
-  //FORM Values
-  const [ufirstName, setufirstName] = useState("");
-  const [ulastName, setulastName] = useState("");
-  const [upassportNumber, setupassportNumber] = useState("");
-  const [uemailAddress, setuemailAddress] = useState("");
-  const [uage, setuage] = useState("");
-  const [uaddress, setuaddress] = useState("");
-  const [uphoneNumber, setuphoneNumber] = useState("");
-  const [uQicd, setuQicd] = useState("");
-  const [uid, setuid] = useState("");
-  //Foreigners
-  const [udepatureDate, setudepatureDate] = useState("");
-  const [uvisaDuration, setuvisaDuration] = useState("");
-  const [uareaToBeTraveled, setuareaToBeTraveled] = useState("");
-  //local
-  const [uprovince, setuprovince] = useState("");
-  const [uworkAddress, setuworkAddress] = useState("");
+ 
 
-  /*------------------------------------*/
+  useEffect(() => {
+    const firestore = firebase.database().ref("/Foreigner");
+    firestore.on("value", (response) => {
+      const Fdata = response.val();
+      const foreigninfo = [];
+      for (let id in Fdata) {
+        foreigninfo.push({
+          id: id,
+          Passport_no: Fdata[id].Passport_no,
+          Fname: Fdata[id].Fname,
+          Lname: Fdata[id].Lname,
+          Email_address: Fdata[id].Email_address,
+          Age: Fdata[id].Age,
+          Address: Fdata[id].Address,
+          Phone_no: Fdata[id].Phone_no,
+          Depature_date: Fdata[id].Depature_date,
+          Vissa_duration: Fdata[id].Vissa_duration,
+          Area_to_be_travled: Fdata[id].Area_to_be_travled,
+          Qcid: Fdata[id].Qcid,
+        });
+      }
+      setforeignerData(foreigninfo);
+    });
+  }, []);
+
+
 
   return (
     <div>
@@ -390,77 +438,131 @@ export default function DataTable() {
           </DialogActions>
         </Dialog>
       </div>
-
       <Tabs
         id="controlled-tab-example"
         activeKey={key}
         onSelect={(k) => setKey(k)}
         className="mb-3"
       >
-        <Tab eventKey="home" title="Home">
-          <h1>hey 1</h1>
-        </Tab>
-        <Tab eventKey="profile" title="Profile">
-          <h1>hey 2</h1>
-        </Tab>
+        <Tab eventKey="Native" title="Native" value="Native"></Tab>
+        <Tab eventKey="Foreigner" title="Foreigner" value="Foreigner"></Tab>
       </Tabs>
-
       <Table striped bordered hover className="my-3 ">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>PassPort No</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email Address</th>
-            <th>Age</th>
-            <th>Address</th>
-            <th>Work Address</th>
-            <th>Phone No</th>
-            <th>Province</th>
-            <th>QCID</th>
-          </tr>
-        </thead>
+        {key === "Native" ? (
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>PassPort No</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email Address</th>
+              <th>Age</th>
+              <th>Address</th>
+              <th>Phone No</th>
+              <th>Work Address</th>
+              <th>Province</th>
+              <th>QCID</th>
+            </tr>
+          </thead>
+        ) : (
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>PassPort No</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email Address</th>
+              <th>Age</th>
+              <th>Address</th>
+              <th>Phone Number</th>
+              <th>Depature Date</th>
+              <th>Visa Duration</th>
+              <th>Areas To Be Travelled</th>
+              <th>QCID</th>
+            </tr>
+          </thead>
+        )}
 
-        {nativeData.map((Ndata, index) => {
-          return (
-            <tbody>
-              <tr>
-                <td>{index + 1}</td>
-                <td>{Ndata.Passport_no}</td>
-                <td>{Ndata.Fname}</td>
-                <td>{Ndata.Lname}</td>
-                <td>{Ndata.Email_address}</td>
-                <td>{Ndata.Age}</td>
-                <td>{Ndata.Address}</td>
-                <td>{Ndata.Work_Address}</td>
-                <td>{Ndata.Phone_no}</td>
-                <td>{Ndata.Province}</td>
-                <td>{Ndata.Qcid}</td>
+        {key === "Native"
+          ? nativeData.map((Ndata, index) => {
+              return (
+                <tbody>
+                  <tr>
+                    <td>{index + 1}</td>
+                    <td>{Ndata.Passport_no}</td>
+                    <td>{Ndata.Fname}</td>
+                    <td>{Ndata.Lname}</td>
+                    <td>{Ndata.Email_address}</td>
+                    <td>{Ndata.Age}</td>
+                    <td>{Ndata.Address}</td>
+                    <td>{Ndata.Phone_no}</td>
+                    <td>{Ndata.Work_Address}</td>
+                    <td>{Ndata.Province}</td>
+                    <td>{Ndata.Qcid}</td>
 
-                <td>
-                  <Button
-                    variant="primary"
-                    onClick={() => {
-                      handleClickOpen();
-                      handleUpdateClick(Ndata);
-                    }}
-                  >
-                    Update
-                  </Button>{" "}
-                  <Button
-                    variant="danger"
-                    onClick={() => {
-                      handleDelete(Ndata.id);
-                    }}
-                  >
-                    Delete
-                  </Button>{" "}
-                </td>
-              </tr>
-            </tbody>
-          );
-        })}
+                    <td>
+                      <Button
+                        variant="primary"
+                        onClick={() => {
+                          handleClickOpen();
+                          handleUpdateClick(Ndata);
+                        }}
+                      >
+                        Update
+                      </Button>{" "}
+                      <Button
+                        variant="danger"
+                        onClick={() => {
+                          handleDelete(Ndata.id);
+                        }}
+                      >
+                        Delete
+                      </Button>{" "}
+                    </td>
+                  </tr>
+                </tbody>
+              );
+            })
+          : foreignerData.map((Fdata, index) => {
+              return (
+                <tbody>
+                  <tr>
+                    <td>{index + 1}</td>
+                    <td>{Fdata.Passport_no}</td>
+                    <td>{Fdata.Fname}</td>
+                    <td>{Fdata.Lname}</td>
+                    <td>{Fdata.Email_address}</td>
+                    <td>{Fdata.Age}</td>
+                    <td>{Fdata.Address}</td>
+                    <td>{Fdata.Phone_no}</td>
+                    <td>{Fdata.Depature_date}</td>
+                    <td>{Fdata.Vissa_duration}</td>
+                    <td>{Fdata.Area_to_be_travled}</td>
+                    <td>{Fdata.Qcid}</td>
+
+                    <td>
+                      <Button
+                        variant="primary"
+                        onClick={() => {
+                          handleClickOpen();
+                          handleUpdateClick(Fdata);
+                        }}
+                      >
+                        Update
+                      </Button>{" "}
+                      <Button
+                        variant="danger"
+                        onClick={() => {
+                          handleDelete(Fdata.id);
+                        }}
+                      >
+                        Delete
+                      </Button>{" "}
+                    </td>
+                  </tr>
+                </tbody>
+              );
+            })}
       </Table>
     </div>
   );
