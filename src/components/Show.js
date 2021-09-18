@@ -20,17 +20,17 @@ class Show extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      center: {},
+      hospital: {},
       key: ''
     };
   }
 
   componentDidMount() {
-    const ref = firebase.firestore().collection('centers').doc(this.props.match.params.id);
+    const ref = firebase.firestore().collection('hospitals').doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
         this.setState({
-          center: doc.data(),
+          hospital: doc.data(),
           key: doc.id,
           isLoading: false
         });
@@ -41,21 +41,18 @@ class Show extends Component {
   }
 
   delete(id){
-    firebase.firestore().collection('centers').doc(id).delete().then(() => {
-      console.log("Document successfully deleted!");
+    firebase.firestore().collection('hospitals').doc(id).delete().then(() => {
+      console.log("Record successfully deleted!");
       this.props.history.push("/")
     }).catch((error) => {
       console.error("Error removing document: ", error);
     });
   }
 
-qclist(){
+hospital_list(){
 
     this.props.history.push('/');
 }
-
-
-
 
 
   render() {
@@ -72,15 +69,15 @@ qclist(){
 
           
             <Typography variant="h4" style={style}>
-              {this.state.center.centername}
+              {this.state.hospital.hospitalname}
             </Typography>
 
             
-
-            <Button variant="contained" color="primary" onClick={() => this.qclist()}>
-                    Quarantine Center List
+            <div style={{ padding: 20 }}>
+            <Button variant="contained" color="primary" onClick={() => this.hospital_list()}>
+                    List of Hospitals
                 </Button>
-
+            </div>
 
           </div>
           
@@ -91,11 +88,12 @@ qclist(){
             <Table>
                 <TableHead >
                             <TableRow>
-                                <TableCell>ID</TableCell>
-                  
+                                <TableCell align="left">HID</TableCell>
+                                <TableCell align="Left">Hospital Name</TableCell>
                                 <TableCell align="Left">District</TableCell>
-                                <TableCell align="Left">Quarantined Individuals</TableCell>
-                                <TableCell align="Left">Capacity</TableCell>
+                                <TableCell align="Left">COVID-19 Treatment Wards</TableCell>
+                                <TableCell align="Left">Total Beds</TableCell>
+                                <TableCell align="Left">Total ICU Beds</TableCell>
                                 <TableCell align="Left">Actions</TableCell>
                                 <TableCell align="Left"></TableCell>
                           
@@ -103,15 +101,18 @@ qclist(){
                 </TableHead>
                 <TableBody>
             <TableRow  >
-                        <TableCell > </TableCell>
 
-                        <TableCell align="Left">{this.state.center.district}</TableCell>
-   
+                        <TableCell align="Left">{this.state.hospital.hospital_ID}</TableCell>
 
-                        <TableCell align="Left">{this.state.center.qi}</TableCell>
-     
+                        <TableCell align="Left">{this.state.hospital.hospital_name}</TableCell>
 
-                        <TableCell align="Left">{this.state.center.capacity}</TableCell>
+                        <TableCell align="Left">{this.state.hospital.district}</TableCell>
+
+                        <TableCell align="Right">{this.state.hospital.treatment_wards}</TableCell>
+
+                        <TableCell align="Right">{this.state.hospital.total_beds}</TableCell>
+
+                        <TableCell align="Right">{this.state.hospital.total_icu_beds}</TableCell>
 
                         <TableCell align="Left">
                           

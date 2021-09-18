@@ -18,7 +18,7 @@ const NavBar = () => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" style={style}>
-                        Quarantine Center Manager
+                        Hospital Management
                     </Typography>
                     <Button color="inherit">Login</Button>
                 </Toolbar>

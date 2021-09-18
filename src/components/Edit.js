@@ -14,24 +14,26 @@ class Edit extends Component {
     super(props);
     this.state = {
       key: '',
-      centername: '',
+      hospital_name: '',
       district: '',
-      qi: '',
-      capacity: '',
+      treatment_wards: '',
+      total_beds: '',
+      total_icu_beds: ''
     };
   }
 
   componentDidMount() {
-    const ref = firebase.firestore().collection('centers').doc(this.props.match.params.id);
+    const ref = firebase.firestore().collection('hospitals').doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
-        const center = doc.data();
+        const hospital = doc.data();
         this.setState({
           key: doc.id,
-          centername: center.centername,
-          district: center.district,
-          qi: center.qi,
-          capacity: center.capacity
+          hospital_name: hospital.hospital_name,
+          district: hospital.district,
+          treatment_wards: hospital.treatment_wards,
+          total_beds: hospital.total_beds,
+          total_icu_beds: hospital.total_icu_beds
         });
       } else {
         console.log("No such document!");
@@ -42,27 +44,29 @@ class Edit extends Component {
   onChange = (e) => {
     const state = this.state
     state[e.target.name] = e.target.value;
-    this.setState({center:state});
+    this.setState({hospital:state});
   }
 
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { centername, district, qi, capacity } = this.state;
+    const { hospital_name, district, treatment_wards, total_beds, total_icu_beds } = this.state;
 
-    const updateRef = firebase.firestore().collection('centers').doc(this.state.key);
+    const updateRef = firebase.firestore().collection('hospitals').doc(this.state.key);
     updateRef.set({
-      centername,
+      hospital_name,
       district,
-      qi,
-      capacity
+      treatment_wards,
+      total_beds,
+      total_icu_beds
     }).then((docRef) => {
       this.setState({
         key: '',
-        centername: '',
+        hospital_name: '',
         district: '',
-        qi: '',
-        capacity: ''
+        treatment_wards: '',
+        total_beds: '',
+        total_icu_beds: ''
       });
       this.props.history.push("/show/"+this.props.match.params.id)
     })
@@ -88,37 +92,34 @@ class Edit extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
+
+          <div style={{ padding: 20 }}>
             <Typography variant="h4" style={style}>
-              EDIT CENTER
+              Edit Hospital
             </Typography>
+          </div>  
           </div>
           <div class="panel-body">
 
             
 
           <Button variant="contained" color="primary" onClick={() => this.qclist()}>
-                    Quarantine Center List
+                    List of Hospitals
           </Button>
             
             <form onSubmit={this.onSubmit}>
             
-             
-                <TextField type="text" placeholder="Center Name" fullWidth margin="normal" name="centername" value={this.state.centername} onChange={this.onChange}/>
+                <TextField type="text" placeholder="Hospital Name" fullWidth margin="normal" name="hospital_name" value={this.state.hospital_name} onChange={this.onChange}/>
          
-            
-                
                 <TextField type="text" placeholder="District" fullWidth margin="normal" name="district" value={this.state.district} onChange={this.onChange}/>
             
-          
-       
-                <TextField type="number" placeholder="Quarantined Individuals" fullWidth margin="normal" name="qi" value={this.state.qi} onChange={this.onChange}/>
+                <TextField type="number" placeholder="Treatment Wards" fullWidth margin="normal" name="treatment_wards" value={this.state.treatment_wards} onChange={this.onChange}/>
              
-             
-              
-                <TextField type="number" placeholder="Capacity" fullWidth margin="normal" name="capacity" value={this.state.capacity} onChange={this.onChange}/>
+                <TextField type="number" placeholder="Total Beds" fullWidth margin="normal" name="total_beds" value={this.state.total_beds} onChange={this.onChange}/>
+
+                <TextField type="number" placeholder="Total ICU Beds" fullWidth margin="normal" name="total_icu_beds" value={this.state.total_icu_beds} onChange={this.onChange}/>
             
-            
-              <Button type="submit" variant="contained" color="primary"  startIcon={<SaveIcon />} onClick={this.savecenter}>Save</Button>
+              <Button type="submit" variant="contained" color="primary"  startIcon={<SaveIcon />} onClick={this.savehospital}>Save</Button>
               
             </form>
           </div>
