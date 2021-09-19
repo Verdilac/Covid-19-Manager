@@ -52,7 +52,7 @@ const Styles = {
 class Overview extends Component { 
   constructor(props) {
     super(props);
-    this.ref = firebase.firestore().collection('hospitals');
+    this.ref = firebase.firestore().collection('hospitals').orderBy('hospital_ID');
     this.unsubscribe = null;
     this.state = {
       hospitals: []

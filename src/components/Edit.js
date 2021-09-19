@@ -14,6 +14,7 @@ class Edit extends Component {
     super(props);
     this.state = {
       key: '',
+      hospital_ID: '',
       hospital_name: '',
       district: '',
       treatment_wards: '',
@@ -29,6 +30,7 @@ class Edit extends Component {
         const hospital = doc.data();
         this.setState({
           key: doc.id,
+          hospital_ID: hospital.hospital_ID,
           hospital_name: hospital.hospital_name,
           district: hospital.district,
           treatment_wards: hospital.treatment_wards,
@@ -50,10 +52,11 @@ class Edit extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { hospital_name, district, treatment_wards, total_beds, total_icu_beds } = this.state;
+    const { hospital_ID, hospital_name, district, treatment_wards, total_beds, total_icu_beds } = this.state;
 
     const updateRef = firebase.firestore().collection('hospitals').doc(this.state.key);
     updateRef.set({
+      hospital_ID,
       hospital_name,
       district,
       treatment_wards,
@@ -62,6 +65,7 @@ class Edit extends Component {
     }).then((docRef) => {
       this.setState({
         key: '',
+        hospital_ID: '',
         hospital_name: '',
         district: '',
         treatment_wards: '',
@@ -108,7 +112,7 @@ class Edit extends Component {
           </Button>
             
             <form onSubmit={this.onSubmit}>
-            
+
                 <TextField type="text" placeholder="Hospital Name" fullWidth margin="normal" name="hospital_name" value={this.state.hospital_name} onChange={this.onChange}/>
          
                 <TextField type="text" placeholder="District" fullWidth margin="normal" name="district" value={this.state.district} onChange={this.onChange}/>
@@ -119,7 +123,7 @@ class Edit extends Component {
 
                 <TextField type="number" placeholder="Total ICU Beds" fullWidth margin="normal" name="total_icu_beds" value={this.state.total_icu_beds} onChange={this.onChange}/>
             
-              <Button type="submit" variant="contained" color="primary"  startIcon={<SaveIcon />} onClick={this.savehospital}>Save</Button>
+                <Button type="submit" variant="contained" color="primary"  startIcon={<SaveIcon />} onClick={this.savehospital}>Save</Button>
               
             </form>
           </div>
