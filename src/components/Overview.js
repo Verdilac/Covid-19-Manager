@@ -22,6 +22,7 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import ScoreCard1 from './Scorecards/ScoreCard1';
 import ScoreCard2 from './Scorecards/ScoreCard2';
 import ScoreCard3 from './Scorecards/ScoreCard3';
+import ScoreCard4 from './Scorecards/ScoreCard4';
 
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
@@ -90,6 +91,7 @@ class Overview extends Component {
     const total_treatment_wards =(this.state.hospitals.reduce((total,currentItem) =>  total = total+= parseInt(currentItem.treatment_wards) , 0 ));
     const total_beds =(this.state.hospitals.reduce((total,currentItem) =>  total = total+= parseInt(currentItem.total_beds) , 0 ));
     const total_icu_beds =(this.state.hospitals.reduce((total,currentItem) =>  total = total+= parseInt(currentItem.total_icu_beds) , 0 ));
+    const total_hospitals = this.state.hospitals.reduce((count, currentItem) => (currentItem.hospital_ID === currentItem.hospital_ID ? count + 1 : count), 0);
 
     return (
     <div>
@@ -100,36 +102,30 @@ class Overview extends Component {
              <Container maxWidth="false" className={classes.container}>
                 <Grid container spacing={3}>
             
-                    {/* Recent Deposits */}
                     <Grid item xs>
                     <Paper className={fixedHeightPaper}>
-                        <ScoreCard1/> <Typography component="p" variant="h4">  {total_treatment_wards}  </Typography>
+                        <ScoreCard4/> <Typography component="p" variant="h4" align="center">  {total_hospitals}  </Typography>
                     </Paper>
                     </Grid>
 
                     <Grid item xs>
                     <Paper className={fixedHeightPaper}>
-                        <ScoreCard2/> <Typography component="p" variant="h4">  {total_beds}  </Typography>
+                        <ScoreCard1/> <Typography component="p" variant="h4" align="center" >  {total_treatment_wards}  </Typography>
                     </Paper>
                     </Grid>
 
                     <Grid item xs>
                     <Paper className={fixedHeightPaper}>
-                        <ScoreCard3/> <Typography component="p" variant="h4">  {total_icu_beds}  </Typography>
-                    </Paper>
-                    </Grid>
-
-                    {/*<Grid item xs>
-                    <Paper className={fixedHeightPaper}>
-                        <ScoreCard4/>
+                        <ScoreCard2/> <Typography component="p" variant="h4" align="center">  {total_beds}  </Typography>
                     </Paper>
                     </Grid>
 
                     <Grid item xs>
                     <Paper className={fixedHeightPaper}>
-                        <ScoreCard5/>
+                        <ScoreCard3/> <Typography component="p" variant="h4" align="center">  {total_icu_beds}  </Typography>
                     </Paper>
-                    </Grid>*/}
+                    </Grid>
+
 
                 </Grid>
             </Container>
@@ -139,7 +135,7 @@ class Overview extends Component {
               <Container maxWidth="lg">
 
                 <div style={{ padding: 20 }}>
-                <Typography variant="h4" style={style}>List of Hospitals</Typography>
+                <Typography variant="h5" style={style}>List of Hospitals</Typography>
                 </div>
 
 
