@@ -5,7 +5,9 @@ import {
     Form
 } from "semantic-ui-react";
 import firebase from "../../../Firebase";
-import "../../../App.css";
+
+import '../Css/style.css'
+// import "../../../App.css";
 
 
 

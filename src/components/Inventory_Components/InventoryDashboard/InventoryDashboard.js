@@ -1,5 +1,7 @@
 import React from 'react'
-import '../../../App.css'
+
+import '../Css/style.css'
+// import '../../../App.css'
 
 import NavBar from '../Navigation/NavBar';
 import InformationContainer from '../Information/InformationContainer';

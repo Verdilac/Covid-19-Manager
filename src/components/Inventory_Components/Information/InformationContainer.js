@@ -2,7 +2,8 @@ import { Grid, Container } from '@material-ui/core';
 
 import InformationModal from './InformationModal'
 
-import '../../../App.css'
+import '../Css/style.css'
+// import '../../../App.css'
 
 
 // ----------------------------------------------------------------------

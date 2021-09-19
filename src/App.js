@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.css';
+// import './App.css';
 
-import InventoryDashboard from './components/Inventory_Components/InventoryDashboard/InventoryDashboard'
+import InventoryDashboard from './Components/Inventory_Components/InventoryDashboard/InventoryDashboard'
 
 function App() {
 
@@ -15,3 +15,5 @@ function App() {
 }
 
 export default App;
+
+

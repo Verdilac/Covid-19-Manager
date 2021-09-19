@@ -10,7 +10,8 @@ import {
 import { TablePagination, TableRow, TableCell } from '@material-ui/core';
 import firebase from "../../../Firebase";
 
-import '../../../App.css'
+import '../Css/style.css'
+// import '../../../App.css'
 
 
 const ProductTable = () => {
