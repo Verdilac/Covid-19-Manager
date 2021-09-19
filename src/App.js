@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import InventoryDashboard from './components/InventoryDashboard/InventoryDashboard'
+import InventoryDashboard from './components/Inventory_Components/InventoryDashboard/InventoryDashboard'
 
 function App() {
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import firebase from "../../Firebase";
+import firebase from "../../../Firebase";
 import { Icon } from '@iconify/react';
-import lowLevel from '@iconify/icons-healthicons/low-level';
+import syringeVaccine from '@iconify/icons-healthicons/syringe-vaccine';
 import { alpha, styled } from '@material-ui/core/styles';
 import { Card, Typography } from '@material-ui/core';
 
@@ -15,7 +15,7 @@ const RootStyle = styled(Card)(({ theme }) => ({
   textAlign: 'center',
   padding: theme.spacing(5, 0),
   color: '#FFFFFF',
-  backgroundColor: '#5c6bc0'
+  backgroundColor: '#1a237e'
 }));
 
 const IconWrapperStyle = styled('div')(({ theme }) => ({
@@ -37,7 +37,7 @@ const IconWrapperStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 
-export default function LowStock() {
+export default function CovidProducts() {
 
   // Obtaining Firebase Data START -------------------------------------------
 
@@ -65,18 +65,16 @@ export default function LowStock() {
 
   // Obtaining Firebase Data  END ----------------------------------------------
 
-  // If Product Quantity < 10  its Low Quantity
-  const low = productData.filter(entry => Number(entry.Product_Qty) < 10)  //  function to calculate low Quantity product count
-
+  const ordered = productData.filter(item => item.Product_Status === 'ORDERED'); // function to calculate ordered product count
 
   return (
     <RootStyle className="borderRadius">
       <IconWrapperStyle>
-        <Icon icon={lowLevel} width={30} height={30} />
+        <Icon icon={syringeVaccine} width={30} height={30} />
       </IconWrapperStyle>
-      <Typography className="number" variant="h3">{low.length}</Typography>
+      <Typography className="number" variant="h3">{ordered.length}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        Low Stock
+        Ordered Products
       </Typography>
     </RootStyle>
   );

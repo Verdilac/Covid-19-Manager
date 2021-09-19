@@ -8,9 +8,9 @@ import {
     Table
 } from "semantic-ui-react";
 import { TablePagination, TableRow, TableCell } from '@material-ui/core';
-import firebase from "../../Firebase";
+import firebase from "../../../Firebase";
 
-import '../../App.css'
+import '../../../App.css'
 
 
 const ProductTable = () => {

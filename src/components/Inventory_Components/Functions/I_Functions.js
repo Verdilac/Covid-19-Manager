@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import firebase from "../../Firebase";
+import firebase from "../../../Firebase";
 
 
 export default function I_Functions() {

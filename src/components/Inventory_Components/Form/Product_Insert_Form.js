@@ -4,8 +4,8 @@ import {
     Button,
     Form
 } from "semantic-ui-react";
-import firebase from "../../Firebase";
-import "../../App.css";
+import firebase from "../../../Firebase";
+import "../../../App.css";
 
 
 

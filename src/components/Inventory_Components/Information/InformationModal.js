@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Icon, Image, Modal} from 'semantic-ui-react'
 import { Grid, Container} from '@material-ui/core';
 
-import '../../App.css'
+import '../../../App.css'
 
 const InformationModal = () => {
     const [open, setOpen] = React.useState(false)

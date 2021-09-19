@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import firebase from "../../Firebase";
+import firebase from "../../../Firebase";
 import { Icon } from '@iconify/react';
-import shoppingFilled from '@iconify/icons-ant-design/shopping-filled';
+import shoppingCart from '@iconify/icons-entypo/shopping-cart';
 import { alpha, styled } from '@material-ui/core/styles';
 import { Card, Typography } from '@material-ui/core';
 
@@ -15,7 +15,7 @@ const RootStyle = styled(Card)(({ theme }) => ({
   textAlign: 'center',
   padding: theme.spacing(5, 0),
   color: '#FFFFFF',
-  backgroundColor: '#1a237e'
+  backgroundColor: '#5c6bc0'
 }));
 
 const IconWrapperStyle = styled('div')(({ theme }) => ({
@@ -37,12 +37,12 @@ const IconWrapperStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 
-export default function TotalProducts() {
+export default function TotalQuantity() {
 
   // Obtaining Firebase Data START -------------------------------------------
 
   const [productData, setProductData] = useState([]);
- 
+
   useEffect(() => {
     const firestore = firebase.database().ref("/ProductInfo");
     firestore.on("value", (response) => {
@@ -66,14 +66,15 @@ export default function TotalProducts() {
   // Obtaining Firebase Data  END ----------------------------------------------
 
 
+
   return (
     <RootStyle className="borderRadius">
       <IconWrapperStyle>
-        <Icon icon={shoppingFilled} width={24} height={24} />
+        <Icon icon={shoppingCart} width={24} height={24} />
       </IconWrapperStyle>
-      <Typography className="number" variant="h3">{productData.length}</Typography>
+      <Typography className="number" variant="h3">{productData.reduce((previous, current) =>  previous + parseInt(current.Product_Qty), 0 )}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        Total Products
+        Total Quantity
       </Typography>
     </RootStyle>
   );
