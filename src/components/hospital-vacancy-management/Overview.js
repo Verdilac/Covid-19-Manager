@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import '../../App.css';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
@@ -15,8 +15,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
-import CreateIcon from '@material-ui/icons/Create';
-import DeleteIcon from '@material-ui/icons/Delete';
+//import CreateIcon from '@material-ui/icons/Create';
+//import DeleteIcon from '@material-ui/icons/Delete';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 import ScoreCard1 from './Scorecards/ScoreCard1';
@@ -24,7 +24,7 @@ import ScoreCard2 from './Scorecards/ScoreCard2';
 import ScoreCard3 from './Scorecards/ScoreCard3';
 import ScoreCard4 from './Scorecards/ScoreCard4';
 
-import TextField from '@material-ui/core/TextField';
+//import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
 
