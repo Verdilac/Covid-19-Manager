@@ -9,16 +9,16 @@ import Update from './Components/Update';
 
 function App() {
   return (
-    <div>
-    <Router>
-      <Switch>
-        <Route exact path="/register" component={AssignDoc} />
-        <Route exact path="/" component={DocTable} />
-      </Switch>
-    </Router>
-    <DocTables />
+    // <div>
+    // <Router>
+    //   <Switch>
+    //     <Route exact path="/register" component={AssignDoc} />
+    //     <Route exact path="/" component={DocTable} />
+    //   </Switch>
+    // </Router>
+    // <DocTables />
     
-    </div>
+    // </div> //Praveen
   );
 }
 
