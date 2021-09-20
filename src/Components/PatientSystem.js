@@ -70,7 +70,7 @@ const PatientSystem = () => {
                                 <Col>
                                     <Typography variant='h5'>Patient Details</Typography>
                                     <hr/>
-                                    <Form.Group className="mb-3" controlId="formBasicPatientNIC">
+                                    <Form.Group className="PatientNIC" controlId="formBasicPatientNIC">
                                         <Form.Label>Patient NIC</Form.Label>
                                         <Form.Control type="text" placeholder="Enter National Indentity Card No." 
                                             focus 
@@ -80,7 +80,7 @@ const PatientSystem = () => {
                                             }}
                                         />
                                     </Form.Group>
-                                    <Form.Group className="mb-3" controlId="formBasicPatientNIC">
+                                    <Form.Group className="PatientFirstName" controlId="formBasicPatientNIC">
                                         <Form.Label>Patient First Name</Form.Label>
                                         <Form.Control type="text" placeholder="Enter Patient's First Name" 
                                         focus 
@@ -90,7 +90,7 @@ const PatientSystem = () => {
                                         }}
                                         />
                                     </Form.Group>
-                                    <Form.Group className="mb-3" controlId="formBasicPatientNIC">
+                                    <Form.Group className="PatientLastName" controlId="formBasicPatientNIC">
                                         <Form.Label>Patient Last Name</Form.Label>
                                         <Form.Control type="text" placeholder="Enter Patient's Last Name" 
                                         focus 
@@ -100,7 +100,7 @@ const PatientSystem = () => {
                                         }}
                                         />
                                     </Form.Group>
-                                    <Form.Group className="mb-3" controlId="formBasicPatientNIC">
+                                    <Form.Group className="PatientDOB" controlId="formBasicPatientNIC">
                                         <Form.Label>Patient's Date of Birth</Form.Label>
                                         <Form.Control type="date" 
                                         focus 
@@ -110,7 +110,7 @@ const PatientSystem = () => {
                                         }}
                                         />
                                     </Form.Group>
-                                    <Form.Group className="mb-3" controlId="formBasicPatientNIC">
+                                    <Form.Group className="PatientAddress" controlId="formBasicPatientNIC">
                                         <Form.Label>Patient Address</Form.Label>
                                         <Form.Control type="text" placeholder="Enter Patient's Address" 
                                         focus 
@@ -125,7 +125,7 @@ const PatientSystem = () => {
                                 <Col>
                                     <Typography variant='h5'>Guardian Details</Typography>
                                     <hr/>
-                                    <Form.Group className="mb-3" controlId="formBasicPatientNIC">
+                                    <Form.Group className="GuardianNIC" controlId="formBasicPatientNIC">
                                         <Form.Label>Guardian NIC</Form.Label>
                                         <Form.Control type="text" placeholder="Enter Guardian's NIC" 
                                         focus 
@@ -135,7 +135,7 @@ const PatientSystem = () => {
                                         }}
                                         />
                                     </Form.Group>
-                                    <Form.Group className="mb-3" controlId="formBasicPatientNIC">
+                                    <Form.Group className="GuardianName" controlId="formBasicPatientNIC">
                                         <Form.Label>Guardian Name</Form.Label>
                                         <Form.Control type="text" placeholder="Enter Guardian's Name" 
                                         focus 
@@ -145,7 +145,7 @@ const PatientSystem = () => {
                                         }}
                                         />
                                     </Form.Group>
-                                    <Form.Group className="mb-3" controlId="formBasicPatientNIC">
+                                    <Form.Group className="GuardianAddress" controlId="formBasicPatientNIC">
                                         <Form.Label>Guardian Address</Form.Label>
                                         <Form.Control type="text" placeholder="Enter Guardian's Address" 
                                         focus 
@@ -155,7 +155,7 @@ const PatientSystem = () => {
                                         }}
                                         />
                                     </Form.Group>
-                                    <Form.Group className="mb-3" controlId="formBasicPatientNIC">
+                                    <Form.Group className="GuardianPhone" controlId="formBasicPatientNIC">
                                         <Form.Label>Guardian Phone Number</Form.Label>
                                         <Form.Control type="text" placeholder="Enter Guardian's Phone" 
                                         focus 
