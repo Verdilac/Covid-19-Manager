@@ -1,9 +1,7 @@
-
-
-
 import React from "react";
 import "./App.css";
 import TravelManagement from "./Components/TravelFunction/TravelManagement";
+import InventoryDashboard from "./Components/InventoryFunctions/InventoryDashboard/InventoryDashboard";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { red } from "@material-ui/core/colors";
 import { purple } from "@material-ui/core/colors";
@@ -22,14 +20,17 @@ const theme = createTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    // <ThemeProvider theme={theme}>
+    <div>
       <NavBar />
       <div className="App">
+        {/* <TravelManagement></TravelManagement> */}
         <TravelManagement></TravelManagement>
       </div>
-    </ThemeProvider>
+    </div>
+
+    // </ThemeProvider>
   );
 }
 
 export default App;
-
