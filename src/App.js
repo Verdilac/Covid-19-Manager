@@ -4,9 +4,9 @@ import Overview from './components/hospital-vacancy-management/Overview';
 
 function App (){
   return (
-    <div>
+    /*<div>
       <Overview />
-    </div>
+    </div>*/ //Tivain
   )
 }
 

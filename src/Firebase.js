@@ -3,12 +3,12 @@ import firebase from 'firebase';
 const settings = {timestampsInSnapshots: true};
 
 const config = {
-  apiKey: "AIzaSyAUWpupeEeW8Ts8vMMnFN0l_CROx9VF94c",
-  authDomain: "itp-hospital-management-tw.firebaseapp.com",
-  databaseURL: "https://itp-hospital-management-tw.firebaseio.com/",
-  projectId: "itp-hospital-management-tw",
-  storageBucket: "itp-hospital-management-tw.appspot.com",
-  messagingSenderId: "1052900030307"
+  apiKey: "AIzaSyBn9O1pBo1EDW_bnVylJKs99qv6n6n6kl4",
+  authDomain: "itp-covid-manager.firebaseapp.com",
+  databaseURL: "https://itp-covid-manager-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  projectId: "itp-covid-manager",
+  storageBucket: "itp-covid-manager.appspot.com",
+  messagingSenderId: "983496885829"
 };
 firebase.initializeApp(config);
 
