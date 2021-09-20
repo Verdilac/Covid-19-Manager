@@ -1,16 +1,17 @@
 import React from 'react';
 // import './App.css';
 
-import InventoryDashboard from './Components/Inventory_Components/InventoryDashboard/InventoryDashboard'
+import InventoryDashboard from './Components/InventoryFunctions/InventoryDashboard/InventoryDashboard'
 
 function App() {
 
   return (
-    <div className="App">
+    // <div className="App">
 
-      <InventoryDashboard />
+    //   <InventoryDashboard />
       
-    </div>
+    // </div>
+    // Pinto - Inventory_Function
   );
 }
 
