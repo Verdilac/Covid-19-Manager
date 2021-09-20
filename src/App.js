@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import Main from "./Components/Main";
+import TravelManagement from "./Components/TravelFunction/TravelManagement";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { red } from "@material-ui/core/colors";
 import { purple } from "@material-ui/core/colors";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-
+import NavBar from "./Components/TravelFunction/NavBar";
 
 const theme = createTheme({
   palette: {
@@ -20,8 +20,9 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <NavBar />
       <div className="App">
-        <Main></Main>
+        <TravelManagement></TravelManagement>
       </div>
     </ThemeProvider>
   );

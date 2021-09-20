@@ -3,7 +3,7 @@ import { Table } from "react-bootstrap";
 import { Nav, Tab, Tabs, Row, Col } from "react-bootstrap";
 import Sonnet from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import "../App.css";
+import "../../App.css";
 import { useState, useEffect } from "react";
 
 //POP UP FORM
@@ -93,8 +93,6 @@ export default function DataTable({
   // handleUpdate,
   handleUpdateClick,
 }) {
-
-
   const classes = useStyles();
 
   //setting key for foreigner and native tabs
@@ -136,9 +134,6 @@ export default function DataTable({
     }
   };
 
-
-
-
   const handleDelete = (id) => {
     if (key === "Native") {
       const firestore = firebase.database().ref("/Native").child(id);
@@ -174,8 +169,6 @@ export default function DataTable({
     });
   }, []);
 
- 
-
   useEffect(() => {
     const firestore = firebase.database().ref("/Foreigner");
     firestore.on("value", (response) => {
@@ -200,8 +193,6 @@ export default function DataTable({
       setforeignerData(foreigninfo);
     });
   }, []);
-
-
 
   return (
     <div>

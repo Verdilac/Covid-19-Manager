@@ -4,23 +4,11 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import PopupForm from "./PopupForm";
-import flight_tracker from "./flight_tracker.PNG";
-import Flight from "./Flight.PNG";
-import firebase from "../Components/Firebase";
-import DataTableLogic from "./DataTableLogic";
-
-// Sub Component Imports
-import DataTable from "./DataTable";
-import { Container } from "@material-ui/core";
-import BtnSetMain from "./BtnSetMain";
+import NavSideBar from "./NavSideBar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,18 +20,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-  spacing: {
-    margin: theme.spacing(4),
-    padding: theme.spacing(4),
-  },
-  image: {
-    width: "100%",
-    height: "400px",
-    marginTop: theme.spacing(2),
-  },
 }));
 
-export default function Main() {
+export default function NavBar() {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -63,6 +42,7 @@ export default function Main() {
 
   return (
     <div className={classes.root}>
+      <FormGroup></FormGroup>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -71,10 +51,10 @@ export default function Main() {
             color="inherit"
             aria-label="menu"
           >
-            <MenuIcon />
+            <NavSideBar />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Travel Management
+            Inventory
           </Typography>
           {auth && (
             <div>
@@ -103,23 +83,14 @@ export default function Main() {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
               </Menu>
             </div>
           )}
         </Toolbar>
       </AppBar>
-
-      <Container>
-        <img className={classes.image} src={Flight}></img>
-      </Container>
-
-      <div>
-        {/* <PopupForm className={classes.spacing}></PopupForm> */}
-        <BtnSetMain className={classes.btnset}></BtnSetMain>
-
-        <DataTableLogic></DataTableLogic>
-      </div>
     </div>
   );
+
+  // Drawer
 }
