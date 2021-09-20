@@ -1,0 +1,67 @@
+
+  
+
+  
+  
+  html {
+    font-family: "Montserrat", sans-serif;
+  }
+
+
+  
+  
+
+  .note {
+    background-position: center;
+    background:  	 #adc2eb;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px #ebf0fa;
+    padding: 30px;
+    width: 90%;
+    margin: 40px;
+    float: left;
+    align-items: center;
+  }
+  .note h1 {
+    font-size: 1.1em;
+    margin-bottom: 6px;
+    font-family: "McLaren", cursive;
+  }
+  .note p {
+    font-size: 1.0em;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: "McLaren", cursive;
+  }
+
+
+
+  /* Calculations */
+
+
+  .noteC {
+    background-position: center;
+    background:    #9999ff;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px  #8080ff;
+    padding: 30px;
+    width: 70%;
+    margin: 40px;
+    float: left;
+    align-items: center;
+  }
+  .noteC h1 {
+    font-size: 1.3em;
+    margin-bottom: 6px;
+    font-family: "McLaren", cursive;
+  }
+  .noteC p {
+    font-size: 1.0em;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: "McLaren", cursive;
+  }
+  
+  
