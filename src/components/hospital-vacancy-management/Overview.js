@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css';
+import '../../App.css';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
-import firebase from '../Firebase';
+import firebase from '../../Firebase';
 import NavBar from "./Navbar";
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid'

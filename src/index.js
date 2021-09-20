@@ -5,9 +5,9 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Edit from './components/Edit';
-import Create from './components/Create';
-import Show from './components/Show';
+import Edit from './components/hospital-vacancy-management/Edit';
+import Create from './components/hospital-vacancy-management/Create';
+import Show from './components/hospital-vacancy-management/Show';
 
 ReactDOM.render(
   <Router>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import ReactDOM from 'react-dom';
-import firebase from '../Firebase';
+import firebase from '../../Firebase';
 //import { Link } from 'react-router-dom';
 import NavBar from "./Navbar";
 import ID_Generator from './ID_Generator';
