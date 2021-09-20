@@ -55,10 +55,14 @@ export default function NavSideBar() {
     >
       <List>
         {[
-          "Dashboard",
-          "Inventory",
+          "Travel Management",
+          "Hospital Inventory Management",
           "Vaccine Adminstration",
-          "Doctor Profiles",
+          "Doctor Management",
+          "Patient Managment",
+          "Hospital Vacancy Management",
+          "Access Controlling",
+          "Quarantine Center Management"
         ].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>

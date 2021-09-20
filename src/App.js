@@ -26,6 +26,7 @@ function App() {
       <div className="App">
         {/* <TravelManagement></TravelManagement> */}
         <TravelManagement></TravelManagement>
+        {/* <InventoryDashboard /> */}
       </div>
     </div>
 
