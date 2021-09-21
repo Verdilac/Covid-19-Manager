@@ -1,3 +1,4 @@
+
 import React from "react";
 import "./App.css";
 import TravelManagement from "./Components/TravelFunction/TravelManagement";
@@ -11,7 +12,7 @@ import NavBar from "./Components/TravelFunction/NavBar";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Overview from './Components/hospital-vacancy-management/Overview';
 import Dashboard from './Components/qcm/Dashboard';
-
+import VaccineApp from './Components/Vaccine-Administration/VaccineApp'
 
 // const theme = createTheme({
 //   palette: {
@@ -43,6 +44,9 @@ function App (){
             </Route>
             <Route path="/quarantine">
               <Dashboard />
+            </Route>
+            <Route path="/vaccine">
+              <VaccineApp />
             </Route>
           </Switch>
         </div>
