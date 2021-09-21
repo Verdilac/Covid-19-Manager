@@ -12,6 +12,8 @@ import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
 
+import { Link } from 'react-router-dom'
+
 const useStyles = makeStyles((theme) => ({
   list: {
     width: 250,
@@ -54,7 +56,7 @@ export default function NavSideBar() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {[
+        {/* {[
           "Travel Management",
           "Hospital Inventory Management",
           "Vaccine Adminstration",
@@ -70,7 +72,14 @@ export default function NavSideBar() {
             </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
-        ))}
+        ))} */}
+
+        <ListItem button>
+          <Link to="/">Travel Management</Link>
+        </ListItem>
+        <ListItem button >
+          <Link to="/inventory">Inventory Management</Link>
+        </ListItem>
       </List>
       <Divider />
       <List>

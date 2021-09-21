@@ -54,7 +54,7 @@ export default function NavBar() {
             <NavSideBar />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Inventory
+            Covid-19 Mangament System
           </Typography>
           {auth && (
             <div>
