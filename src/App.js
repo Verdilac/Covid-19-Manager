@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import React, { Component } from 'react';
-import './App.css';
-import Dashboard from './components/Dashboard'
-
-function App (){
-    return (
-          <div>
-                    <Dashboard/>
-          </div>
-    );
-=======
-
 import React from "react";
 import "./App.css";
 import TravelManagement from "./Components/TravelFunction/TravelManagement";
@@ -72,7 +59,6 @@ function App (){
     // </ThemeProvider>
   );
 
->>>>>>> origin/integration
 }
 
 export default App;
