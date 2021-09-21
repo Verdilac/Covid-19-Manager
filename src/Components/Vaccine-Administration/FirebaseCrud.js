@@ -10,7 +10,7 @@ import {
     Segment,
     Table,
   } from "semantic-ui-react";
-  import firebase from "./firebase";
+  import firebase from "../TravelFunction/Firebase";
   import { useEffect, useState } from "react";
   import FirebaseCrudSec from "./FirebaseCrudSec";
   

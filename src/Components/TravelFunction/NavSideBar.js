@@ -86,6 +86,9 @@ export default function NavSideBar() {
         <ListItem button >
           <Link to="/quarantine">Quarantine Management</Link>
         </ListItem>
+        <ListItem button >
+          <Link to="/vaccine">Vaccine Administration</Link>
+        </ListItem>
       </List>
       <Divider />
       <List>

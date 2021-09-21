@@ -10,7 +10,7 @@ function VaccineApp() {
   return (
     <div>
       
-      <NavBar />
+      {/* <NavBar /> */}
       <div  style={{ backgroundImage: `url(${background})`} }>
       <VaccineCalc />
 

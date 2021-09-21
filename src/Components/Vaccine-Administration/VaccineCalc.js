@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import firebase from "./firebase";
+import firebase from "../TravelFunction/Firebase";
 import "./Note.css";
 
 
