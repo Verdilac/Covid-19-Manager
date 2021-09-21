@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+import React from 'react';
+import './App.css';
+import {Route, BrowserRouter as Router, Switch, Link} from "react-router-dom";
+import DocTables from '../src/Components/Tables/DocTables';
+import AssignDoc from './Components/Tables/AssignDoc';
+import DocTable from './Components/Tables/DocTable';
+=======
 import React from "react";
 import "./App.css";
 import TravelManagement from "./Components/TravelFunction/TravelManagement";
@@ -11,6 +19,7 @@ import NavBar from "./Components/TravelFunction/NavBar";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Overview from './Components/hospital-vacancy-management/Overview';
 import Dashboard from './Components/qcm/Dashboard';
+>>>>>>> origin/integration
 
 
 // const theme = createTheme({
@@ -25,6 +34,18 @@ import Dashboard from './Components/qcm/Dashboard';
 
 function App (){
   return (
+<<<<<<< HEAD
+    <div>
+    <Router>
+      <Switch>
+        <Route exact path="/register" component={AssignDoc} />
+        <Route exact path="/" component={DocTable} />
+      </Switch>
+    </Router>
+    <DocTables />
+    
+    </div> //Praveen
+=======
 
     // <ThemeProvider theme={theme}>
     <Router>
@@ -61,6 +82,7 @@ function App (){
     // </div>
 
     // </ThemeProvider>
+>>>>>>> origin/integration
   );
 
 }
