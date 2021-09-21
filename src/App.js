@@ -10,6 +10,7 @@ import InventoryDashboard from "./Components/InventoryFunctions/InventoryDashboa
 import NavBar from "./Components/TravelFunction/NavBar";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Overview from './Components/hospital-vacancy-management/Overview';
+import Dashboard from './Components/qcm/Dashboard';
 
 
 // const theme = createTheme({
@@ -39,6 +40,9 @@ function App (){
             </Route>
             <Route path="/vacancy">
               <Overview />
+            </Route>
+            <Route path="/quarantine">
+              <Dashboard />
             </Route>
           </Switch>
         </div>
