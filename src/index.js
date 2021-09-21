@@ -1,8 +1,27 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
+<<<<<<< HEAD
+import * as serviceWorker from './serviceWorker';
+import Edit from './components/qcm/Edit';
+import Create from './components/qcm/Create';
+import Show from './components/qcm/Show';
+
+ReactDOM.render(
+  <Router>
+      <div>
+        <Route exact path='/' component={App} />
+        <Route path='/edit/:id' component={Edit} />
+        <Route path='/create' component={Create} />
+        <Route path='/show/:id' component={Show} />
+      </div>
+  </Router>,
+  document.getElementById('root')
+=======
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as serviceWorker from './serviceWorker';
@@ -12,6 +31,7 @@ ReactDOM.render(
     <App />
   </React.StrictMode>,
   document.getElementById("root")
+>>>>>>> origin/integration
 );
 
 // If you want your app to work offline and load faster, you can change

@@ -1,10 +1,13 @@
 {
-  "name": "covid-19-manager",
+  "name": "react-firestore",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/integration
     "@material-ui/icons": "^4.11.2",
     "@ramonak/react-progress-bar": "^3.2.1",
     "@react-native-community/progress-bar-android": "^1.0.4",
@@ -22,6 +25,8 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "react-stringify": "^1.0.0",
+<<<<<<< HEAD
+=======
 =======
 
     "@material-ui/icons": "^4.11.2",
@@ -53,6 +58,7 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
 >>>>>>> origin/integration
+>>>>>>> origin/integration
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -82,6 +88,10 @@
   "devDependencies": {
 <<<<<<< HEAD
     "@babel/preset-react": "^7.14.5",
+    "bootstrap": "^5.1.1"
+=======
+<<<<<<< HEAD
+    "@babel/preset-react": "^7.14.5",
     "bootstrap": "^5.1.0"
 =======
 
@@ -92,6 +102,7 @@
     "@iconify/icons-healthicons": "^1.1.4",
     "@iconify/react": "^3.0.1"
 
+>>>>>>> origin/integration
 >>>>>>> origin/integration
   }
 }
