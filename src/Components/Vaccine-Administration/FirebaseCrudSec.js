@@ -167,7 +167,7 @@ import {
         isValid = false;
       }
 
-      if ( Number(aPopulationCount.trim()) == 0 ||Number(aPopulationCount.trim()) < 0) {
+      if ( Number(aPopulationCount.trim()) < 1 ) {
         populationCountErr.PopulationDisCountMinus = " Population count must be a positive value";
         isValid = false;
     }
