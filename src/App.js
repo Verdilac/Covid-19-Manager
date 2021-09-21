@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+import React from 'react';
+import './App.css';
+import Overview from './components/hospital-vacancy-management/Overview';
+=======
 import React from "react";
 import "./App.css";
 import TravelManagement from "./Components/TravelFunction/TravelManagement";
@@ -18,9 +23,14 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 //     secondary: red,
 //   },
 // });
+>>>>>>> origin/integration
 
-function App() {
+function App (){
   return (
+<<<<<<< HEAD
+    
+  )
+=======
     // <ThemeProvider theme={theme}>
     <Router>
       <div className="App">
@@ -51,6 +61,7 @@ function App() {
 
     // </ThemeProvider>
   );
+>>>>>>> origin/integration
 }
 
 export default App;
