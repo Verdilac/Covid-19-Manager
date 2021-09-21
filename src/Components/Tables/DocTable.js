@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Table } from "semantic-ui-react";
-import firebase from '../firebase';
+import firebase from '../Tables/firebase';
 import * as React from 'react';
 import './DocTable.css';
 import { useHistory } from 'react-router-dom';
@@ -13,7 +13,6 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Card, CardActionArea } from "@material-ui/core";
 
-import Form from 'react-bootstrap/Form';
 
 const DocTable = () => {
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './AssignDoc.css';
-import firebase from '../firebase';
+import firebase from 'firebase';
 import { useHistory } from 'react-router';
 
 
@@ -61,6 +61,7 @@ const AssignDoc = () => {
 
                     <div className="select_txt"><label className="select_det">Status</label></div>
                     <select value={aStatus} onChange={(e) => {setaStatus(e.target.value)}} >
+                        <option >Status</option>
                         <option value="ASSIGNED">ASSIGNED</option>
                         <option value="NOT ASSIGNED">NOT ASSIGNED</option>
                         <option value="REVOKED">REVOKED</option>
