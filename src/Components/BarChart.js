@@ -64,7 +64,7 @@ const BarChart = () => {
         }}
       />
       </Container>
-      <h1 style={{color:"#999966",fontSize:20, marginTop:"50px", marginBottom:20, marginLeft:400}}> Vaccination 2021 - Improvements in Sri Lanka</h1>
+      <h1 style={{color:"#999966",fontSize:20, marginTop:"50px", marginBottom:20, marginLeft:400}}> Improvements Of Vaccination 2021 in Sri Lanka</h1>
       <br></br>
     </div>
   );
