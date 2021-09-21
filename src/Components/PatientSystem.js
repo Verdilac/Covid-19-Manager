@@ -20,6 +20,18 @@ const modalstyle = {
     p: 4,
 };
 
+const modalstyledelete = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 700,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
+
 const PatientSystem = () => {
     const [aPatientNIC, setAPatientNIC] = useState('');
     const [aPatientFirstName, setAPatientFirstName] = useState('');
@@ -41,20 +53,20 @@ const PatientSystem = () => {
             for (let id in data){
                 patientInfo.push({
                     id:id,
-                    PatientNIC:data[id].PatientNIC,
-                    PatientFirstName:data[id].PatientFirstName,
-                    PatientLastName:data[id].PatientLastName,
-                    PatientDOB:data[id].PatientDOB,
-                    PatientAddress:data[id].PatientAddress,
-                    GuardianNIC:data[id].GuardianNIC,
-                    GuardianName:data[id].GuardianName,
-                    GuardianAddress:data[id].GuardianAddress,
+                    PatientNIC: data[id].PatientNIC,
+                    PatientFirstName: data[id].PatientFirstName,
+                    PatientLastName: data[id].PatientLastName,
+                    PatientDOB: data[id].PatientDOB,
+                    PatientAddress: data[id].PatientAddress,
+                    GuardianNIC: data[id].GuardianNIC,
+                    GuardianName: data[id].GuardianName,
+                    GuardianAddress: data[id].GuardianAddress,
                     GuardianPhone:data[id].GuardianPhone,
                 });
             }
             setPatientData(patientInfo);
-        });
-    });
+        })
+    },[])
 
     const handleAddPatient = ()  => {
         const firestore = firebase.database().ref("/PatientInfo");
@@ -71,6 +83,14 @@ const PatientSystem = () => {
         };
         firestore.push(data);
     }
+
+    const handleDelete = (id) => {
+        const firestore = firebase
+            .database()
+            .ref("/PatientInfo")
+            .child(id);
+        firestore.remove();
+    };
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -101,7 +121,7 @@ const PatientSystem = () => {
                                                 <Form.Label>Patient NIC</Form.Label>
                                                 <Form.Control type="text" placeholder="Enter National Indentity Card No." 
                                                     focus 
-                                                    value={aPatientNIC}
+                                                    defaultValue={aPatientNIC}
                                                     onChange={(e) => {
                                                         setAPatientNIC(e.target.value);
                                                     }}
@@ -121,7 +141,7 @@ const PatientSystem = () => {
                                                 <Form.Label>Patient Last Name</Form.Label>
                                                 <Form.Control type="text" placeholder="Enter Patient's Last Name" 
                                                 focus 
-                                                value={aPatientLastName}
+                                                defaultValue={aPatientLastName}
                                                 onChange={(e) => {
                                                     setAPatientLastName(e.target.value);
                                                 }}
@@ -131,7 +151,7 @@ const PatientSystem = () => {
                                                 <Form.Label>Patient's Date of Birth</Form.Label>
                                                 <Form.Control type="date" 
                                                 focus 
-                                                value={aPatientDOB}
+                                                defaultValue={aPatientDOB}
                                                 onChange={(e) => {
                                                     setAPatientDOB(e.target.value);
                                                 }}
@@ -141,7 +161,7 @@ const PatientSystem = () => {
                                                 <Form.Label>Patient Address</Form.Label>
                                                 <Form.Control type="text" placeholder="Enter Patient's Address" 
                                                 focus 
-                                                value={aPatientAddress}
+                                                defaultValue={aPatientAddress}
                                                 onChange={(e) => {
                                                     setAPatientAddress(e.target.value);
                                                 }}
@@ -156,7 +176,7 @@ const PatientSystem = () => {
                                                 <Form.Label>Guardian NIC</Form.Label>
                                                 <Form.Control type="text" placeholder="Enter Guardian's NIC" 
                                                 focus 
-                                                value={aGuardianNIC}
+                                                defaultValue={aGuardianNIC}
                                                 onChange={(e) => {
                                                     setAGuardianNIC(e.target.value);
                                                 }}
@@ -166,7 +186,7 @@ const PatientSystem = () => {
                                                 <Form.Label>Guardian Name</Form.Label>
                                                 <Form.Control type="text" placeholder="Enter Guardian's Name" 
                                                 focus 
-                                                value={aGuardianName}
+                                                defaultValue={aGuardianName}
                                                 onChange={(e) => {
                                                     setAGuardianName(e.target.value);
                                                 }}
@@ -176,7 +196,7 @@ const PatientSystem = () => {
                                                 <Form.Label>Guardian Address</Form.Label>
                                                 <Form.Control type="text" placeholder="Enter Guardian's Address" 
                                                 focus 
-                                                value={aGuardianAddress}
+                                                defaultValue={aGuardianAddress}
                                                 onChange={(e) => {
                                                     setAGuardianAddress(e.target.value);
                                                 }}
@@ -186,7 +206,7 @@ const PatientSystem = () => {
                                                 <Form.Label>Guardian Phone Number</Form.Label>
                                                 <Form.Control type="text" placeholder="Enter Guardian's Phone" 
                                                 focus 
-                                                value={aGuardianPhone}
+                                                defaultValue={aGuardianPhone}
                                                 onChange={(e) => {
                                                     setAGuardianPhone(e.target.value);
                                                 }}
@@ -195,27 +215,25 @@ const PatientSystem = () => {
                                         </Col>
                                     </Row>
                                 </Container>
-                                <Button variant="primary" onClick={()=>{handleAddPatient()}} positive >
+                                <Button variant="primary" type ="submit" onClick={()=>{handleAddPatient()}}>
                                     Submit
                                 </Button>
                             </Form>
                         </Box>
                     </Modal>    
                     </Col>
-                    <Col>
-                        Update Patient
-                    </Col>
                 </Row>
-                <Row>
+
+                <Row columns="1">
                     <Col>
                         {
                             patientData.length == 0 ? (
                             <Segment padded="very">
                                 <Typography align="center">
-                                    No Data Available!
+                                    No Data Available! Enter data to view!
                                 </Typography>
                             </Segment>
-                            ) : ( 
+                            ) : (
                             <Segment padded="very">
                                 <Table striped bordered hover>
                                     <thead>
@@ -246,12 +264,13 @@ const PatientSystem = () => {
                                                     <td>{data.GuardianAddress}</td>
                                                     <td>{data.GuardianPhone}</td>
                                                     <td>
-                                                        <Button primary>
-                                                            Update
-                                                        </Button>
-                                                        <Button color="red">
-                                                            Delete
-                                                        </Button>
+                                                    <Button 
+                                                        variant="danger"
+                                                        onClick={()=>{handleDelete(data.id)}} 
+                                                    >
+                                                        Remove
+                                                    
+                                                    </Button>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -260,10 +279,11 @@ const PatientSystem = () => {
                                     }
                                 </Table>
                             </Segment>
-                            )}
+                        )}
 
                     </Col>
                 </Row>
+
             </Container>
         </div>
     )
