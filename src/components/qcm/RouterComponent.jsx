@@ -11,7 +11,7 @@ const AppRouter = () => {
         <div style={style}>
             <Router>
                     <Switch>
-                        <Route path="/" exact component={Dashboard} />
+                        <Route path="/" exact component={} />
                         <Route path="/Dashboard" component={Dashboard} />
                         <Route path="/Create" component={Create} />
                         <Route path="/Edit" component={Edit} />

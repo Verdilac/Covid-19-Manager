@@ -1,5 +1,5 @@
 {
-  "name": "covid-19-manager",
+  "name": "project-vaccination",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,10 +10,16 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+<<<<<<< HEAD
+=======
+    "bootstrap": "^5.1.0",
+    "chart.js": "^3.5.1",
+>>>>>>> origin/integration
     "firebase": "^8.0.0",
     "gauge-chart": "^0.5.3",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-beta.6",
+<<<<<<< HEAD
     "react-dom": "^17.0.2",
     "react-gauge-chart": "^0.4.0",
     "react-native-circular-progress-indicator": "^1.1.2",
@@ -21,6 +27,23 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "react-stringify": "^1.0.0",
+=======
+    "react-chartjs-2": "^3.0.5",
+    "react-dom": "^17.0.2",
+    "react-draggable": "^4.4.3",
+    "react-gauge-chart": "^0.4.0",
+    "react-native-circular-progress-indicator": "^1.1.2",
+    "react-native-progress": "^5.0.0",
+    "react-redux": "^7.2.5",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0",
+    "react-scripts": "4.0.3",
+    "react-stringify": "^1.0.0",
+    "reactstrap": "^8.10.0",
+    "recharts": "^2.1.2",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3",
+>>>>>>> origin/integration
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -49,6 +72,14 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
+<<<<<<< HEAD
     "bootstrap": "^5.1.0"
+=======
+    "bootstrap": "^5.1.0",
+    "@iconify/icons-ant-design": "^1.1.0",
+    "@iconify/icons-entypo": "^1.1.0",
+    "@iconify/icons-healthicons": "^1.1.4",
+    "@iconify/react": "^3.0.1"
+>>>>>>> origin/integration
   }
 }
