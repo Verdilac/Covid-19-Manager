@@ -66,7 +66,7 @@ export default function Main() {
   return (
     <div>
       {/* <Container className="my-4"> */}
-      <FlightCarousel />
+      {/* <FlightCarousel /> */}
       {/* </Container>{" "} */}
       <div>
         {/* <PopupForm className={classes.spacing}></PopupForm> */}
