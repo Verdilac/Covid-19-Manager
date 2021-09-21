@@ -1,10 +1,10 @@
-import Boot from "./Components/Boot";
-import BarChart from "./Components/BarChart";
+import Boot from "./Boot";
+import BarChart from "./BarChart";
 import FirebaseCrud from "./FirebaseCrud";
 import { Container } from "semantic-ui-react";
-import NavBar from "./Components/NavBar";
-import VaccineCalc from "./Components/VaccineCalc";
-import background from "./Components/img/bkImg.jpg"
+import NavBar from "./NavBar";
+import VaccineCalc from "./VaccineCalc";
+import background from "./img/bkImg.jpg"
 
 function VaccineApp() {
   return (

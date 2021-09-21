@@ -159,20 +159,47 @@ import {
         isValid = false;
       }
 
+
+      //--------------
+
       if(aPopulationCount.trim().length < 1){
         populationCountErr.populationCountShort = "You must Enter the population count !";
         isValid = false;
       }
+
+      if ( Number(aPopulationCount.trim()) == 0 ||Number(aPopulationCount.trim()) < 0) {
+        populationCountErr.PopulationDisCountMinus = " Population count must be a positive value";
+        isValid = false;
+    }
+    
+
+      //---------------
 
       if(aReceivedCount.trim().length < 1){
         receivedCountErr.receivedCountShort = "You must Enter the received count !";
         isValid = false;
       }
 
+      if ( Number(aReceivedCount.trim()) < 0) {
+        receivedCountErr.ReceivedDisStockCountMinus = "Received Stock count must be a positive value";
+        isValid = false;
+    }
+
+
+
+      //----------------
+
       if(aVaccinatedCount.trim().length < 1){
         vaccinatedCountErr.vaccinatedCountShort = "You must Enter the vaccinated count !";
         isValid = false;
       }
+
+      if ( Number(aVaccinatedCount.trim()) < 0) {
+        vaccinatedCountErr.VaccinatedDisCountMinus = "Received Stock count must be a positive value";
+        isValid = false;
+    }
+
+
 
       setDistrictNameErr(districtNameErr);
       setPopulationCountErr(populationCountErr);
@@ -277,6 +304,7 @@ import {
                     <Form.Field>
                       <label>Population Count</label>
                       <Input
+                      type='number'
                         placeholder="Population count..."
                         focus
                         value={aPopulationCount}
@@ -293,6 +321,7 @@ import {
                     <Form.Field>
                       <label>Received Total Doses</label>
                       <Input
+                      type='number'
                         placeholder="Received Total Doses..."
                         focus
                         value={aReceivedCount}
@@ -310,6 +339,7 @@ import {
                     <Form.Field>
                       <label>Total Vaccination Count</label>
                       <Input
+                      type='number'
                         placeholder="Total Vaccination Count..."
                         focus
                         value={aVaccinatedCount}
@@ -364,6 +394,7 @@ import {
                     <Form.Field>
                       <label>Population Count</label>
                       <Input
+                      type='number'
                         placeholder="Population Count..."
                         focus
                         value={uPopulationCount}
@@ -379,6 +410,7 @@ import {
                     <Form.Field>
                       <label>Received Total Doses</label>
                       <Input
+                      type='number'
                         placeholder="Received Total Doses..."
                         focus
                         value={uReceivedCount}
@@ -394,6 +426,7 @@ import {
                     <Form.Field>
                       <label>Total Vaccination Count</label>
                       <Input
+                      type='number'
                         placeholder="Total Vaccination Count..."
                         focus
                         value={uVaccinatedCount}
