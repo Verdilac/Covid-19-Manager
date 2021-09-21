@@ -16,6 +16,7 @@ import flight_tracker from "./flight_tracker.PNG";
 import Flight from "./Flight.PNG";
 import firebase from "./Firebase";
 import Container from "react-bootstrap/Container";
+import FlightCarousel from "./FlightCarousel";
 
 // Sub Component Imports
 import DataTable from "./DataTable";
@@ -65,7 +66,7 @@ export default function Main() {
   return (
     <div>
       {/* <Container className="my-4"> */}
-      {/* <FlightCarousel /> */}
+      <FlightCarousel />
       {/* </Container>{" "} */}
       <div>
         {/* <PopupForm className={classes.spacing}></PopupForm> */}
