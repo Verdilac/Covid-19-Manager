@@ -4,9 +4,15 @@ import Dashboard from './components/qcm/Dashboard'
 
 function App (){
     return (
-          <div>
+        /** <div>
                     <Dashboard/>
           </div>
+
+            CHARUKA
+
+
+             */ 
+
     );
 }
 
