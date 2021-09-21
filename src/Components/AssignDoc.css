@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+
+}
+
+
+.wrapper {
+    max-width: 1000px;
+    width: 450px;
+    height: 630px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    margin-top: 25px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.wrapper .title{
+    margin-bottom: 5px;
+    position: relative;
+
+}
+
+body{
+    display: flex;
+    min-height: 100hv;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-135deg, #c850c0, #4158d0);
+}
+
+.wrapper select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #d4d4d5;
+
+    position: relative;
+    display: flex;
+    width: 9em;
+    height: 1.9em;
+    
+    background: #5c6664;
+    overflow: hidden;
+    border-radius: .23em;
+    top: 10px;
+    flex: 4;
+    padding: .4em;
+    color: #fff;
+    cursor: pointer;
+    left: 60px;
+    margin: 4px;
+    margin-top: 5px;
+}
+
+.wrapper select::-ms-expand{
+    display: none;
+}
+
+.wrapper .select_txt {
+    position: relative;
+    text-align: left;
+    left: 0;
+    top: 30px;
+    margin: 5px;
+}
+
+.wrapper select .select_det{
+    position: relative;
+    margin: 10px;
+}
+
+.wrapper .input__control{
+    height: 50px;
+    width: 100%;
+    position: relative;
+    border: none;
+    top: 10px;
+    bottom: 5px;
+    border-bottom: 2px solid silver;
+}
+
+.wrapper .input__control input{
+    height: 100%;
+    width: 100%;
+   
+}
+
+.wrapper label{
+    position: relative;
+    top: 10px;
+    bottom: 25px;
+    left: 0;
+    color: gray;
+    pointer-events: none;
+}
+
+.wrapper .input__control input:focus ~ .details{
+    transform: translateY(-20);
+}
+
+.wrapper .input__control .underline{
+    position: relative;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background: red;
+}
+
+
+.btn_sub {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    position: relative;
+    padding: 15px 39px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 30px 97px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+  }
+
+  .btn_sub:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  }
