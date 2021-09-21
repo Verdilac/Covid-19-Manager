@@ -105,6 +105,14 @@ body{
     align-items: center;
 }
 
+.form_container span{
+    color: #0000CD;
+}
+
+.form_container .btn_txt{
+    color: #fff;
+}
+
 /* .wrap{
     width: 1000px;
     margin: auto;

@@ -13,6 +13,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Card, CardActionArea } from "@material-ui/core";
 
+import Form from 'react-bootstrap/Form';
+
 const DocTable = () => {
 
     const [aFirstName, setaFirstName] = useState('');
@@ -59,9 +61,8 @@ const DocTable = () => {
     const [uFirstName, setuFirstName] = useState('');
     const [uLastName, setuLastName] = useState('');
     const [uEmail, setuEmail] = useState('');
-    const [uAddress, setuAddress] = useState('');
+    const [uStatus, setuStatus] = useState('');
     const [uPhone, setuPhone] = useState('');
-    const [uGender, setuGender] = useState('');
     const [uSpecialization, setuSpecialization] = useState('');
     const [uPatientCount, setuPatientCount] = useState('');
     const [uUserName, setuUserName] = useState('');
@@ -74,7 +75,7 @@ const DocTable = () => {
             FirstName: uFirstName,
             LastName: uLastName,
             Email: uEmail,
-            Address: uAddress,
+            Status: uStatus,
             PhoneNumber: uPhone,
             Specialization: uSpecialization,
             PatientCount: uPatientCount,
@@ -84,7 +85,7 @@ const DocTable = () => {
         setuFirstName('');
         setuLastName('');
         setuEmail('');
-        setuAddress('');
+        setuStatus('');
         setuPhone('');
         setuSpecialization('');
         setuPatientCount('');
@@ -110,7 +111,7 @@ const DocTable = () => {
                     FirstName: data[id].FirstName,
                     LastName: data[id].LastName,
                     Email: data[id].Email,
-                    Address: data[id].Address,
+                    Status: data[id].Status,
                     PhoneNumber: data[id].PhoneNumber,
                     Specialization: data[id].Specialization,
                     PatientCount: data[id].PatientCount,
@@ -122,13 +123,13 @@ const DocTable = () => {
         })
     });
 
-    //getting database data
+    //update data in database
 
     const handleUpdateClick = (data) => {
         setuFirstName(data.FirstName);
         setuLastName(data.LastName);
         setuEmail(data.Email);
-        setuAddress(data.Address);
+        setuStatus(data.Status);
         setuPhone(data.PhoneNumber);
         setuSpecialization(data.Specialization);
         setuPatientCount(data.PatientCount);
@@ -163,13 +164,13 @@ const DocTable = () => {
                     <Table.HeaderCell>FirstName</Table.HeaderCell>
                     <Table.HeaderCell>LastName</Table.HeaderCell>
                     <Table.HeaderCell>Email</Table.HeaderCell>
-                    <Table.HeaderCell>Address</Table.HeaderCell>
+                    <Table.HeaderCell>Status</Table.HeaderCell>
                     <Table.HeaderCell>PhoneNumber</Table.HeaderCell>
                     <Table.HeaderCell>Specialization</Table.HeaderCell>
                     <Table.HeaderCell>PatientCount</Table.HeaderCell>
                     <Table.HeaderCell>UserName</Table.HeaderCell>
-                    <Table.HeaderCell>Password</Table.HeaderCell>
-                    <Table.HeaderCell>Action</Table.HeaderCell>
+                    {/* <Table.HeaderCell>Password</Table.HeaderCell> */}
+                    {/* <Table.HeaderCell>Action</Table.HeaderCell> */}
                 </Table.Row>
             </Table.Header>
             {
@@ -178,19 +179,19 @@ const DocTable = () => {
                         <Table.Cell>{data.FirstName}</Table.Cell>
                         <Table.Cell>{data.LastName}</Table.Cell>
                         <Table.Cell>{data.Email}</Table.Cell>
-                        <Table.Cell>{data.Address}</Table.Cell>
+                        <Table.Cell>{data.Status}</Table.Cell>
                         <Table.Cell>{data.PhoneNumber}</Table.Cell>
                         <Table.Cell>{data.Specialization}</Table.Cell>
                         <Table.Cell>{data.PatientCount}</Table.Cell>
                         <Table.Cell>{data.UserName}</Table.Cell>
-                        <Table.Cell>{data.Password}</Table.Cell>
+                        {/* <Table.Cell>{data.Password}</Table.Cell> */}
                         <Table.Cell>
                         <div className="btn_container">
                             <button className="btn" onClick={() => {handleUpdateClick(data); handleClickOpen()}}>
                                 <div className="btn_icon"><i class="small edit outline icon"></i></div>
                                 <span className="btn_text" >Edit</span>
                             </button>
-                            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullScreen>
+                            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" >
                                 <DialogTitle id="form-dialog-title">Update</DialogTitle>
                                 <DialogContent>
                                 <DialogContentText>
@@ -200,19 +201,21 @@ const DocTable = () => {
                             <div className="form_container">
                             <form>
                     
-                                <input className="input__control" type ="text" placeholder="First Name" value={uFirstName} onChange={(e) => {setuFirstName(e.target.value)}}/>
+                                <input className="input__control" type ="text"  value={uFirstName} onChange={(e) => {setuFirstName(e.target.value)}}/>
                                 <div className="underline"></div>
+                                <span>First Name</span>
                                 
+
                                 <input className="input__control" type="text" value={uLastName} onChange={(e) => {setuLastName(e.target.value)}}/>
-                                <span>Last NAme</span>
+                                <span>Last Name</span>
                                 
                                 
-                                <input className="input__control" type ="text"  onChange={(e) => {setuEmail(e.target.value)}} />
+                                <input className="input__control" type ="text" value={uEmail} onChange={(e) => {setuEmail(e.target.value)}} />
                                 <span>Email</span>
                                 
                                 
-                                <input className="input__control" type="text" value={uAddress} onChange={(e) => {setuAddress(e.target.value)}}/>
-                                <span>Address</span>
+                                <input className="input__control" type="text" value={uStatus} onChange={(e) => {setuStatus(e.target.value)}}/>
+                                <span>Status</span>
                         
                                 
                                 <input className="input__control" type="text"  value={uPhone} onChange={(e) => {setuPhone(e.target.value)}}/>
@@ -242,10 +245,10 @@ const DocTable = () => {
                                 <input className="input__control" type="text" value={uUserName} onChange={(e) => {setuUserName(e.target.value)}}/>
                                 <span>UserNAme</span>
 
-                                <input className="input__control" type="text"  value={uPassword} onChange={(e) => {setuPassword(e.target.value)}}/>
+                                <input className="input__control" type="password"  value={uPassword} onChange={(e) => {setuPassword(e.target.value)}}/>
                                 <span>Password</span>
 
-                                <button className="btn_update" onClick={() => {handleUpdateUser()}}><span>Update</span></button>
+                                <button className="btn_update" onClick={() => {handleUpdateUser()}}><span className="btn_txt">Update</span></button>
                         
                     </form>
                     </div>

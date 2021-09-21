@@ -14,11 +14,12 @@
     background: #fff;
     padding: 30px;
     border-radius: 5px;
+    margin-top: 25px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 
 }
 
-.wrapper h2{
+.wrapper .title{
     margin-bottom: 5px;
     position: relative;
 
@@ -32,12 +33,57 @@ body{
     background: linear-gradient(-135deg, #c850c0, #4158d0);
 }
 
+.wrapper select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #d4d4d5;
+
+    position: relative;
+    display: flex;
+    width: 9em;
+    height: 1.9em;
+    
+    background: #5c6664;
+    overflow: hidden;
+    border-radius: .23em;
+    top: 10px;
+    flex: 4;
+    padding: .4em;
+    color: #fff;
+    cursor: pointer;
+    left: 60px;
+    margin: 4px;
+    margin-top: 5px;
+}
+
+.wrapper select::-ms-expand{
+    display: none;
+}
+
+.wrapper .select_txt {
+    position: relative;
+    text-align: left;
+    left: 0;
+    top: 30px;
+    margin: 5px;
+}
+
+.wrapper select .select_det{
+    position: relative;
+    margin: 10px;
+}
+
 .wrapper .input__control{
-    height: 35px;
+    height: 50px;
     width: 100%;
     position: relative;
     border: none;
-    bottom: 25px;
+    top: 10px;
+    bottom: 5px;
     border-bottom: 2px solid silver;
 }
 
@@ -49,6 +95,7 @@ body{
 
 .wrapper label{
     position: relative;
+    top: 10px;
     bottom: 25px;
     left: 0;
     color: gray;
@@ -56,7 +103,7 @@ body{
 }
 
 .wrapper .input__control input:focus ~ .details{
-    transform: translateY(-20px);
+    transform: translateY(-20);
 }
 
 .wrapper .input__control .underline{
@@ -72,12 +119,13 @@ body{
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 15px 32px;
+    position: relative;
+    padding: 15px 39px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 25px 45px;
+    margin: 30px 97px;
     cursor: pointer;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
