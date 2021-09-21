@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import '../../App.css';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
-import firebase from '../../Firebase';
+import firebase from '../TravelFunction/Firebase';
 import NavBar from "./Navbar";
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid'
@@ -95,7 +95,7 @@ class Overview extends Component {
 
     return (
     <div>
-             <NavBar/>
+             {/* <NavBar/> */}
 
              <div style={{ padding: 50 }}>
 

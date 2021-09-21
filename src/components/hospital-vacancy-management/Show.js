@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from '../../Firebase';
+import firebase from '../TravelFunction/Firebase';
 import { Link } from 'react-router-dom';
 import NavBar from "./Navbar";
 import TextField from '@material-ui/core/TextField';

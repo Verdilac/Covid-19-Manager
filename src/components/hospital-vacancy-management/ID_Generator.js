@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../App.css';
-import firebase from '../../Firebase';
+import firebase from '../TravelFunction/Firebase';
 //import Create from './Create'
 
 class ID_Generator extends React.Component {

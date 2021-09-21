@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React from 'react';
-import './App.css';
-import Overview from './components/hospital-vacancy-management/Overview';
-=======
+
 import React from "react";
 import "./App.css";
 import TravelManagement from "./Components/TravelFunction/TravelManagement";
@@ -13,7 +9,9 @@ import InventoryDashboard from "./Components/InventoryFunctions/InventoryDashboa
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import { useState } from "react";
 import NavBar from "./Components/TravelFunction/NavBar";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Overview from './Components/hospital-vacancy-management/Overview';
+
 
 // const theme = createTheme({
 //   palette: {
@@ -23,14 +21,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 //     secondary: red,
 //   },
 // });
->>>>>>> origin/integration
+
 
 function App (){
   return (
-<<<<<<< HEAD
-    
-  )
-=======
+
     // <ThemeProvider theme={theme}>
     <Router>
       <div className="App">
@@ -42,6 +37,9 @@ function App (){
             </Route>
             <Route path="/inventory">
               <InventoryDashboard />
+            </Route>
+            <Route path="/vacancy">
+              <Overview />
             </Route>
           </Switch>
         </div>
@@ -61,7 +59,7 @@ function App (){
 
     // </ThemeProvider>
   );
->>>>>>> origin/integration
+
 }
 
 export default App;

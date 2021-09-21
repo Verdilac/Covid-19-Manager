@@ -22,7 +22,7 @@ import DataTable from "./DataTable";
 
 import BtnSetMain from "./BtnSetMain";
 import DataTableLogic from "./DataTableLogic";
-import FlightCarousel from "./FlightCarousel";
+// import FlightCarousel from "./FlightCarousel";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -65,7 +65,7 @@ export default function Main() {
   return (
     <div>
       {/* <Container className="my-4"> */}
-      <FlightCarousel />
+      {/* <FlightCarousel /> */}
       {/* </Container>{" "} */}
       <div>
         {/* <PopupForm className={classes.spacing}></PopupForm> */}
