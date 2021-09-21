@@ -4,7 +4,7 @@ function App() {
 
   return (
     <div className="App">
-      <PatientSystem></PatientSystem>
+      <PatientSystem />
     </div>
     //Kulaja
   );
