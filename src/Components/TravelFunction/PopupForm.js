@@ -22,6 +22,11 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
+//form validation
+
+// pop up
+import Modal from "react-bootstrap/Modal";
+
 //Firebase
 import firebase from "./Firebase";
 import {
@@ -53,6 +58,9 @@ const useStyles = makeStyles((theme) => ({
 // -----***************--------------
 
 export default function PopupForm() {
+  const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false);
+  const handleClosepop = () => setShow(false);
   //Radio Group Functions
   const [value, setValue] = React.useState("Foreigner");
 
@@ -145,6 +153,23 @@ export default function PopupForm() {
     return travType;
   }
 
+  var validity = false;
+
+  function checkvalidity(e) {
+    if (
+      vfirstName === "" ||
+      vlastName === "" ||
+      vage === "" ||
+      vpassportNumber === "" ||
+      vphoneNumber === "" ||
+      vemailAddress === "" ||
+      vaddress === "" ||
+      vQicd === ""
+    ) {
+      handleShow();
+    }
+  }
+
   return (
     <div>
       <Button
@@ -161,6 +186,7 @@ export default function PopupForm() {
         onClick={handleClickOpen}
         label="Male"
       /> */}
+
       <Dialog
         open={open}
         onClose={handleClose}
@@ -175,6 +201,7 @@ export default function PopupForm() {
             autoFocus
             margin="dense"
             id="name"
+            error={!vfirstName}
             label="First Name"
             onChange={(e) => {
               setvfirstName(e.target.value);
@@ -186,6 +213,7 @@ export default function PopupForm() {
             margin="dense"
             id="name"
             label="Last Name"
+            error={!vlastName}
             onChange={(e) => {
               setvlastName(e.target.value);
             }}
@@ -196,6 +224,8 @@ export default function PopupForm() {
             margin="dense"
             id="name"
             label="Passport No"
+            error={!vpassportNumber}
+            required
             onChange={(e) => {
               setvpassportNumber(e.target.value);
             }}
@@ -206,6 +236,7 @@ export default function PopupForm() {
             margin="dense"
             id="emailaddress"
             label="Email Address"
+            error={!vemailAddress}
             type="email"
             onChange={(e) => {
               setvemailAddress(e.target.value);
@@ -216,36 +247,44 @@ export default function PopupForm() {
             margin="dense"
             id="age"
             label="Age"
+            error={!vage}
+            required
             onChange={(e) => {
               setvage(e.target.value);
             }}
-            type="text"
+            type="number"
             fullWidth
           />
           <TextField
             margin="dense"
             id="address"
             label="Address"
+            error={!vaddress}
+            required
             onChange={(e) => {
               setvaddress(e.target.value);
             }}
-            type="email"
+            type="text"
             fullWidth
           />{" "}
           <TextField
             margin="dense"
             id="phone"
             label="Phone No"
+            error={!vphoneNumber}
+            required
             onChange={(e) => {
               setvphoneNumber(e.target.value);
             }}
-            type="email"
+            type="number"
             fullWidth
           />
           <TextField
             margin="dense"
             id="qcid"
+            required
             label="QCID"
+            error={!vQicd}
             onChange={(e) => {
               setvQicd(e.target.value);
             }}
@@ -290,7 +329,9 @@ export default function PopupForm() {
             <TextField
               margin="dense"
               id="depaturedate"
+              required
               label="Depature Date"
+              error={!vdepatureDate}
               onChange={(e) => {
                 setvdepatureDate(e.target.value);
               }}
@@ -301,6 +342,8 @@ export default function PopupForm() {
               margin="dense"
               id="name"
               label="Visa Duration"
+              error={!vvisaDuration}
+              required
               onChange={(e) => {
                 setvvisaDuration(e.target.value);
               }}
@@ -311,6 +354,8 @@ export default function PopupForm() {
               margin="dense"
               id="name"
               label="Area To be Travalled"
+              error={!vareaToBeTraveled}
+              required
               onChange={(e) => {
                 setvareaToBeTraveled(e.target.value);
               }}
@@ -346,6 +391,8 @@ export default function PopupForm() {
               margin="dense"
               id="name"
               label="Province"
+              error={!vprovince}
+              required
               onChange={(e) => {
                 setvprovince(e.target.value);
               }}
@@ -356,6 +403,7 @@ export default function PopupForm() {
               margin="dense"
               id="name"
               label="WorkPlace Address"
+              error={!vworkAddress}
               onChange={(e) => {
                 setvworkAddress(e.target.value);
               }}
@@ -373,6 +421,7 @@ export default function PopupForm() {
             onClick={() => {
               handleAddUser();
               isType();
+              checkvalidity();
             }}
             color="primary"
           >
@@ -380,6 +429,21 @@ export default function PopupForm() {
           </Button>
         </DialogActions>
       </Dialog>
+
+      <Modal show={show} onHide={handleClosepop}>
+        <Modal.Header closeButton>
+          <Modal.Title>Oops Some Inputs Are Missing</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Please Make Sure There Are No Empty Feilds.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClosepop}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClosepop}>
+            Ok
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
