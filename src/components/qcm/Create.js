@@ -50,16 +50,14 @@ class Create extends React.Component{
         
         capacity: 0
       });
-      this.props.history.push("/")
+      this.props.history.push("/quarantine")
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
     });
   }
 
-  qclist(){
-    this.props.history.push('/');
-  }
+
 
 
   render() {
@@ -80,7 +78,7 @@ class Create extends React.Component{
 
                   <Container style ={style2}>
 
-                      <Button variant="contained" color="primary" onClick={() => this.qclist()}>
+                      <Button variant="contained" color="primary" onClick={event =>  window.location.href=`/quarantine`}>
                                   Quarantine Center Management Dashboard
                       </Button>
                       
