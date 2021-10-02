@@ -1,6 +1,6 @@
 import React  from 'react';
 import firebase from '../TravelFunction/Firebase';
-import NavBar from "./Navbar";
+
 import IDGenerator from "./IDgenerator"
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -97,8 +97,6 @@ class Create extends React.Component{
                   <TextField type="text" placeholder="District" fullWidth margin="normal" name="district" value={this.state.district} onChange={this.onChange}/>
           
             
-              
-          
           
                   <TextField type="number" placeholder="Capacity" fullWidth margin="normal" name="capacity" value={this.state.capacity} onChange={this.onChange}/>
           

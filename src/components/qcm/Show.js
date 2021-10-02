@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import firebase from '../../Firebase';
-//import { Link } from 'react-router-dom';
+import firebase from '../TravelFunction/Firebase';
+import { Link } from 'react-router-dom';
 import NavBar from "./Navbar";
 
 

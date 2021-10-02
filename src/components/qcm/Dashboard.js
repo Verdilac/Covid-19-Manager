@@ -146,7 +146,7 @@ class App extends Component {
        <Container style ={style}>                   
           <Container align= "left" className="w-100 p-2">
 
-                <Button  variant="contained" color="primary" onClick={event =>  window.location.href=`/quarantineCreate`}>
+                <Button  variant="contained" color="primary" onClick={event =>  window.location.href=`/qcreate`}>
                      Add New Quarantine Center
                 </Button>
 
@@ -176,7 +176,7 @@ class App extends Component {
                                 
                                 <TableCell align="Left">
                                   
-                                <Button variant="contained"  color="secondary" onClick={event =>  window.location.href=`/show/${row.key}`}>{row.centername}
+                                <Button variant="contained"  color="secondary" onClick={event =>  window.location.href=`/qshow/${row.key}`}>{row.centername}
                                         
                                 </Button>
 
