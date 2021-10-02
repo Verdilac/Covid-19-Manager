@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import {withRouter} from 'react-router-dom';
+//import { Link } from 'react-router-dom';
+//import {withRouter} from 'react-router-dom';
 
 import firebase from '../TravelFunction/Firebase';
 import NavBar from "./Navbar";
@@ -17,10 +17,10 @@ import ScoreCard2 from './Dashboard/ScoreCard2';
 import ScoreCard3 from './Dashboard/ScoreCard3';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+//import { makeStyles } from '@material-ui/core/styles';
+//import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import { TableContainer } from '@material-ui/core';
+//import { TableContainer } from '@material-ui/core';
 import Title from './Dashboard/Title';
 
 
@@ -30,24 +30,28 @@ class App extends Component {
     super(props);
     this.ref = firebase.firestore().collection('centers').orderBy('qcid');
    
+   
     this.unsubscribe = null;
     this.state = {
-      centers: []
+      centers: [],
+
+      qindividuals: []
     };
    
   }
 
   onCollectionUpdate = (querySnapshot) => {
+
     const centers = [];
     querySnapshot.forEach((doc) => {
-      const { qcid, centername, district, qi, capacity } = doc.data();
+      const { qcid, centername, district, capacity } = doc.data();
       centers.push({
         key: doc.id,
         doc, // DocumentSnapshot
         qcid,
         centername,
         district,
-        qi,
+   
         capacity,
       });
     });
@@ -57,21 +61,57 @@ class App extends Component {
 
   }
 
+  onCollectionUpdate2 =(querySnapshot) =>{
+
+    const qindividuals = [];
+    querySnapshot.forEach((doc2) => {
+      const {qcid,name,dob,address,phoneno, passportNo} = doc2.data();
+      qindividuals.push({
+        key: doc2.id,
+        doc2, // DocumentSnapshot
+        qcid,
+        name,
+        dob,
+        address,
+        phoneno,
+        passportNo,
+       
+      });
+    });
+    this.setState({
+      qindividuals
+   });
+
+
+
+
+  } 
+
 
   componentDidMount() {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+
+
+    this.ref2 = firebase.firestore().collection('qindividuals').orderBy('qcid');
+    this.unsubscribe = null;
+    this.unsubscribe = this.ref2.onSnapshot(this.onCollectionUpdate2);
+    
   }
 
 
 
   render() {
-           
-              const totalqi=(this.state.centers.reduce((total,currentItem) =>  total = total+= parseInt(currentItem.qi) , 0 ));
+
+             
+
+              var totalqi=(this.state.qindividuals.reduce((total,currentItem) =>  total = total+=  (currentItem.qcid ), '' ));
+              var totalqiINT = totalqi.length / 6;
+
               const totalcap=(this.state.centers.reduce((total,currentItem) =>  total = total+= parseInt(currentItem.capacity) , 0 ));
-              var percent = (totalqi / totalcap * 100).toFixed(0); 
+              var percent = (totalqiINT / totalcap * 100).toFixed(0); 
     return (
     <div>
-             {/* <NavBar/> */}
+        
         
                          
              <Typography variant="h3" color= "#3e54af"style={style}>Quarantine Center Management Dashboard</Typography>
@@ -82,7 +122,7 @@ class App extends Component {
 
                                                         <Grid item xs={12} md={5} lg={4} >
                                                           <Paper >
-                                                            <ScoreCard/>   <Typography component="p" variant="h4">  {totalqi}  </Typography>
+                                                            <ScoreCard/>   <Typography component="p" variant="h4">  {totalqiINT}  </Typography>
                                                           </Paper>
                                                         </Grid>
 
@@ -106,7 +146,7 @@ class App extends Component {
        <Container style ={style}>                   
           <Container align= "left" className="w-100 p-2">
 
-                <Button  variant="contained" color="primary" onClick={event =>  window.location.href=`/create`}>
+                <Button  variant="contained" color="primary" onClick={event =>  window.location.href=`/quarantineCreate`}>
                      Add New Quarantine Center
                 </Button>
 

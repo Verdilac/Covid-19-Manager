@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import firebase from '../../Firebase';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import NavBar from "./Navbar";
 
 
-import TextField from '@material-ui/core/TextField';
+//import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
@@ -12,14 +12,14 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { makeStyles } from '@material-ui/core/styles';
+//import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { TableContainer } from '@material-ui/core';
+//import { TableContainer } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import EditIcon from '@material-ui/icons/Edit';
 import Title from './Dashboard/Title';
 import Container from '@material-ui/core/Container';
-import listQindividuals from './listQindividuals';
+//import listQindividuals from './listQindividuals';
 
 
 
@@ -27,13 +27,17 @@ class Show extends Component {
 
   constructor(props) {
     super(props);
+    
     this.state = {
       center: {},
-      key: ''
+      key: '',
+
+      qindividuals: []
     };
   }
 
   componentDidMount() {
+  
     const ref = firebase.firestore().collection('centers').doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
@@ -41,12 +45,59 @@ class Show extends Component {
           center: doc.data(),
           key: doc.id,
           isLoading: false
+        
         });
       } else {
         console.log("No such document!");
       }
     });
+
+    console.log();
+    
+
+    this.ref2 = firebase.firestore().collection('qindividuals');
+    this.unsubscribe = this.ref2.onSnapshot(this.onCollectionUpdate); 
+    
+   
   }
+
+  onCollectionUpdate = (querySnapshot) => {    
+   
+    const qindividuals = [];
+    querySnapshot.forEach((doc2) => {
+      const { qcid, passportNo, name, phoneno, address, dob } = doc2.data();
+      qindividuals.push({
+        key: doc2.id,
+        doc2, // DocumentSnapshot
+        qcid,
+        passportNo,
+        name,
+        phoneno,
+        address,
+        dob,
+      });
+    });
+    this.setState({
+      qindividuals
+   });
+
+  }
+
+  
+  discharge(id){
+
+    firebase.firestore().collection('qindividuals').doc(id).delete().then(() => {
+      console.log("Document successfully deleted!");
+    }).catch((error) => {
+      console.error("Error removing document: ", error);
+    });       
+
+  }
+
+  transfer(){
+
+
+  }  
 
   delete(id){
     firebase.firestore().collection('centers').doc(id).delete().then(() => {
@@ -62,18 +113,15 @@ qclist(){
     this.props.history.push('/');
 }
 
-
-
-
-
   render() {
+
+    var totalqi=(this.state.qindividuals.filter(({qcid}) => qcid === this.state.center.qcid).reduce((total,currentItem) =>  total = total+=  (currentItem.qcid ), '' ));
+    var totalqiINT = totalqi.length / 6;
+  
     return (
       <>
 
-        <div>
-            <NavBar/>
-        </div>
-
+  
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -82,8 +130,7 @@ qclist(){
             <Typography variant="h3" style={style}>
               {this.state.center.centername}
             </Typography>
-
-            
+          
             </Container>
 
               <Container style= {style3}>     
@@ -120,16 +167,12 @@ qclist(){
                                   <TableRow  >
 
 
-                                              <TableCell > <Typography variant="h6">{this.state.center.qcid}</Typography> </TableCell>
-
-                                            
+                                              <TableCell > <Typography variant="h6" id="centerID">{this.state.center.qcid}</Typography> </TableCell>
 
                                               <TableCell align="Left"> <Typography variant="h6">  {this.state.center.district} </Typography> </TableCell>
-                        
-
-                                              <TableCell align="Left"> <Typography variant="h6">  {this.state.center.qi} </Typography> </TableCell>
+                      
+                                              <TableCell align="Left"> <Typography variant="h6">{totalqiINT}  </Typography></TableCell>
                           
-
                                               <TableCell align="Left"> <Typography variant="h6">  {this.state.center.capacity} </Typography> </TableCell>
 
                                               <TableCell align="right">
@@ -175,15 +218,58 @@ qclist(){
                             <TableCell align="Left"> <Title> Phone Number </Title> </TableCell>
                             <TableCell align="Left"> <Title> DOB </Title> </TableCell>
                             <TableCell align="Left"> <Title> Address </Title> </TableCell>
+                            <TableCell align="Left"> <Title></Title> </TableCell>
+                            <TableCell align="Left"> <Title></Title> </TableCell>
                        
                         </TableRow>
 
                     </TableHead>
 
                     <TableBody>
-                      
-                           <listQindividuals/>
-                       
+                                                {this.state.qindividuals.map(row =>(
+
+                                                this.state.center.qcid === row.qcid ? (
+                                                
+                                                  
+                                                <TableRow key={row.id}  >
+
+                                                      <TableCell > <Typography variant="h6"></Typography>{row.passportNo}</TableCell>    
+                                                        
+                                                      <TableCell > <Typography variant="h6">{row.name}</Typography> </TableCell>
+
+                                                      <TableCell > <Typography variant="h6">{row.phoneno}</Typography> </TableCell>
+
+                                                      <TableCell > <Typography variant="h6">{row.dob}</Typography> </TableCell>
+
+                                                      <TableCell > <Typography variant="h6">{row.address}</Typography> </TableCell>
+                                                    
+                                              
+                                                <TableCell align="right">
+
+
+                                                <Button variant="contained" color="primary"   onClick={this.discharge.bind(this, this.state.key)}> 
+                                                    Discharge
+                                               </Button>
+
+                                                </TableCell>
+
+                                               <TableCell>
+
+                                               <Button variant="contained" color="secondary"  onClick={this.transfer.bind(this, this.state.key)} > 
+                                                    Transfer
+                                               </Button>
+
+                                               </TableCell>
+
+                                              
+                                               </TableRow>
+
+                                                 
+                                                  
+                                                ):null
+
+                                                ))}
+
                     </TableBody>
 
                 </Table>
@@ -196,6 +282,8 @@ qclist(){
     );
   }
 }
+
+
 const style ={
 
   height: '80',
