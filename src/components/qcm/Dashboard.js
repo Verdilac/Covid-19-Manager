@@ -161,7 +161,7 @@ class App extends Component {
                             <TableCell> <Title>  QCID   </Title></TableCell> 
                             <TableCell align="Left"> <Title> Center Name </Title> </TableCell>
                             <TableCell align="Left"> <Title> District </Title> </TableCell>
-                            <TableCell align="Left"> <Title> Quarantined Individuals </Title> </TableCell>
+                           
                             <TableCell align="Left"> <Title> Capacity </Title> </TableCell>
                        
                         </TableRow>
@@ -183,7 +183,7 @@ class App extends Component {
                                 </TableCell>
                                 
                                  <TableCell align="Left"> <Typography variant="h6"> {row.district} </Typography> </TableCell>
-                                <TableCell align="Left"> <Typography variant="h6"> {row.qi} </Typography> </TableCell>
+                               
 
                                  
                                 <TableCell align="Left"> <Typography variant="h6"> {row.capacity} </Typography> </TableCell>

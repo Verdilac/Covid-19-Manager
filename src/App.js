@@ -48,19 +48,10 @@ function App (){
               <Overview />
             </Route>
 
-            <Route path="/quarantine">
-              <Dashboard />
-            </Route>
-            <Route path="/QCreate">
-              <QCreate />
-            </Route>
-            <Route path="/QEdit/:id" component={QEdit}>
-              
-            </Route>
-            <Route path="/QShow/:id" component={QShow}>
-              
-            </Route>
-      
+            <Route path="/quarantine">  <Dashboard /> </Route>
+            <Route path="/QCreate"> <QCreate />  </Route>
+            <Route path="/QEdit/:id" component={QEdit}>  </Route>
+            <Route path="/QShow/:id" component={QShow}>  </Route>
 
             <Route path="/vaccine">
               <VaccineApp />
