@@ -50,7 +50,8 @@ class Create extends React.Component{
         
         capacity: 0
       });
-      this.props.history.push("/quarantine")
+      //this.props.history.push("/quarantine")
+       window.location.href=`/quarantine`
     })
     .catch((error) => {
       console.error("Error adding document: ", error);

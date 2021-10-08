@@ -23,7 +23,7 @@ class Edit extends Component {
   }
 
   componentDidMount() {
-
+    console.log(this.props.match.params.id);
     const ref = firebase.firestore().collection('centers').doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
@@ -70,7 +70,8 @@ class Edit extends Component {
         district: '',
         capacity: ''
       });
-      this.props.history.push("/show/"+this.props.match.params.id)
+    //  this.props.history.push("/show/"+this.props.match.params.id)
+      window.location.href=`/QShow/`+this.props.match.params.id
     })
     .catch((error) => {
       console.error("Error adding document: ", error);

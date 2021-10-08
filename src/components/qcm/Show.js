@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../TravelFunction/Firebase';
-//import { Link } from 'react-router-dom';
-import NavBar from "./Navbar";
 
+//import {syncHistoryWithStore, routerReducer} from 'react-router-redux'
 
 //import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -23,21 +22,27 @@ import Container from '@material-ui/core/Container';
 
 
 
+
 class Show extends Component {
 
   constructor(props) {
     super(props);
-    
+    console.log(this.props);
     this.state = {
       center: {},
       key: '',
 
+      
       qindividuals: []
     };
   }
 
   componentDidMount() {
-  
+
+   
+    console.log(this.props.match.params.id);
+
+
     const ref = firebase.firestore().collection('centers').doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
@@ -102,7 +107,8 @@ class Show extends Component {
   delete(id){
     firebase.firestore().collection('centers').doc(id).delete().then(() => {
       console.log("Document successfully deleted!");
-      this.props.history.push("/")
+     // this.props.history.push("/")
+     window.location.href=`/quarantine`
     }).catch((error) => {
       console.error("Error removing document: ", error);
     });                                            
@@ -110,7 +116,7 @@ class Show extends Component {
 
 qclist(){
 
-    this.props.history.push('/');
+    this.props.history.push('/quarantine');
 }
 
   render() {
@@ -135,7 +141,7 @@ qclist(){
 
               <Container style= {style3}>     
                     <Container align= "left" className="w-100 p-2">
-                    <Button variant="contained" color="primary" onClick={() => this.qclist()}>
+                    <Button variant="contained" color="primary" onClick={event =>  window.location.href=`/quarantine`}>
                             Quarantine Center Management Dashboard
                         </Button>
                   </Container>
@@ -177,7 +183,7 @@ qclist(){
 
                                               <TableCell align="right">
                                                 
-                                                <Button variant="contained"  color="primary"  startIcon={<EditIcon />} onClick={event =>  window.location.href=`/edit/${this.state.key}`} >
+                                                <Button variant="contained"  color="primary"  startIcon={<EditIcon />} onClick={event =>  window.location.href=`/QEdit/${this.state.key}`} >
                                                                   Edit
                                                 </Button>
                                                 
