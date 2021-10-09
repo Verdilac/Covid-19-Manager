@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../../App.css';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
@@ -143,7 +144,7 @@ class Overview extends Component {
 
                 <Grid container justify="flex-end">
 
-                <Button variant="contained" startIcon={<AddCircleOutlineIcon />} color="primary" onClick={event =>  window.location.href=`/create`}>
+                <Button variant="contained" startIcon={<AddCircleOutlineIcon />} color="primary" onClick={event =>  window.location.href=`/HCreate`}>
                      Add Hospital
                 </Button>
 
@@ -169,10 +170,10 @@ class Overview extends Component {
                                 <TableCell align="Left">{row.hospital_ID}</TableCell>
                                 
                                 <TableCell align="Left">
-                                  
-                                <Button variant="contained"  color="primary" onClick={event =>  window.location.href=`/show/${row.key}`}>{row.hospital_name}
+                                {/*<Link to={'/HShow/${row.key}'}>*/}<Button variant="contained"  color="primary" onClick={event =>  window.location.href=`/HShow/${row.key}`} >{row.hospital_name}
                                         
-                                </Button>
+                                </Button>{/*</Link>*/}
+                                
 
                                 </TableCell>
                                 

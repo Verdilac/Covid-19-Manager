@@ -52,24 +52,24 @@ class Create extends Component {
         total_beds: 0,
         total_icu_beds: 0
       });
-      this.props.history.push("/")
+      window.location.href=`/vacancy`
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
     });
   }
 
-  hospital_list(){
+  /*hospital_list(){
 
     this.props.history.push('/');
-}
+}*/
 
   render() {
     const { hospital_name, district, treatment_wards, total_beds, total_icu_beds } = this.state;
     return (
       <>
       <div>
-            <NavBar/>
+           {/*<NavBar/>*/}
         </div>
 
 
@@ -87,7 +87,7 @@ class Create extends Component {
 
            
           <div style={{ padding: 20 }}>
-            <Button variant="contained" color="primary" onClick={() => this.hospital_list()}>
+            <Button variant="contained" color="primary" onClick={event =>  window.location.href=`/vacancy`}>
                     List of Hospitals
             </Button>
           </div>

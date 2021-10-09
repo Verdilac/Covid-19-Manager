@@ -10,7 +10,12 @@ import InventoryDashboard from "./Components/InventoryFunctions/InventoryDashboa
 // import { useState } from "react";
 import NavBar from "./Components/TravelFunction/NavBar";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+//Hospital Vacancy Management Imports :
 import Overview from './Components/hospital-vacancy-management/Overview';
+import HCreate from './Components/hospital-vacancy-management/Create';
+import HShow from './Components/hospital-vacancy-management/Show';
+
 
 import Dashboard from './Components/qcm/Dashboard';
 import QCreate from './Components/qcm/Create';
@@ -44,9 +49,12 @@ function App (){
             <Route path="/inventory">
               <InventoryDashboard />
             </Route>
-            <Route path="/vacancy">
-              <Overview />
+
+            <Route path="/vacancy"> <Overview /> </Route>
+            <Route path="/HCreate">
+              <HCreate />
             </Route>
+            <Route path="/HShow" component={HShow}> </Route>
 
             <Route path="/quarantine">  <Dashboard /> </Route>
             <Route path="/QCreate"> <QCreate />  </Route>

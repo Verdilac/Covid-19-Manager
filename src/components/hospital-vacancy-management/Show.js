@@ -26,6 +26,9 @@ class Show extends Component {
   }
 
   componentDidMount() {
+
+    console.log(this.props.match.params.id);
+
     const ref = firebase.firestore().collection('hospitals').doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
@@ -43,16 +46,11 @@ class Show extends Component {
   delete(id){
     firebase.firestore().collection('hospitals').doc(id).delete().then(() => {
       console.log("Record successfully deleted!");
-      this.props.history.push("/")
+      window.location.href=`/vacancy`;
     }).catch((error) => {
       console.error("Error removing document: ", error);
     });
   }
-
-hospital_list(){
-
-    this.props.history.push('/');
-}
 
 
   render() {
@@ -74,7 +72,7 @@ hospital_list(){
 
             
             <div style={{ padding: 20 }}>
-            <Button variant="contained" color="primary" onClick={() => this.hospital_list()}>
+            <Button variant="contained" color="primary" onClick={event => window.location.href=`/vacancy`}>
                     List of Hospitals
                 </Button>
             </div>
@@ -116,7 +114,7 @@ hospital_list(){
 
                         <TableCell align="Left">
                           
-                          <Button variant="contained"  color="primary"  startIcon={<EditIcon />} onClick={event =>  window.location.href=`/edit/${this.state.key}`} >
+                          <Button variant="contained"  color="primary"  startIcon={<EditIcon />} onClick={event =>  window.location.href=`/edithospital/${this.state.key}`} >
                                             Edit
                           </Button>
                           
