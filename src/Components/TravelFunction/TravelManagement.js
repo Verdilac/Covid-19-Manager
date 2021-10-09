@@ -14,7 +14,7 @@ import Menu from "@material-ui/core/Menu";
 import PopupForm from "./PopupForm";
 import flight_tracker from "./flight_tracker.PNG";
 import Flight from "./Flight.PNG";
-import firebase from './Firebase';
+import firebase from "./Firebase";
 import Container from "react-bootstrap/Container";
 import FlightCarousel from "./FlightCarousel";
 
@@ -66,7 +66,7 @@ export default function Main() {
   return (
     <div>
       {/* <Container className="my-4"> */}
-      {/* <FlightCarousel /> */}
+      <FlightCarousel />
       {/* </Container>{" "} */}
       <div>
         {/* <PopupForm className={classes.spacing}></PopupForm> */}

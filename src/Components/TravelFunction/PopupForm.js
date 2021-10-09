@@ -8,7 +8,11 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { makeStyles } from "@material-ui/core/styles";
 import { shadows } from "@material-ui/system";
-
+import { Select } from "@material-ui/core";
+import { InputLabel } from "@material-ui/core";
+import { MenuItem } from "semantic-ui-react";
+import { Box } from "@material-ui/core";
+import { OutlinedInput } from "@material-ui/core";
 //Radio Button
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -58,6 +62,8 @@ const useStyles = makeStyles((theme) => ({
 // -----***************--------------
 
 export default function PopupForm() {
+  var sense;
+
   const handleShow = () => setShow(true);
   const [show, setShow] = useState(false);
   const handleClosepop = () => setShow(false);
@@ -291,6 +297,23 @@ export default function PopupForm() {
             type="text"
             fullWidth
           />
+          {/* ------------------------------------------------------------------- */}
+          <Box component="form" sx={{ display: "flex", flexWrap: "wrap" }}>
+            <FormControl sx={{ m: 1, minWidth: 120 }} fullWidth>
+              <InputLabel htmlFor="demo-dialog-native">Age</InputLabel>
+              <Select
+                native
+                value={sense}
+                onChange={handleChange}
+                input={<OutlinedInput label="Age" id="demo-dialog-native" />}
+              >
+                <option aria-label="None" value="" />
+                <option value={10}>Ten</option>
+                <option value={20}>Twenty</option>
+                <option value={30}>Thirty</option>
+              </Select>
+            </FormControl>
+          </Box>
           <Accordion border={0}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
