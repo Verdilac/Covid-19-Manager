@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import firebase from '../../Firebase';
-import { Link } from 'react-router-dom';
+import firebase from '../TravelFunction/Firebase';
+//import { Link } from 'react-router-dom';
 import NavBar from "./Navbar";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import Icon from '@material-ui/core/Icon';
+//import Icon from '@material-ui/core/Icon';
 import SaveIcon from '@material-ui/icons/Save';
 
 class Edit extends Component {
@@ -14,76 +14,83 @@ class Edit extends Component {
     super(props);
     this.state = {
       key: '',
+      qcid:'',
       centername: '',
       district: '',
-      qi: '',
       capacity: '',
     };
+
   }
 
   componentDidMount() {
+    console.log(this.props.match.params.id);
     const ref = firebase.firestore().collection('centers').doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
         const center = doc.data();
         this.setState({
           key: doc.id,
+          qcid: center.qcid,
           centername: center.centername,
           district: center.district,
-          qi: center.qi,
           capacity: center.capacity
         });
       } else {
         console.log("No such document!");
       }
     });
+
   }
 
   onChange = (e) => {
+
     const state = this.state
     state[e.target.name] = e.target.value;
     this.setState({center:state});
+
   }
 
   onSubmit = (e) => {
+
     e.preventDefault();
 
-    const { centername, district, qi, capacity } = this.state;
+    const { qcid, centername, district, capacity } = this.state;
 
     const updateRef = firebase.firestore().collection('centers').doc(this.state.key);
     updateRef.set({
+      qcid,
       centername,
       district,
-      qi,
       capacity
     }).then((docRef) => {
       this.setState({
+        qcid:'',
         key: '',
         centername: '',
         district: '',
-        qi: '',
         capacity: ''
       });
-      this.props.history.push("/show/"+this.props.match.params.id)
+    //  this.props.history.push("/show/"+this.props.match.params.id)
+      window.location.href=`/QShow/`+this.props.match.params.id
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
     });
+
   }
+
 
   qclist(){
 
     this.props.history.push('/');
+
   }
 
   render() {
     return (
 
       <>
-            <div>
-            <NavBar/>
-        </div>
-
+    
 
       <div class="container">
         <div class="panel panel-default">
@@ -111,8 +118,6 @@ class Edit extends Component {
             
           
        
-                <TextField type="number" placeholder="Quarantined Individuals" fullWidth margin="normal" name="qi" value={this.state.qi} onChange={this.onChange}/>
-             
              
               
                 <TextField type="number" placeholder="Capacity" fullWidth margin="normal" name="capacity" value={this.state.capacity} onChange={this.onChange}/>

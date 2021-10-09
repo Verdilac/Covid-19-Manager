@@ -11,7 +11,12 @@ import InventoryDashboard from "./Components/InventoryFunctions/InventoryDashboa
 import NavBar from "./Components/TravelFunction/NavBar";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Overview from './Components/hospital-vacancy-management/Overview';
+
 import Dashboard from './Components/qcm/Dashboard';
+import QCreate from './Components/qcm/Create';
+import QEdit from './Components/qcm/Edit';
+import QShow from './Components/qcm/Show';
+
 import VaccineApp from './Components/Vaccine-Administration/VaccineApp'
 
 // const theme = createTheme({
@@ -42,9 +47,12 @@ function App (){
             <Route path="/vacancy">
               <Overview />
             </Route>
-            <Route path="/quarantine">
-              <Dashboard />
-            </Route>
+
+            <Route path="/quarantine">  <Dashboard /> </Route>
+            <Route path="/QCreate"> <QCreate />  </Route>
+            <Route path="/QEdit/:id" component={QEdit}>  </Route>
+            <Route path="/QShow/:id" component={QShow}>  </Route>
+
             <Route path="/vaccine">
               <VaccineApp />
             </Route>

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import firebase from '../../Firebase';
-import NavBar from "./Navbar";
+import React  from 'react';
+import firebase from '../TravelFunction/Firebase';
+
 import IDGenerator from "./IDgenerator"
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -17,7 +17,7 @@ class Create extends React.Component{
       qcid: '',
       centername: '',
       district: '',
-      qi: '',
+    
       capacity: '',
     };
   }
@@ -34,41 +34,38 @@ class Create extends React.Component{
 
     this.state.qcid = document.getElementById('QID').textContent;
     
-    const { qcid, centername, district, qi, capacity} = this.state;
+    const { qcid, centername, district, capacity} = this.state;
    
     this.ref.add({
       qcid,
       centername,
       district,
-      qi,
+  
       capacity
     }).then((docRef) => {
       this.setState({
         qcid: '',
         centername: '',
         district: '',
-        qi: 0,
+        
         capacity: 0
       });
-      this.props.history.push("/")
+      //this.props.history.push("/quarantine")
+       window.location.href=`/quarantine`
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
     });
   }
 
-  qclist(){
-    this.props.history.push('/');
-  }
+
 
 
   render() {
 
     return (
       <>
-        <div>
-              <NavBar/>
-        </div>
+    
 
         <div class="container">
           <div class="panel panel-default">
@@ -82,7 +79,7 @@ class Create extends React.Component{
 
                   <Container style ={style2}>
 
-                      <Button variant="contained" color="primary" onClick={() => this.qclist()}>
+                      <Button variant="contained" color="primary" onClick={event =>  window.location.href=`/quarantine`}>
                                   Quarantine Center Management Dashboard
                       </Button>
                       
@@ -99,8 +96,6 @@ class Create extends React.Component{
                   <TextField type="text" placeholder="District" fullWidth margin="normal" name="district" value={this.state.district} onChange={this.onChange}/>
           
             
-                  <TextField type="number" placeholder="Quarantined Individuals" fullWidth margin="normal" name="qi" value={this.state.qi} onChange={this.onChange}/>
-          
           
                   <TextField type="number" placeholder="Capacity" fullWidth margin="normal" name="capacity" value={this.state.capacity} onChange={this.onChange}/>
           
