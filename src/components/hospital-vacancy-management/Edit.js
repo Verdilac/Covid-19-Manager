@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import firebase from '../TravelFunction/Firebase';
-import { Link } from 'react-router-dom';
-import NavBar from "./Navbar";
+//import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import Icon from '@material-ui/core/Icon';
+//import Icon from '@material-ui/core/Icon';
 import SaveIcon from '@material-ui/icons/Save';
 
 class Edit extends Component {
@@ -72,26 +71,18 @@ class Edit extends Component {
         total_beds: '',
         total_icu_beds: ''
       });
-      this.props.history.push("/show/"+this.props.match.params.id)
+      window.location.href=`/HShow/`+this.props.match.params.id
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
     });
   }
 
-  qclist(){
-
-    this.props.history.push('/');
-  }
 
   render() {
     return (
 
       <>
-            <div>
-            <NavBar/>
-        </div>
-
 
       <div class="container">
         <div class="panel panel-default">
@@ -107,7 +98,7 @@ class Edit extends Component {
 
             
 
-          <Button variant="contained" color="primary" onClick={() => this.qclist()}>
+          <Button variant="contained" color="primary" onClick={event => window.location.href='/vacancy'}>
                     List of Hospitals
           </Button>
             

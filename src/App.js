@@ -15,6 +15,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Overview from './Components/hospital-vacancy-management/Overview';
 import HCreate from './Components/hospital-vacancy-management/Create';
 import HShow from './Components/hospital-vacancy-management/Show';
+import HEdit from './Components/hospital-vacancy-management/Edit';
 
 
 import Dashboard from './Components/qcm/Dashboard';
@@ -49,17 +50,16 @@ function App (){
             <Route path="/inventory">
               <InventoryDashboard />
             </Route>
-
+            //Hospital Vacancy Management Routes :
             <Route path="/vacancy"> <Overview /> </Route>
-            <Route path="/HCreate">
-              <HCreate />
-            </Route>
-            <Route path="/HShow" component={HShow}> </Route>
+            <Route path="/HCreate"> <HCreate /> </Route>
+            <Route path="/HShow/:id" component={HShow} />
+            <Route path="/HEdit/:id" component={HEdit} />
 
             <Route path="/quarantine">  <Dashboard /> </Route>
             <Route path="/QCreate"> <QCreate />  </Route>
-            <Route path="/QEdit/:id" component={QEdit}>  </Route>
-            <Route path="/QShow/:id" component={QShow}>  </Route>
+            <Route path="/QEdit/:id" component={QEdit} />  
+            <Route path="/QShow/:id" component={QShow} />  
 
             <Route path="/vaccine">
               <VaccineApp />

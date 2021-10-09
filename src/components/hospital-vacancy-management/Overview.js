@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import '../../App.css';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
 import firebase from '../TravelFunction/Firebase';
-import NavBar from "./Navbar";
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper';
@@ -96,7 +94,6 @@ class Overview extends Component {
 
     return (
     <div>
-             {/* <NavBar/> */}
 
              <div style={{ padding: 50 }}>
 
@@ -170,9 +167,9 @@ class Overview extends Component {
                                 <TableCell align="Left">{row.hospital_ID}</TableCell>
                                 
                                 <TableCell align="Left">
-                                {/*<Link to={'/HShow/${row.key}'}>*/}<Button variant="contained"  color="primary" onClick={event =>  window.location.href=`/HShow/${row.key}`} >{row.hospital_name}
+                                <Button variant="contained"  color="primary" onClick={event =>  window.location.href=`/HShow/${row.key}`} >{row.hospital_name}
                                         
-                                </Button>{/*</Link>*/}
+                                </Button>
                                 
 
                                 </TableCell>

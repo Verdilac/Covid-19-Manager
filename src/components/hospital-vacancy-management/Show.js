@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../TravelFunction/Firebase';
-import { Link } from 'react-router-dom';
-import NavBar from "./Navbar";
-import TextField from '@material-ui/core/TextField';
+//import { Link } from 'react-router-dom';
+//import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
@@ -10,7 +9,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { makeStyles } from '@material-ui/core/styles';
+//import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import EditIcon from '@material-ui/icons/Edit';
@@ -56,10 +55,6 @@ class Show extends Component {
   render() {
     return (
       <>
-
-        <div>
-            <NavBar/>
-        </div>
 
       <div class="container">
         <div class="panel panel-default">
@@ -114,7 +109,7 @@ class Show extends Component {
 
                         <TableCell align="Left">
                           
-                          <Button variant="contained"  color="primary"  startIcon={<EditIcon />} onClick={event =>  window.location.href=`/edithospital/${this.state.key}`} >
+                          <Button variant="contained"  color="primary"  startIcon={<EditIcon />} onClick={event =>  window.location.href=`/HEdit/${this.state.key}`} >
                                             Edit
                           </Button>
                           
