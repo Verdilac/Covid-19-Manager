@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -25,7 +25,7 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-
+import _map from "lodash/map";
 //form validation
 
 // pop up
@@ -84,8 +84,23 @@ export default function PopupForm() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleChangech = (e) => {
+    setAge(e.target.value);
+    setvQicd(e.target.value);
+  };
   /*------------------------------------*/
+
+  //firestore charukas dependencies
+  const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState([]);
+  const chdb = firebase.firestore();
+
   //FORM Values
+  const [age, setAge] = React.useState("");
+
+  const chqcid = ["one", "two", "threeee"];
+  // const [chqcid, setchqcid] = useState(["qc11", "qc22", "qc33"]);
   const [vfirstName, setvfirstName] = useState("");
   const [vlastName, setvlastName] = useState("");
   const [vpassportNumber, setvpassportNumber] = useState("");
@@ -174,6 +189,29 @@ export default function PopupForm() {
     ) {
       handleShow();
     }
+  }
+  //pulling from firestore -- charukas function
+  useEffect(() => {
+    const getPostsFromFirebase = [];
+    const subscriber = chdb
+      .collection("centers")
+      .onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          getPostsFromFirebase.push({
+            ...doc.data(), //spread operator
+            key: doc.id, // `id` given to us by Firebase
+          });
+        });
+        setPosts(getPostsFromFirebase);
+        setLoading(false);
+      });
+
+    // return cleanup function
+    return () => subscriber();
+  }, [loading]); // empty dependencies array => useEffect only called once
+
+  if (loading) {
+    return <h1>loading firebase data...</h1>;
   }
 
   return (
@@ -285,7 +323,7 @@ export default function PopupForm() {
             type="number"
             fullWidth
           />
-          <TextField
+          {/* <TextField
             margin="dense"
             id="qcid"
             required
@@ -296,21 +334,26 @@ export default function PopupForm() {
             }}
             type="text"
             fullWidth
-          />
+          /> */}
           {/* ------------------------------------------------------------------- */}
           <Box component="form" sx={{ display: "flex", flexWrap: "wrap" }}>
             <FormControl sx={{ m: 1, minWidth: 120 }} fullWidth>
               <InputLabel htmlFor="demo-dialog-native">Age</InputLabel>
               <Select
                 native
-                value={sense}
-                onChange={handleChange}
+                value={age}
+                onChange={handleChangech}
                 input={<OutlinedInput label="Age" id="demo-dialog-native" />}
               >
                 <option aria-label="None" value="" />
-                <option value={10}>Ten</option>
+
+                {posts.map((item) => {
+                  return <option value={item.qcid}>{item.qcid}</option>;
+                })}
+
+                {/* <option value={10}>Ten</option>
                 <option value={20}>Twenty</option>
-                <option value={30}>Thirty</option>
+                <option value={30}>Thirty</option> */}
               </Select>
             </FormControl>
           </Box>
