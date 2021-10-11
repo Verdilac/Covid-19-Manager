@@ -1,13 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button, Form, Container, Row, Col, Table} from 'react-bootstrap';
+import {Button, Form, Container, Row, Col} from 'react-bootstrap';
 import Typography from '@material-ui/core/Typography';
 import firebase from './Firebase.js';
 import React, { useState, useEffect } from "react";
 import Modal from '@material-ui/core/Modal';
 import Box from '@material-ui/core/Box';
-import MenuAppBar from './AppBarMenu';
-import { Segment } from 'semantic-ui-react';
-import RemovePatient from './RemovePatient';
+
 
 const modalstyle = {
     position: 'absolute',
@@ -16,7 +14,6 @@ const modalstyle = {
     transform: 'translate(-50%, -50%)',
     width: 700,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
     boxShadow: 24,
     p: 4,
 };
@@ -53,7 +50,7 @@ const AddPatient = () => {
                     GuardianPhone:data[id].GuardianPhone,
                 });
             }
-            setPatientData(patientInfo);
+            setPatientData(patientData);
         })
     },[])
 
@@ -82,7 +79,7 @@ const AddPatient = () => {
             <Container>
                 <Row>
                     <Col>
-                    <Button onClick={handleOpen}>Input Patients</Button>
+                    <Button onClick={handleOpen}>Admit Patients</Button>
                     <Modal
                         open={open}
                         onClose={handleClose}

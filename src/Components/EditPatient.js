@@ -6,19 +6,21 @@ import React, { useState, useEffect } from "react";
 import Modal from '@material-ui/core/Modal';
 import Box from '@material-ui/core/Box';
 import { Segment } from 'semantic-ui-react';
+import EditForm from './EditForm.js';
 
 const modalstyle = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 1200,
+    width: 1300,
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
 };
 
-const ViewPatient = () => {
+
+const EditPatient = () => {
     const [patientData,setPatientData] = useState([]);
 
 
@@ -45,7 +47,6 @@ const ViewPatient = () => {
         })
     },[])
 
-    
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -56,7 +57,7 @@ const ViewPatient = () => {
             <Container>
                 <Row>
                     <Col>
-                    <Button onClick={handleOpen}>View Patient Details</Button>
+                    <Button onClick={handleOpen}>Update Details</Button>
                     <Modal
                         open={open}
                         onClose={handleClose}
@@ -88,6 +89,7 @@ const ViewPatient = () => {
                                             <th>Guardian Name</th>
                                             <th>Guardian Address</th>
                                             <th>Guardian Phone</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     {
@@ -103,6 +105,7 @@ const ViewPatient = () => {
                                                     <td>{data.GuardianName}</td>
                                                     <td>{data.GuardianAddress}</td>
                                                     <td>{data.GuardianPhone}</td>
+                                                    <td><EditForm/></td>
                                                 </tr>
                                             </tbody>
 
@@ -122,10 +125,10 @@ const ViewPatient = () => {
         </div>
 
     )
+
 };
 
-export default ViewPatient;
-
+export default EditPatient;
 
 
 
