@@ -23,6 +23,7 @@ import DataTable from "./DataTable";
 
 import BtnSetMain from "./BtnSetMain";
 import DataTableLogic from "./DataTableLogic";
+import Qcard from "./Qcard";
 // import FlightCarousel from "./FlightCarousel";
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -73,6 +74,7 @@ export default function Main() {
         <BtnSetMain className={classes.btnset}></BtnSetMain>
 
         <DataTableLogic></DataTableLogic>
+        <Qcard></Qcard>
       </div>
     </div>
   );
