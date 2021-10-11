@@ -50,6 +50,7 @@ export default function Qcard() {
                   />
                   <Card.Body>
                     <Card.Title>{item.qcid}</Card.Title>
+                    <Card.Text>{item.centername}</Card.Text>
                   </Card.Body>
                   <Card.Footer>
                     <ProgressBar
