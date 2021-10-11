@@ -113,8 +113,6 @@ const EditPatient = () => {
             <Container>
                 <Row>
                     <Col>
-                    <Box sx={modalstyle}>
-
                         <Row columns="1">
                         <Col>
                         {
@@ -285,9 +283,7 @@ const EditPatient = () => {
                         )}
 
                     </Col>
-                    </Row>       
-                    </Box>
-                       
+                    </Row>   
                     </Col>
                 </Row>
             </Container>

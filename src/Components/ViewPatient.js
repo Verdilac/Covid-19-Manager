@@ -56,7 +56,7 @@ const ViewPatient = () => {
             <Container>
                 <Row>
                     <Col>
-                    <Button onClick={handleOpen}>Patient Details</Button>
+                    <Button variant="info" onClick={handleOpen}>Patient Details</Button>
                     <Modal
                         open={open}
                         onClose={handleClose}

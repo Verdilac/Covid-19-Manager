@@ -79,7 +79,7 @@ const AddPatient = () => {
             <Container>
                 <Row>
                     <Col>
-                    <Button onClick={handleOpen}>Patient Admissions</Button>
+                    <Button variant="success" onClick={handleOpen}>Patient Admissions</Button>
                     <Modal
                         open={open}
                         onClose={handleClose}

@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
-import {Button, Form, Container, Row, Col, Card} from 'react-bootstrap';
-import { Segment } from 'semantic-ui-react';
+import {Button, Form, Container, Card, Col, Row} from 'react-bootstrap';
+import { Segment} from 'semantic-ui-react';
 
 import RemovePatient from './RemovePatient';
 import AddPatient from './AddPatient';
@@ -66,22 +66,26 @@ const BtnLayout = () => {
 
 
                 </Row>
+
                 <Row>
                     <Col>
 
+                        <hr/>
+                        <h4>Update Patient Details</h4>
                         
-                        
-                        
-
-                    
                     </Col>
 
+                </Row>
+                <Row>
+                    <Col> 
+
+                        <EditPatient/>
+                        
+                    </Col>
                 </Row>
             </Container>
             
             </div>
-
-            <EditPatient/>
 
             
             

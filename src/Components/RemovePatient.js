@@ -64,7 +64,7 @@ const RemovePatient = () => {
             <Container>
                 <Row>
                     <Col>
-                    <Button onClick={handleOpen}>Patient Removal</Button>
+                    <Button variant="danger" onClick={handleOpen}>Patient Removal</Button>
                     <Modal
                         open={open}
                         onClose={handleClose}
