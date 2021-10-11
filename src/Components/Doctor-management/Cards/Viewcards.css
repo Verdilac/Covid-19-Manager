@@ -1,0 +1,62 @@
+.containerPadding{
+    position: relative;
+    left: 10px;
+    top: 100px;
+    display: flex;
+    border-radius: 16px;
+}
+
+.total_card{
+    border-radius: 3px;
+    outline: none;
+    background: #b3b3ff;
+    border: 1px solid #001cf2;
+    padding: 20px;
+    width: 250px;
+    justify-content: space-around;
+    text-align: center;
+    box-shadow: 5px 5px 13px #797777;
+}
+
+.card_icon{
+    justify-content: right;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+
+.revoked_card{
+    border-radius: 3px;
+    outline: none;
+    background: #ffcccc;
+    border: 1px solid #ff0000;
+    padding: 20px;
+    width: 250px;
+    justify-content: space-around;
+    text-align: center;
+    box-shadow: 5px 5px 13px #797777;
+}
+
+.available_card{
+    border-radius: 3px;
+    outline: none;
+    background: #b3ffb3;
+    border: 1px solid #00cc00;
+    padding: 20px;
+    width: 250px;
+    justify-content: space-around;
+    text-align: center;
+    box-shadow: 5px 5px 13px #797777;
+}
+
+.assign_card{
+    border-radius: 3px;
+    outline: none;
+    background: #fff0b3;
+    border: 1px solid #ffcc00;
+    padding: 20px;
+    width: 250px;
+    justify-content: space-around;
+    text-align: center;
+    box-shadow: 5px 5px 13px #797777;
+}
