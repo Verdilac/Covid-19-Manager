@@ -65,3 +65,28 @@
   }
   
   
+   /* display patient count */
+   .noteP {
+    background-position: center;
+    background:    	#54626F;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px  #8080ff;
+    padding: 30px;
+    width: 70%;
+    margin: 40px;
+    float: left;
+    align-items: center;
+  }
+  .noteP h1 {
+    font-size: 1.3em;
+    margin-bottom: 6px;
+    font-family: "McLaren", cursive;
+  }
+  .noteP p {
+    font-size: 1.0em;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: "McLaren", cursive;
+  }
+  

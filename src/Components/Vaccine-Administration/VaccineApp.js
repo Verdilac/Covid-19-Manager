@@ -4,6 +4,7 @@ import FirebaseCrud from "./FirebaseCrud";
 import { Container } from "semantic-ui-react";
 import NavBar from "./NavBar";
 import VaccineCalc from "./VaccineCalc";
+import PatientCalc from "./PatientCalc";
 import background from "./img/bkImg.jpg"
 
 function VaccineApp() {
@@ -16,6 +17,7 @@ function VaccineApp() {
 
       <Boot />
       <BarChart />
+      <PatientCalc />
       </div>
 
       <Container>{<FirebaseCrud></FirebaseCrud>}</Container>

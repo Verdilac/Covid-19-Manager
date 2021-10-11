@@ -12,6 +12,7 @@ import {
   } from "semantic-ui-react";
   import firebase from "../TravelFunction/Firebase";
   import { useEffect, useState } from "react";
+  import FirebaseCrudThird from "./FirebaseCrudThird";
   
   const FirebaseCrudSec = () => {
     //store the data entered by the user
@@ -507,6 +508,31 @@ import {
             </Grid.Row>
            
           </Grid>
+
+
+                  {/*--------------------------------------------------------------------*/}
+
+       
+        
+        <Grid.Row columns="1">
+        <Grid.Column>
+            
+            
+               {
+                 <FirebaseCrudThird/>
+               }
+
+            
+            </Grid.Column>
+          </Grid.Row>
+
+         
+         
+        
+          
+
+
+          {/*--------------------------------------------------------------------*/}
          
 
         </Container>
