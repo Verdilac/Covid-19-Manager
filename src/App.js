@@ -17,6 +17,11 @@ import HCreate from './Components/hospital-vacancy-management/Create';
 import HShow from './Components/hospital-vacancy-management/Show';
 import HEdit from './Components/hospital-vacancy-management/Edit';
 
+//Admin Dashboard Imports :
+import AdminDashboard from './Components/AdminDashboard/Dashboard';
+import AdminCreate from './Components/AdminDashboard/Create';
+import AdminEdit from './Components/AdminDashboard/Edit';
+import AdminShow from './Components/AdminDashboard/Show'; 
 
 import Dashboard from './Components/qcm/Dashboard';
 import QCreate from './Components/qcm/Create';
@@ -55,6 +60,13 @@ function App (){
             <Route path="/HCreate"> <HCreate /> </Route>
             <Route path="/HShow/:id" component={HShow} />
             <Route path="/HEdit/:id" component={HEdit} />
+
+            //Admin Dashboard Routes :
+            <Route path="/adminDashboard"> <AdminDashboard /> </Route>
+            <Route path="/AdminCreate"> <AdminCreate /> </Route>
+            <Route path="/AdminShow/:id" component={AdminShow} />
+            <Route path="/AdminEdit/:id" component={AdminEdit} />
+
 
             <Route path="/quarantine">  <Dashboard /> </Route>
             <Route path="/QCreate"> <QCreate />  </Route>

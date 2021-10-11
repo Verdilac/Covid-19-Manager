@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 import '../../App.css';
-import firebase from '../../Firebase';
+import firebase from '../TravelFunction/Firebase';
 import NavBar from "../AdminDashboard/Navbar";
 import Container from '@material-ui/core/Container';
 
@@ -146,7 +146,6 @@ class App extends Component {
              
     return (
     <div>
-             <NavBar/>
         
                          
              <Typography variant="h3" color= "#3e54af"style={style}>Admin Dashboard</Typography>

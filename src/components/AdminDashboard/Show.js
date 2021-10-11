@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from '../../Firebase';
+import firebase from '../TravelFunction/Firebase';
 import { Link } from 'react-router-dom';
 import NavBar from "./Navbar";
 
@@ -69,9 +69,9 @@ userList(){
     return (
       <>
 
-        <div>
+        {/*<div>
             <NavBar/>
-        </div>
+        </div>*/}
 
       <div class="container">
         <div class="panel panel-default">
