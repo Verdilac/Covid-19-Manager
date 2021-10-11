@@ -50,7 +50,7 @@ class Show extends Component {
   delete(id){
     firebase.firestore().collection('users').doc(id).delete().then(() => {
       console.log("Document successfully deleted!");
-      this.props.history.push("/")
+      window.location.href=`/adminDashboard`
     }).catch((error) => {
       console.error("Error removing document: ", error);
     });                                            
@@ -87,7 +87,7 @@ userList(){
 
               <Container style= {style3}>     
                     <Container align= "left" className="w-100 p-2">
-                    <Button variant="contained" color="primary" onClick={() => this.userList()}>
+                    <Button variant="contained" color="primary" onClick={event => window.location.href=`/adminDashboard`}>
                             Admin Dashboard
                         </Button>
                   </Container>
@@ -149,7 +149,7 @@ userList(){
 
                                               <TableCell align="right">
                                                 
-                                                <Button variant="contained"  color="primary"  startIcon={<EditIcon />} onClick={event =>  window.location.href=`/edit/${this.state.key}`} >
+                                                <Button variant="contained"  color="primary"  startIcon={<EditIcon />} onClick={event =>  window.location.href=`/AdminEdit/${this.state.key}`} >
                                                                   Edit
                                                 </Button>
                                                 

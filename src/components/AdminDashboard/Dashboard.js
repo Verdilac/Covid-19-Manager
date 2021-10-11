@@ -180,7 +180,7 @@ class App extends Component {
        <Container style ={style}>                   
           <Container align= "left" className="w-100 p-2">
 
-                <Button  variant="contained" color="primary" onClick={event =>  window.location.href=`/create`}>
+                <Button  variant="contained" color="primary" onClick={event =>  window.location.href=`/AdminCreate`}>
                      Add New User
                 </Button>
 
@@ -213,7 +213,7 @@ class App extends Component {
                                 
                                 <TableCell align="Left">
                                   
-                                <Button variant="contained"  color="secondary" onClick={event =>  window.location.href=`/show/${row.key}`}>{row.userName}
+                                <Button variant="contained"  color="secondary" onClick={event =>  window.location.href=`/AdminShow/${row.key}`}>{row.userName}
                                         
                                 </Button>
 

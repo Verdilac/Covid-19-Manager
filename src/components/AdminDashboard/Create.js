@@ -145,7 +145,7 @@ class Create extends React.Component {
         healthOfficial: '',
         count:'',
       });
-      this.props.history.push("/")
+      window.location.href=`/adminDashboard`
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
