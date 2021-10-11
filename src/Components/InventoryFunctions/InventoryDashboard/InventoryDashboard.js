@@ -7,6 +7,7 @@ import NavBar from "../Navigation/NavBar";
 import InformationContainer from "../Information/InformationContainer";
 import Cards from "../Cards/Cards";
 import FormDesign from "../Form/FormDesign";
+import VaccineCards from '../VaccineData/VaccineCards'
 
 // -----------------------------------------
 // This is the Entire Inventory Dashboard
@@ -18,6 +19,7 @@ export default function InventoryDashboard() {
       {/* <NavBar /> */}
       <InformationContainer />
       <Cards />
+      <VaccineCards />
       <FormDesign />
     </div>
   );
