@@ -53,23 +53,35 @@ const BtnLayout = () => {
                             </Card.Body>
                     </Card>
 
-                    <Container>
-                        <EditPatient/>
-                    </Container>
+                    
 
 
 
                     </Col>
 
 
-                                 
+                             
 
                     
 
 
                 </Row>
+                <Row>
+                    <Col>
+
+                        
+                        
+                        
+
+                    
+                    </Col>
+
+                </Row>
             </Container>
+            
             </div>
+
+            <EditPatient/>
 
             
             
