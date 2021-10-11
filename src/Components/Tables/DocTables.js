@@ -8,10 +8,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import AssignDoc from './Components/AssignDoc';
-import DocTable from './Components/DocTable';
+import AssignDoc from '../Tables/AssignDoc';
+import DocTable from './DocTable';
 import {Route, BrowserRouter as Router, Switch, Link} from "react-router-dom";
-import Update from './Components/Update';
+
 
 const DocTables = () => {
   const useStyles = makeStyles((theme) => ({

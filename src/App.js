@@ -1,14 +1,13 @@
 import React from 'react';
 import './App.css';
 import {Route, BrowserRouter as Router, Switch, Link} from "react-router-dom";
-import DocProfiles from './DocProfiles';
-import DocTables from './DocTables';
-import AssignDoc from './Components/AssignDoc';
-import DocTable from './Components/DocTable';
-import Update from './Components/Update';
+import DocTables from '../src/Components/Tables/DocTables';
+import AssignDoc from './Components/Tables/AssignDoc';
+import DocTable from './Components/Tables/DocTable';
 
-function App() {
+function App (){
   return (
+
     <div>
     <Router>
       <Switch>
@@ -19,7 +18,9 @@ function App() {
     <DocTables />
     
     </div> //Praveen
+
   );
+
 }
 
 export default App;
