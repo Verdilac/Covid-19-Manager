@@ -64,7 +64,7 @@ const RemovePatient = () => {
             <Container>
                 <Row>
                     <Col>
-                    <Button onClick={handleOpen}>Discharge or Report a death</Button>
+                    <Button onClick={handleOpen}>Patient Removal</Button>
                     <Modal
                         open={open}
                         onClose={handleClose}
@@ -136,6 +136,9 @@ const RemovePatient = () => {
                     </Modal>    
                     </Col>
                 </Row>
+
+
+
             </Container>
         </div>
 

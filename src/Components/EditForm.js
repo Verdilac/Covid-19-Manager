@@ -52,7 +52,7 @@ const EditForm = () => {
                     GuardianPhone:data[id].GuardianPhone,
                 });
             }
-            setPatientData(patientData);
+            setPatientData(PatientData);
         })
     },[])
 
@@ -93,7 +93,7 @@ const EditForm = () => {
 
     return (
         <div>
-        <Button onClick={handleOpen} onClick={()=>{handleEditClick(data)}} >Update Details</Button>
+        <Button onClick={()=>{handleEditClick(data); handleOpen() }} >Update Details</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
