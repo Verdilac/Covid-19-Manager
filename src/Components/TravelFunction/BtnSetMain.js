@@ -23,7 +23,7 @@ export default function BtnSetMain() {
         <Grid item md={9}>
           <PopupForm></PopupForm>
         </Grid>
-        <Grid container md={3}>
+        {/* <Grid container md={3}>
           <Button variant="contained" className={classes.space} color="primary">
             REQUEST REPORT
           </Button>
@@ -42,7 +42,7 @@ export default function BtnSetMain() {
           >
             INITIATE EVACUATION
           </Button>
-        </Grid>
+        </Grid> */}
       </Grid>
     </div>
   );

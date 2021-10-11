@@ -202,11 +202,9 @@ export default function DataTable({
           onClose={handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">New Entry</DialogTitle>
+          <DialogTitle id="form-dialog-title">Update Entry</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              Create New Profile For Passenger
-            </DialogContentText>
+            <DialogContentText>Update Passenger Profile</DialogContentText>
             <TextField
               autoFocus
               margin="dense"
