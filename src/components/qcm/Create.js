@@ -129,7 +129,7 @@ class Create extends React.Component{
                   <TextField type="number" placeholder="Capacity" fullWidth margin="normal" name="capacity" value={this.state.capacity} onChange={this.onChange}/>
           
 
-                  <Button type="submit" variant="contained" color="inherit" startIcon={<SaveIcon />} onClick={this.savecenter}>Save</Button>
+                  <Box pt={2} marginX={2}> <Button type="submit" variant="contained" color="inherit" startIcon={<SaveIcon />} onClick={this.savecenter}>Save</Button>  </Box>
 
                   <Box pt={2} marginX={2}> <Button type="submit" variant="contained" color="primary" startIcon={<AddCircleOutlineIcon />} onClick={this.demo_button}>DEMO</Button> </Box>
 
