@@ -155,8 +155,8 @@ class Create extends React.Component {
   }
 
 
-  //Demo Button
-  demo_button = (e) => {
+  //Demo Button Health Official
+  demo_button_HO = (e) => {
     e.preventDefault();
     
     this.state.count = parseInt(document.getElementById('IDcontext').textContent);
@@ -170,7 +170,7 @@ class Create extends React.Component {
       userName:'John Doe',
       email:'johnDoe@gmail.com',
       jobTitle:'Government Health Official',
-      address:' Ministry of Health, 385, Ven. Baddegama Wimalawansa Thero Mawatha, Colombo 10',
+      address:'Ministry of Health, 385, Ven. Baddegama Wimalawansa Thero Mawatha, Colombo 10',
       phoneNumber:'0112675449',
       dob:'1985-07-07',
       //docID,
@@ -188,7 +188,7 @@ class Create extends React.Component {
       userName:'John Doe',
       email:'johnDoe@gmail.com',
       jobTitle:'Government Health Official',
-      address:' Ministry of Health, 385, Ven. Baddegama Wimalawansa Thero Mawatha, Colombo 10',
+      address:'Ministry of Health, 385, Ven. Baddegama Wimalawansa Thero Mawatha, Colombo 10',
       phoneNumber:'0112675449',
       dob:'1985-07-07',
       //docID,
@@ -206,6 +206,216 @@ class Create extends React.Component {
     console.error("Error adding document: ", error);
   });
 }
+
+
+  //Demo Button Quarantine Center Staff
+  demo_button_QCS = (e) => {
+    e.preventDefault();
+    
+    this.state.count = parseInt(document.getElementById('IDcontext').textContent);
+    this.state.userID = "QC" + document.getElementById('IDcontext').textContent;
+    
+    const { userID, count } = this.state;
+    
+    this.ref.add({
+      nic:'978645520V',
+      userID,
+      userName:'Dishan Haru',
+      email:'dilshanHaru@gmail.com',
+      jobTitle:'Quarantine Center Staff',
+      address:'464 T. B. Jayah Mawatha, Colombo 01000',
+      phoneNumber:'0112675817',
+      dob:'1985-03-07',
+      //docID,
+      //specialization,
+      qcs:'1',
+      hs:'0',
+      doct:'0',
+      admin:'0',
+      healthOfficial:'0',
+      count,
+  }).then((docRef) => {
+    this.setState({
+      nic: '978645520V',
+      userID: '',
+      userName:'Dishan Haru',
+      email:'dilshanHaru@gmail.com',
+      jobTitle:'Quarantine Center Staff',
+      address:'464 T. B. Jayah Mawatha, Colombo 01000',
+      phoneNumber:'0112675817',
+      dob:'1985-03-07',
+      //docID,
+      //specialization,
+      qcs:'1',
+      hs:'0',
+      doct:'0',
+      admin:'0',
+      healthOfficial:'0',
+      count:'',
+    });
+    window.location.href=`/adminDashboard`
+  })
+  .catch((error) => {
+    console.error("Error adding document: ", error);
+  });
+}
+
+  //Demo Button Hospital Staff
+  demo_button_HS = (e) => {
+    e.preventDefault();
+    
+    this.state.count = parseInt(document.getElementById('IDcontext').textContent);
+    this.state.userID = "HS" + document.getElementById('IDcontext').textContent;
+    
+    const { userID, count } = this.state;
+    
+    this.ref.add({
+      nic:'978645521V',
+      userID,
+      userName:'Vindiw Diesel',
+      email:'vinDie@gmail.com',
+      jobTitle:'Hospital Staff',
+      address:'Hospital Road, Sri Jayawardenepura Kotte',
+      phoneNumber:'0112778610',
+      dob:'1985-04-07',
+      //docID,
+      //specialization,
+      qcs:'0',
+      hs:'1',
+      doct:'0',
+      admin:'0',
+      healthOfficial:'0',
+      count,
+  }).then((docRef) => {
+    this.setState({
+      nic: '978645521V',
+      userID: '',
+      userName:'Vindiw Diesel',
+      email:'vinDie@gmail.com',
+      jobTitle:'Hospital Staff',
+      address:'Hospital Road, Sri Jayawardenepura Kotte',
+      phoneNumber:'0112778610',
+      dob:'1985-04-07',
+      //docID,
+      //specialization,
+      qcs:'0',
+      hs:'1',
+      doct:'0',
+      admin:'0',
+      healthOfficial:'0',
+      count:'',
+    });
+    window.location.href=`/adminDashboard`
+  })
+  .catch((error) => {
+    console.error("Error adding document: ", error);
+  });
+}
+
+  //Demo Button Hospital Staff
+  demo_button_DOCT = (e) => {
+    e.preventDefault();
+    
+    this.state.count = parseInt(document.getElementById('IDcontext').textContent);
+    this.state.userID = "DR" + document.getElementById('IDcontext').textContent;
+    
+    const { userID, count } = this.state;
+    
+    this.ref.add({
+      nic:'978645522V',
+      userID,
+      userName:'Kevin De Silva',
+      email:'kD@gmail.com',
+      jobTitle:'Doctor',
+      address:'114 Norris Canal Rd, Colombo 01000',
+      phoneNumber:'0114665500',
+      dob:'1985-04-07',
+      //docID,
+      //specialization,
+      qcs:'0',
+      hs:'0',
+      doct:'1',
+      admin:'0',
+      healthOfficial:'0',
+      count,
+  }).then((docRef) => {
+    this.setState({
+      nic: '978645522V',
+      userID: '',
+      userName:'Kevin De Silva',
+      email:'kD@gmail.com',
+      jobTitle:'Doctor',
+      address:'114 Norris Canal Rd, Colombo 01000',
+      phoneNumber:'0114665500',
+      dob:'1985-04-07',
+      //docID,
+      //specialization,
+      qcs:'0',
+      hs:'0',
+      doct:'1',
+      admin:'0',
+      healthOfficial:'0',
+      count:'',
+    });
+    window.location.href=`/adminDashboard`
+  })
+  .catch((error) => {
+    console.error("Error adding document: ", error);
+  });
+}
+
+  //Demo Button Hospital Staff
+  demo_button_ADMIN = (e) => {
+    e.preventDefault();
+    
+    this.state.count = parseInt(document.getElementById('IDcontext').textContent);
+    this.state.userID = "AD" + document.getElementById('IDcontext').textContent;
+    
+    const { userID, count } = this.state;
+    
+    this.ref.add({
+      nic:'77777777v',
+      userID,
+      userName:'Ian De Mel',
+      email:'ianD@gmail.com',
+      jobTitle:'Sysytem Administrator',
+      address:'1007 Mountain Drive, Gotham',
+      phoneNumber:'77666777',
+      dob:'1997-03-07',
+      //docID,
+      //specialization,
+      qcs:'0',
+      hs:'0',
+      doct:'0',
+      admin:'1',
+      healthOfficial:'0',
+      count,
+  }).then((docRef) => {
+    this.setState({
+      nic: '77777777v',
+      userID: '',
+      userName:'Ian De Mel',
+      email:'ianD@gmail.com',
+      jobTitle:'Sysytem Administrator',
+      address:'1007 Mountain Drive, Gotham',
+      phoneNumber:'77666777',
+      dob:'1997-03-07',
+      //docID,
+      //specialization,
+      qcs:'0',
+      hs:'0',
+      doct:'0',
+      admin:'1',
+      healthOfficial:'0',
+      count:'',
+    });
+    window.location.href=`/adminDashboard`
+  })
+  .catch((error) => {
+    console.error("Error adding document: ", error);
+  });
+}
+
 
 
   render() {
@@ -255,9 +465,17 @@ class Create extends React.Component {
                         <Typography><input type ="radio" required name="ut" id = "HO" value="of" onChange={this.onChange} /> Health Official </Typography>           
           </div>
 
-                        <Box pt={2}><Button type="submit" variant="contained" color="primary" startIcon={<SaveIcon />} onClick={this.saveuser}>Save</Button> </Box>
+                        <Box pt={2}> <Button type="submit" variant="contained" color="primary" startIcon={<SaveIcon />} onClick={this.saveuser}>Save</Button> </Box>
 
-                        <Box pt={2} marginX={2}> <Button type="submit" variant="contained" color="primary" startIcon={<AddCircleOutlineIcon />} onClick={this.demo_button}>DEMO</Button> </Box>
+                        <Box pt={2} marginX={2}> <Button type="submit" variant="contained" color="primary" startIcon={<AddCircleOutlineIcon />} onClick={this.demo_button_QCS}>DEMO - ADD QUARANTINE CENTER STAFF USER</Button> </Box>
+
+                        <Box pt={2} marginX={2}> <Button type="submit" variant="contained" color="primary" startIcon={<AddCircleOutlineIcon />} onClick={this.demo_button_HS}>DEMO - ADD HOSPITAL STAFF USER</Button> </Box>
+
+                        <Box pt={2} marginX={2}> <Button type="submit" variant="contained" color="primary" startIcon={<AddCircleOutlineIcon />} onClick={this.demo_button_DOCT}>DEMO - ADD DOCTOR USER</Button> </Box>
+
+                        <Box pt={2} marginX={2}> <Button type="submit" variant="contained" color="primary" startIcon={<AddCircleOutlineIcon />} onClick={this.demo_button_ADMIN}>DEMO - ADD SYSTEM ADMINISTRATOR USER</Button> </Box>
+
+                        <Box pt={2} marginX={2}> <Button type="submit" variant="contained" color="primary" startIcon={<AddCircleOutlineIcon />} onClick={this.demo_button_HO}>DEMO - ADD HEALTH OFFICIAL USER</Button> </Box>
 
             </form>
 
