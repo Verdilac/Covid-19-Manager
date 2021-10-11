@@ -109,7 +109,7 @@ class Edit extends Component {
         healthOfficial: '',
         count:'',
       });
-      this.props.history.push("/show/"+this.props.match.params.id)
+      window.location.href=`/AdminShow/`+this.props.match.params.id
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
@@ -141,7 +141,7 @@ class Edit extends Component {
 
             
 
-          <Button variant="contained" color="primary" onClick={() => this.userList()}>
+          <Button variant="contained" color="primary" onClick={event => window.location.href='/adminDashboard'}>
                     Admin User Management
           </Button>
             
