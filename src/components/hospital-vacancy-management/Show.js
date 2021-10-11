@@ -11,7 +11,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 //import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
-
+import Box from '@material-ui/core/Box';
 import EditIcon from '@material-ui/icons/Edit';
 
 class Show extends Component {
@@ -66,17 +66,17 @@ class Show extends Component {
             </Typography>
 
             
-            <div style={{ padding: 20 }}>
-            <Button variant="contained" color="primary" onClick={event => window.location.href=`/vacancy`}>
-                    List of Hospitals
-                </Button>
-            </div>
+            <Box pt={0} marginTop={5} marginBottom={5}>  
+              <Button variant="contained" color="primary" onClick={event => window.location.href=`/vacancy`}>
+                      List of Hospitals
+              </Button>
+            </Box>
 
           </div>
           
-          <div class="panel-body" style={style}>
+          <div class="panel panel-default" style={style}>
       
-            <form style={formContainer} >
+          <form style={formContainer} >
 
             <Table>
                 <TableHead >
@@ -93,7 +93,7 @@ class Show extends Component {
                             </TableRow>
                 </TableHead>
                 <TableBody>
-            <TableRow  >
+                  <TableRow  >
 
                         <TableCell align="Left">{this.state.hospital.hospital_ID}</TableCell>
 
@@ -108,29 +108,22 @@ class Show extends Component {
                         <TableCell align="Right">{this.state.hospital.total_icu_beds}</TableCell>
 
                         <TableCell align="Left">
-                          
                           <Button variant="contained"  color="primary"  startIcon={<EditIcon />} onClick={event =>  window.location.href=`/HEdit/${this.state.key}`} >
                                             Edit
                           </Button>
-                          
                        </TableCell>
 
-                      
-
                         <TableCell align="Left">
-                        <Button variant="contained" color="secondary"  startIcon={<DeleteIcon />}  onClick={this.delete.bind(this, this.state.key)} > 
-                               Delete
-                        </Button>
+                          <Button variant="contained" color="secondary"  startIcon={<DeleteIcon />}  onClick={this.delete.bind(this, this.state.key)} > 
+                                Delete
+                          </Button>
                         </TableCell>
-            </TableRow >
-          </TableBody>
+                  </TableRow >
+                </TableBody>
           </Table>
-       </form>
+          </form>
 
-
-          </div>
-          
-
+          </div>          
 
         </div>
       </div>
@@ -140,7 +133,7 @@ class Show extends Component {
 }
 const style ={
   display: 'flex',
-  justifyContent: 'center'
+  justifyContent: 'left'
   
 }
 

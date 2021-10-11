@@ -8,6 +8,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import SaveIcon from '@material-ui/icons/Save';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import Box from '@material-ui/core/Box';
+
 class Create extends Component {
 
   constructor() {
@@ -58,20 +61,45 @@ class Create extends Component {
       console.error("Error adding document: ", error);
     });
   }
+  
+  
+  //DEMO BUTTON Function
+  demo_button = (e) => {
+    e.preventDefault();
+    
+    this.state.hospital_ID = document.getElementById('HID').textContent;
+    
+    
+    const { hospital_ID } = this.state;
+    
+    this.ref.add({
+      hospital_ID,
+      hospital_name:'Hospital Name',
+      district: 'District Name',
+      treatment_wards: 10,
+      total_beds: 100,
+      total_icu_beds: 10
+    }).then((docRef) => {
+      this.setState({
+        hospital_ID: '',
+        hospital_name: 'Hospital Name',
+        district: 'District Name',
+        treatment_wards: 10,
+        total_beds: 100,
+        total_icu_beds: 10
+      });
+      window.location.href=`/vacancy`
+    })
+    .catch((error) => {
+      console.error("Error adding document: ", error);
+    });
+  }
 
-  /*hospital_list(){
-
-    this.props.history.push('/');
-}*/
 
   render() {
     const { hospital_name, district, treatment_wards, total_beds, total_icu_beds } = this.state;
     return (
       <>
-      <div>
-           {/*<NavBar/>*/}
-        </div>
-
 
       <div class="container">
         <div class="panel panel-default">
@@ -86,11 +114,13 @@ class Create extends Component {
 
 
            
-          <div style={{ padding: 20 }}>
+          {/*<div style={{ padding: 20 }}>*/}
+          <Box pt={0} marginTop={5} marginBottom={5}>
             <Button variant="contained" color="primary" onClick={event =>  window.location.href=`/vacancy`}>
                     List of Hospitals
             </Button>
-          </div>
+          </Box>  
+          {/*</div>*/}
 
             <form  style={formContainer} onSubmit={this.onSubmit}>
          
@@ -106,7 +136,9 @@ class Create extends Component {
         
                 <TextField type="number" placeholder="Total ICU Beds" fullWidth margin="normal" name="total_icu_beds" value={this.state.total_icu_beds} onChange={this.onChange}/>
 
-                <Button type="submit" variant="contained" color="primary" startIcon={<SaveIcon />} onClick={this.savecenter}>Save</Button>
+                <Box pt={2}> <Button type="submit" variant="contained" color="primary" startIcon={<SaveIcon />} onClick={this.savecenter}>Save</Button> </Box>
+
+                <Box pt={2} marginX={2}> <Button type="submit" variant="contained" color="primary" startIcon={<AddCircleOutlineIcon />} onClick={this.demo_button}>DEMO</Button> </Box>
 
             </form>
           </div>
