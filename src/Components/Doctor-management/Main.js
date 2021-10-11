@@ -5,7 +5,7 @@ import DocTables from './Tables/DocTables';
 import AssignDoc from './Tables/AssignDoc';
 import DocTable from './Tables/DocTable';
 
-function Main (){
+function DoctorManagement (){
   return (
     <div>
     <Router>
@@ -20,4 +20,4 @@ function Main (){
   );
 
 }
-export default Main;
+export default DoctorManagement;

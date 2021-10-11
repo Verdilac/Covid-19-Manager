@@ -1,5 +1,5 @@
 import React , {useState, useEffect } from 'react';
-import firebase from '../Tables/firebase';
+import firebase from '../../TravelFunction/Firebase';
 import {Bar, Line, Pie} from 'react-chartjs-2';
 import './Chart.css'
 

@@ -28,7 +28,11 @@ import QCreate from './Components/qcm/Create';
 import QEdit from './Components/qcm/Edit';
 import QShow from './Components/qcm/Show';
 
-import VaccineApp from './Components/Vaccine-Administration/VaccineApp'
+import VaccineApp from './Components/Vaccine-Administration/VaccineApp';
+
+import DoctorManagement from './Components/Doctor-management/Main';
+
+import DocTable from './Components/Doctor-management/Tables/DocTable'
 
 // const theme = createTheme({
 //   palette: {
@@ -76,6 +80,12 @@ function App (){
             <Route path="/vaccine">
               <VaccineApp />
             </Route>
+
+            <Route path="/doctor">
+              <DocTable />
+            </Route>
+
+
           </Switch>
         </div>
       </div>

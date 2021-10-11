@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import firebase from './firebase';
+import firebase from '../../TravelFunction/Firebase';
 import * as React from 'react';
 import './DocTable.css';
 import { useHistory } from 'react-router-dom';
@@ -11,7 +11,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Card, CardActionArea, makeStyles, Typography } from "@material-ui/core";
-import { DataGrid } from '@mui/x-data-grid';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -25,7 +24,7 @@ import TablePagination from '@material-ui/core/TablePagination';
 
 import TableFooter from '@material-ui/core/TableFooter';
 import Chart from '../BarChart/Chart';
-import {AiOutlineUserAdd} from 'react-icons/ai'
+
 
 
 

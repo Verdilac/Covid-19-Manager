@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './AssignDoc.css';
-import firebase from 'firebase';
+import firebase from '../../TravelFunction/Firebase';
 import { useHistory } from 'react-router';
 
 

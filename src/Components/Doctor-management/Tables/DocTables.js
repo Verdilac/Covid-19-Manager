@@ -46,7 +46,7 @@ const DocTables = () => {
       return (
         <div className="container">
    <div className={classes.root}>
-      <AppBar className={classes.appbar}>
+      {/* <AppBar className={classes.appbar}>
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleMenu}>
             <MenuIcon />
@@ -86,7 +86,7 @@ const DocTables = () => {
             </div>
           )}
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
         </div>
         </div>
       );

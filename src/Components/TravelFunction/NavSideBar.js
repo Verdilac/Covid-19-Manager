@@ -92,6 +92,9 @@ export default function NavSideBar() {
         <ListItem button >
           <Link to="/vaccine">Vaccine Administration</Link>
         </ListItem>
+        <ListItem button >
+          <Link to="/doctor">Doctor Management</Link>
+        </ListItem>
       </List>
       <Divider />
       <List>

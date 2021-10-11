@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import firebase from '../Tables/firebase';
+import firebase from '../../TravelFunction/Firebase';
 import { Card, Typography } from '@material-ui/core';
 
 import {MdAssignment} from 'react-icons/md'
