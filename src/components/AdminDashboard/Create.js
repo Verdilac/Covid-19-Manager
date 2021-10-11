@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import IDGenerator  from './IDgenerator';
 import SaveIcon from '@material-ui/icons/Save';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import Box from '@material-ui/core/Box';
 
 //import { Container } from 'react-bootstrap';
 
@@ -107,7 +109,7 @@ class Create extends React.Component {
       
     }
 
-    const { nic, userID, userName, email, jobTitle, address, phoneNumber, dob, docID, qcs, hs, doct, admin, healthOfficial, count} = this.state;
+    const { nic, userID, userName, email, jobTitle, address, phoneNumber, dob, qcs, hs, doct, admin, healthOfficial, count} = this.state;
 
     this.ref.add({
         nic,
@@ -151,6 +153,60 @@ class Create extends React.Component {
       console.error("Error adding document: ", error);
     });
   }
+
+
+  //Demo Button
+  demo_button = (e) => {
+    e.preventDefault();
+    
+    this.state.count = parseInt(document.getElementById('IDcontext').textContent);
+    this.state.userID = "OF" + document.getElementById('IDcontext').textContent;
+    
+    const { userID, count } = this.state;
+    
+    this.ref.add({
+      nic:'978645524V',
+      userID,
+      userName:'John Doe',
+      email:'johnDoe@gmail.com',
+      jobTitle:'Government Health Official',
+      address:' Ministry of Health, 385, Ven. Baddegama Wimalawansa Thero Mawatha, Colombo 10',
+      phoneNumber:'0112675449',
+      dob:'1985-07-07',
+      //docID,
+      //specialization,
+      qcs:'0',
+      hs:'0',
+      doct:'0',
+      admin:'0',
+      healthOfficial:'1',
+      count,
+  }).then((docRef) => {
+    this.setState({
+      nic: '978645524V',
+      userID: '',
+      userName:'John Doe',
+      email:'johnDoe@gmail.com',
+      jobTitle:'Government Health Official',
+      address:' Ministry of Health, 385, Ven. Baddegama Wimalawansa Thero Mawatha, Colombo 10',
+      phoneNumber:'0112675449',
+      dob:'1985-07-07',
+      //docID,
+      //specialization,
+      qcs:'0',
+      hs:'0',
+      doct:'0',
+      admin:'0',
+      healthOfficial:'1',
+      count:'',
+    });
+    window.location.href=`/adminDashboard`
+  })
+  .catch((error) => {
+    console.error("Error adding document: ", error);
+  });
+}
+
 
   render() {
    
@@ -199,7 +255,9 @@ class Create extends React.Component {
                         <Typography><input type ="radio" required name="ut" id = "HO" value="of" onChange={this.onChange} /> Health Official </Typography>           
           </div>
 
-             <Button type="submit" variant="contained" color="primary" startIcon={<SaveIcon />} onClick={this.saveuser}>Save</Button>
+                        <Box pt={2}><Button type="submit" variant="contained" color="primary" startIcon={<SaveIcon />} onClick={this.saveuser}>Save</Button> </Box>
+
+                        <Box pt={2} marginX={2}> <Button type="submit" variant="contained" color="primary" startIcon={<AddCircleOutlineIcon />} onClick={this.demo_button}>DEMO</Button> </Box>
 
             </form>
 
