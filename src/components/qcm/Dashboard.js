@@ -82,9 +82,6 @@ class App extends Component {
       qindividuals
    });
 
-
-
-
   } 
 
 

@@ -82,7 +82,7 @@ class Edit extends Component {
 
   qclist(){
 
-    this.props.history.push('/');
+    this.props.history.push('/quarantine');
 
   }
 
