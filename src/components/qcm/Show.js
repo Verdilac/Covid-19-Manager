@@ -22,6 +22,7 @@ import { LocationSearchingRounded } from "@material-ui/icons";
 import { useState } from "react";
 //import listQindividuals from './listQindividuals';
 import Passenger from "./Passenger";
+import Passenger2 from "./Passenger2";
 
 class Show extends Component {
   constructor(props) {
@@ -246,112 +247,25 @@ class Show extends Component {
 
             <Container>
               <Typography variant="h3" style={style4}>
-                Quarantined Individuals in {this.state.center.centername}{" "}
+                Quarantined Native Individuals in {this.state.center.centername}{" "}
               </Typography>
             </Container>
 
-            <Container style={style2}>
-              <Container component={Paper}>
-                <Table>
-                  <TableHead>
-                    <TableRow align="Left">
-                      <TableCell align="Left">
-                        {" "}
-                        <Title> Passport Number</Title>
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title> Name </Title>{" "}
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title> Phone Number </Title>{" "}
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title> DOB </Title>{" "}
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title> Address </Title>{" "}
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title></Title>{" "}
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title></Title>{" "}
-                      </TableCell>
-                    </TableRow>
-                  </TableHead>
-
-                  <TableBody>
-                    {this.state.qindividuals.map((row) =>
-                      this.state.center.qcid === row.qcid ? (
-                        <TableRow key={row.id}>
-                          <TableCell>
-                            {" "}
-                            <Typography variant="h6"></Typography>
-                            {row.passportNo}
-                          </TableCell>
-
-                          <TableCell>
-                            {" "}
-                            <Typography variant="h6">
-                              {row.name}
-                            </Typography>{" "}
-                          </TableCell>
-
-                          <TableCell>
-                            {" "}
-                            <Typography variant="h6">
-                              {row.phoneno}
-                            </Typography>{" "}
-                          </TableCell>
-
-                          <TableCell>
-                            {" "}
-                            <Typography variant="h6">{row.dob}</Typography>{" "}
-                          </TableCell>
-
-                          <TableCell>
-                            {" "}
-                            <Typography variant="h6">
-                              {row.address}
-                            </Typography>{" "}
-                          </TableCell>
-
-                          <TableCell align="right">
-                            <Button
-                              variant="contained"
-                              color="primary"
-                              onClick={this.discharge.bind(
-                                this,
-                                this.state.key
-                              )}
-                            >
-                              Discharge
-                            </Button>
-                          </TableCell>
-
-                          <TableCell>
-                            <Button
-                              variant="contained"
-                              color="secondary"
-                              onClick={this.transfer.bind(this, this.state.key)}
-                            >
-                              Transfer
-                            </Button>
-                          </TableCell>
-                        </TableRow>
-                      ) : null
-                    )}
-                  </TableBody>
-                </Table>
-              </Container>
-            </Container>
+            <Container>
             <Passenger pass={this.state.center.qcid} />
+            </Container>
+
+
+            <Container>
+              <Typography variant="h3" style={style4}>
+                Quarantined Foreign Individuals in {this.state.center.centername}{" "}
+              </Typography>
+            </Container>
+    
+            <Container>
+            <Passenger2 pass={this.state.center.qcid} />
+            </Container>
+
           </div>
         </div>
       </>

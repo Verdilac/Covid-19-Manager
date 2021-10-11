@@ -16,36 +16,35 @@ import Title from "./Dashboard/Title";
 import Container from "@material-ui/core/Container";
 
 export default function Passenger({ pass }) {
-  const [pasdata, setpasdata] = useState([]);
+  const [pasdata, setforeignerData] = useState([]);
 
   useEffect(() => {
-    const firestore = firebase.database().ref("/Native");
+    const firestore = firebase.database().ref("/Foreigner");
     firestore.on("value", (response) => {
-      const Pdata = response.val();
-      const nativeinfo = [];
-      for (let id in Pdata) {
-        nativeinfo.push({
-          id: id,
-          Passport_no: Pdata[id].Passport_no,
-          Fname: Pdata[id].Fname,
-          Lname: Pdata[id].Lname,
-          Email_address: Pdata[id].Email_address,
-          Age: Pdata[id].Age,
-          Address: Pdata[id].Address,
-          Work_Address: Pdata[id].Work_place_address,
-          Phone_no: Pdata[id].Phone_no,
-          Province: Pdata[id].Province,
-          Qcid: Pdata[id].Qcid,
-        });
-      }
-      setpasdata(nativeinfo);
+        const Fdata = response.val();
+        const foreigninfo = [];
+        for (let id in Fdata) {
+          foreigninfo.push({
+            id: id,
+            Passport_no: Fdata[id].Passport_no,
+            Fname: Fdata[id].Fname,
+            Lname: Fdata[id].Lname,
+            Email_address: Fdata[id].Email_address,
+            Age: Fdata[id].Age,
+            Address: Fdata[id].Address,
+            Phone_no: Fdata[id].Phone_no,
+            Depature_date: Fdata[id].Depature_date,
+            Vissa_duration: Fdata[id].Vissa_duration,
+            Area_to_be_travled: Fdata[id].Area_to_be_travled,
+            Qcid: Fdata[id].Qcid,
+          });
+        }
+        setforeignerData(foreigninfo);
     });
   }, []);
 
   return (
    
-
-
     <>
        <Container >
               <Container component={Paper}>
@@ -101,7 +100,6 @@ export default function Passenger({ pass }) {
 
                                   <TableCell > <Typography variant="h6"></Typography>{item.Address}</TableCell>  
 
-                                
                                   </TableRow>
                                 </>
                               );
@@ -112,12 +110,12 @@ export default function Passenger({ pass }) {
               </Table>
         </Container>
         </Container>
+
      
     </>
+
+
 
   );
 }
 
-const style2 = {
-  height: "200px",
-};
