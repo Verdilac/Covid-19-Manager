@@ -9,6 +9,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import NavSideBar from "./NavSideBar";
+import { useAuth } from "../UserAccess/Contexts/AuthContext"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +28,8 @@ export default function NavBar() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  //const [error, setError] = useState("")
+  //const { currentUser, logout } = useAuth()
 
   const handleChange = (event) => {
     setAuth(event.target.checked);
@@ -38,6 +41,10 @@ export default function NavBar() {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleViewProfile = () => {
+    window.location.href=`/view-profile`;
   };
 
   return (
@@ -82,7 +89,7 @@ export default function NavBar() {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleViewProfile}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>Logout</MenuItem>
               </Menu>
             </div>

@@ -10,6 +10,7 @@ import InventoryDashboard from "./Components/InventoryFunctions/InventoryDashboa
 // import { useState } from "react";
 import NavBar from "./Components/TravelFunction/NavBar";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PrivateRoute from './Components/UserAccess/Auth/PrivateRoute';
 
 //Hospital Vacancy Management Imports :
 import Overview from './Components/hospital-vacancy-management/Overview';
@@ -21,7 +22,19 @@ import HEdit from './Components/hospital-vacancy-management/Edit';
 import AdminDashboard from './Components/AdminDashboard/Dashboard';
 import AdminCreate from './Components/AdminDashboard/Create';
 import AdminEdit from './Components/AdminDashboard/Edit';
-import AdminShow from './Components/AdminDashboard/Show'; 
+import AdminShow from './Components/AdminDashboard/Show';
+
+//User Access Imports :
+import UserAccessViewProfile from './Components/UserAccess/Auth/ViewProfile';
+import UserAccessUpdateProfile from './Components/UserAccess/Auth/UpdateProfile';
+import UserAccessForm from './Components/UserAccess/Auth/Form';
+import UserAccessSignUp from './Components/UserAccess/Auth/Signup';
+import UserAccessLogin from './Components/UserAccess/Auth/Login';
+import UserAccessForgotPassword from './Components/UserAccess/Auth/ForgotPassword';
+
+import { AuthProvider } from "./Components/UserAccess/Contexts/AuthContext";
+import { Container } from "react-bootstrap"
+
 
 import Dashboard from './Components/qcm/Dashboard';
 import QCreate from './Components/qcm/Create';
@@ -52,6 +65,7 @@ function App (){
       <div className="App">
         <NavBar />
         <div className="content">
+        <AuthProvider>
           <Switch>
             <Route exact path="/">
               <TravelManagement />
@@ -60,22 +74,37 @@ function App (){
               <InventoryDashboard />
             </Route>
             //Hospital Vacancy Management Routes :
-            <Route path="/vacancy"> <Overview /> </Route>
-            <Route path="/HCreate"> <HCreate /> </Route>
-            <Route path="/HShow/:id" component={HShow} />
-            <Route path="/HEdit/:id" component={HEdit} />
+            <PrivateRoute path="/vacancy" component={Overview} />
+            <PrivateRoute path="/HCreate" component={HCreate} />
+            <PrivateRoute path="/HShow/:id" component={HShow} />
+            <PrivateRoute path="/HEdit/:id" component={HEdit} />
 
             //Admin Dashboard Routes :
-            <Route path="/adminDashboard"> <AdminDashboard /> </Route>
-            <Route path="/AdminCreate"> <AdminCreate /> </Route>
-            <Route path="/AdminShow/:id" component={AdminShow} />
-            <Route path="/AdminEdit/:id" component={AdminEdit} />
+            <PrivateRoute path="/adminDashboard" component={AdminDashboard} />
+            <PrivateRoute path="/AdminCreate" component={AdminCreate} />
+            <PrivateRoute path="/AdminShow/:id" component={AdminShow} />
+            <PrivateRoute path="/AdminEdit/:id" component={AdminEdit} />
 
+            //User Access Routes :
+            <Container
+              className="d-flex align-items-center justify-content-center"
+              style={{ minHeight: "100vh" }}
+            >
+            <div className="w-100" style={{ maxWidth: "400px" }}>
+            <Route path="/form" component={UserAccessForm} />
+            <PrivateRoute path="/view-profile" component={UserAccessViewProfile} />
+            <PrivateRoute path="/update-profile" component={UserAccessUpdateProfile} />
+            <Route path="/signup" component={UserAccessSignUp} />
+            <Route path="/login" component={UserAccessLogin} />
+            <Route path="/forgot-password" component={UserAccessForgotPassword} />
+            </div>
+            </Container>
 
-            <Route path="/quarantine">  <Dashboard /> </Route>
-            <Route path="/QCreate"> <QCreate />  </Route>
-            <Route path="/QEdit/:id" component={QEdit} />  
-            <Route path="/QShow/:id" component={QShow} />  
+            //Quarantine Center Management Router :
+            <PrivateRoute path="/quarantine" component={Dashboard} />
+            <PrivateRoute path="/QCreate" component={QCreate} /> 
+            <PrivateRoute path="/QEdit/:id" component={QEdit} />  
+            <PrivateRoute path="/QShow/:id" component={QShow} />  
 
             <Route path="/vaccine">
               <VaccineApp />
@@ -87,6 +116,7 @@ function App (){
 
 
           </Switch>
+          </AuthProvider>  
         </div>
       </div>
     </Router>
