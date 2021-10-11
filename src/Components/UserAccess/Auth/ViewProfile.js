@@ -2,7 +2,7 @@ import React, { useState, Component } from "react"
 import { Card, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../Contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
-import firebase from '../firebase';
+import firebase from '../../TravelFunction/Firebase';
 
 import TextField from '@material-ui/core/TextField';
 //import Button from '@material-ui/core/Button';
