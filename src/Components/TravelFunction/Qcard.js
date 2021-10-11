@@ -45,7 +45,7 @@ export default function Qcard() {
                 <Card style={{ width: 300, height: "auto" }}>
                   <Card.Img
                     variant="top"
-                    src="https://static.thenounproject.com/png/3420396-200.png"
+                    src="https://images.creativemarket.com/0.1.0/ps/8602101/1820/1214/m1/fpnw/wm0/home-quarantine-icon-awareness-isolated-stay-no-coronavirus-patient-with-mask-thin-line-web-symbol-on-white-background-.jpg?1592988597&s=72ce817a5795dd112990b4702594f614"
                     style={{ width: 300, height: "auto" }}
                   />
                   <Card.Body>
