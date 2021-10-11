@@ -75,6 +75,9 @@ export default function NavSideBar() {
         ))} */}
 
         <ListItem button>
+          <Link to="adminDashboard">Admin Dashboard</Link>
+        </ListItem>  
+        <ListItem button>
           <Link to="/">Travel Management</Link>
         </ListItem>
         <ListItem button >
