@@ -1,0 +1,357 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.header{
+    position: relative;
+    top: 70px;
+}
+/* add button */
+.btn_add{
+    top: 200px;
+    left: 197px;
+    display: inline-flex;
+    width: 90px;
+    height: 40px;
+    background: #FFA500;
+    justify-content: center;
+    margin: 5px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+
+.btn_add .btn_icon{
+
+    justify-content: center;
+    position: relative;
+    bottom: 3px;
+}
+
+.btn_add:hover {
+    background: #DAA520;
+}
+
+.btn_add:active {
+    background: #B8860B;
+}
+
+/* edit button */
+
+.btn_edit2{
+    display: inline-flex;
+    width: 90px;
+    height: 50px;
+    background: #0000FF;
+    justify-content: center;
+    margin: 5px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #0000CD;
+}
+
+.btn:active {
+    background: #191970;
+}
+
+.btn_icon,
+.btn_text {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 4px;
+    color: #fff;
+    height: 100%;
+}
+
+
+/* delete button */
+.btn_del{
+    display: inline-flex;
+    width: 90px;
+    height: 50px;
+    background: #FF0000;
+    justify-content: center;
+    margin: 5px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn_del:hover {
+    background: #B22222;
+}
+
+.btn_del:active {
+    background: #800000;
+}
+
+
+/* others */
+.header{
+    font-size: 37px;
+}
+
+.addbtn{
+    justify-content: right;
+    position: relative;
+    height: 40px;
+    width: 80px;
+    left: 1028px;
+    align-items: center;
+}
+
+.material_table {
+    width: 100%;
+    height: 300px;
+
+}
+
+.table_cont{
+    left: 200px;
+    top: 200px;
+    width: 1100px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+/* .form_container span{
+    color: #0000CD;
+}
+
+.form_container .btn_txt{
+    color: #fff;
+} */
+
+/* .wrap{
+    width: 1000px;
+    margin: auto;
+    margin-top: 100px;
+    display: flex;
+}
+
+.card{
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+    transition: 0.4s;
+    width: 100px;
+    background-color: #fff;
+    text-align: center;
+    font-size: 16px;
+    float: left;
+    margin: 10px;
+
+} */
+/* 
+.form_container {
+    max-width: 1000px;
+    width: 450px;
+    align-items: center;
+    justify-content: center;
+    height: 630px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+}
+
+.form_container h2{
+    margin-bottom: 5px;
+    position: relative;
+
+}
+
+body{
+    display: flex;
+    min-height: 100hv;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-135deg, #c850c0, #4158d0);
+}
+
+.form_container .input__control{
+    height: 35px;
+    width: 100%;
+    position: relative;
+    border: none;
+    border-bottom: 2px solid silver;
+}
+
+.form_container .input__control input{
+    height: 100%;
+    width: 100%;
+   
+}
+
+.form_container label{
+    position: relative;
+    bottom: 25px;
+    left: 0;
+    color: gray;
+    pointer-events: none;
+}
+
+.form_container .input__control input:focus ~ .details{
+    transform: translateY(-20px);
+}
+
+.form_container .input__control .underline{
+    position: relative;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background: red;
+} */
+
+.form_container {
+    max-width: 1000px;
+    width: 450px;
+    height: 780px;
+    position: relative;
+    background: #fff;
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-top: 25px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.form_container .title{
+    margin-bottom: 5px;
+    position: relative;
+
+}
+
+/* body{
+    align-items: center;
+    min-height: 100hv;
+    min-width: 900px;
+    justify-content: center;
+    background: linear-gradient(-135deg, #c850c0, #4158d0);
+} */
+
+.form_container select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #d4d4d5;
+
+    position: relative;
+    display: flex;
+    width: 9em;
+    height: 1.9em;
+    
+    background: #5c6664;
+    overflow: hidden;
+    border-radius: .23em;
+    top: 10px;
+    flex: 4;
+    padding: .4em;
+    color: #fff;
+    cursor: pointer;
+    left: 60px;
+    margin: 4px;
+    margin-top: 5px;
+}
+
+.form_container select::-ms-expand{
+    display: none;
+}
+
+.form_container .select_txt {
+    position: relative;
+    text-align: left;
+    left: 0;
+    top: 30px;
+    margin: 5px;
+}
+
+.form_container select .select_det{
+    position: relative;
+    margin: 10px;
+}
+
+.form_container .input__control{
+    height: 50px;
+    width: 100%;
+    position: relative;
+    border: none;
+    top: 10px;
+    bottom: 5px;
+    border-bottom: 2px solid silver;
+}
+
+.form_container .input__control input{
+    height: 100%;
+    width: 100%;
+   
+}
+
+.form_container span{
+    position: relative;
+    top: 10px;
+    bottom: 25px;
+    left: 0;
+    color: gray;
+    pointer-events: none;
+}
+
+.form_container .input__control input:focus ~ .details{
+    transform: translateY(-20);
+}
+
+.form_container .input__control .underline{
+    position: relative;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background: red;
+}
+
+
+.btn_sub {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 25px 65px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+  }
+
+  .btn_sub:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  }

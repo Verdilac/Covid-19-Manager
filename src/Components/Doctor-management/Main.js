@@ -1,12 +1,11 @@
 import React from 'react';
-import './App.css';
+import './Main.css';
 import {Route, BrowserRouter as Router, Switch, Link} from "react-router-dom";
-import DocTables from '../src/Components/Doctor-management/Tables/DocTables';
-import AssignDoc from '../src/Components/Doctor-management/Tables/AssignDoc';
-import DocTable from '../src/Components/Doctor-management/Tables/DocTable';
+import DocTables from './Tables/DocTables';
+import AssignDoc from './Tables/AssignDoc';
+import DocTable from './Tables/DocTable';
 
-
-function App (){
+function Main (){
   return (
     <div>
     <Router>
@@ -21,4 +20,4 @@ function App (){
   );
 
 }
-export default App;
+export default Main;
