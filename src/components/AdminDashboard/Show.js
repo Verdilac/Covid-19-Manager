@@ -68,11 +68,7 @@ userList(){
   render() {
     return (
       <>
-
-        {/*<div>
-            <NavBar/>
-        </div>*/}
-
+        
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">

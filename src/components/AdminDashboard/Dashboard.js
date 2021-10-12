@@ -128,13 +128,13 @@ class App extends Component {
 
 
   render() {
-              //user count card
+              //user count card (NOT USED)
               var totalUsers=(this.state.users.reduce((total,currentItem) =>  total = total+= currentItem.userID , 0 ));
               var userCount = totalUsers.length 
               userCount = (userCount / 9).toFixed(0);
 
               //total quarantine centers card
-              var totalqi=(this.state.centers.reduce((total,currentItem) =>  total = total+=  (currentItem.qcid ), '' ));
+              var totalqi=(this.state.centers.reduce((total,currentItem) =>  total = total+=  (currentItem.qcid ), '' )); 
               var totalqiINT = totalqi.length / 6;
 
               //total Health officials card
