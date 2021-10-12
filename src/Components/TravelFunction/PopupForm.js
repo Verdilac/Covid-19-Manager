@@ -123,45 +123,59 @@ export default function PopupForm() {
   //This is called when the form submit button is pressed--Will send the data to the firbase firestore
   const handleAddUser = (e) => {
     // console.log(vfirstName, vlastName, vpassportNumber);
-    let refType;
 
-    let data;
-
-    if (isType() == "Foreigners") {
-      console.log("Its a Foreigner");
-      refType = "/Foreigner";
-      data = {
-        Fname: vfirstName,
-        Lname: vlastName,
-        Passport_no: vpassportNumber,
-        Email_address: vemailAddress,
-        Age: vage,
-        Address: vaddress,
-        Phone_no: vphoneNumber,
-        Qcid: vQicd,
-        Depature_date: vdepatureDate,
-        Vissa_duration: vvisaDuration,
-        Area_to_be_travled: vareaToBeTraveled,
-      };
+    if (
+      vfirstName === "" ||
+      vlastName === "" ||
+      vage === "" ||
+      vpassportNumber === "" ||
+      vphoneNumber === "" ||
+      vemailAddress === "" ||
+      vaddress === "" ||
+      vQicd === ""
+    ) {
+      handleShow();
     } else {
-      console.log("Local");
-      refType = "/Native";
-      data = {
-        Fname: vfirstName,
-        Lname: vlastName,
-        Passport_no: vpassportNumber,
-        Email_address: vemailAddress,
-        Age: vage,
-        Address: vaddress,
-        Phone_no: vphoneNumber,
-        Qcid: vQicd,
-        Province: vprovince,
-        Work_place_address: vworkAddress,
-      };
-    }
+      let refType;
 
-    const firestore = firebase.database().ref(refType);
-    firestore.push(data);
+      let data;
+
+      if (isType() == "Foreigners") {
+        console.log("Its a Foreigner");
+        refType = "/Foreigner";
+        data = {
+          Fname: vfirstName,
+          Lname: vlastName,
+          Passport_no: vpassportNumber,
+          Email_address: vemailAddress,
+          Age: vage,
+          Address: vaddress,
+          Phone_no: vphoneNumber,
+          Qcid: vQicd,
+          Depature_date: vdepatureDate,
+          Vissa_duration: vvisaDuration,
+          Area_to_be_travled: vareaToBeTraveled,
+        };
+      } else {
+        console.log("Local");
+        refType = "/Native";
+        data = {
+          Fname: vfirstName,
+          Lname: vlastName,
+          Passport_no: vpassportNumber,
+          Email_address: vemailAddress,
+          Age: vage,
+          Address: vaddress,
+          Phone_no: vphoneNumber,
+          Qcid: vQicd,
+          Province: vprovince,
+          Work_place_address: vworkAddress,
+        };
+      }
+
+      const firestore = firebase.database().ref(refType);
+      firestore.push(data);
+    }
   };
 
   function isType() {
