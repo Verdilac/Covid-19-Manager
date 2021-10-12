@@ -18,7 +18,7 @@ export default function ScoreCard() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Title>Quarantine Centers Availabe</Title>
+      <Title>Quarantine Centers Available</Title>
       <Typography component="p" variant="h4">
         
       </Typography>
