@@ -46,8 +46,9 @@ import VaccineApp from './Components/Vaccine-Administration/VaccineApp';
 
 import DoctorManagement from './Components/Doctor-management/Main';
 
-import DocTable from './Components/Doctor-management/Tables/DocTable'
-import AssignDoc from './Components/Doctor-management/Tables/AssignDoc'
+import DocTable from './Components/Doctor-management/Tables/DocTable';
+import AssignDoc from './Components/Doctor-management/Tables/AssignDoc';
+import PatientSystem from './Components/Patient-Management/PatientSystem';
 
 // const theme = createTheme({
 //   palette: {
@@ -97,6 +98,10 @@ function App (){
 
             <Route path="/vaccine">
               <VaccineApp />
+            </Route>
+
+            <Route path="/patient">
+              <PatientSystem />
             </Route>
 
     
