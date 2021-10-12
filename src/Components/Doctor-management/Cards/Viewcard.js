@@ -4,8 +4,8 @@ import { Grid, Container } from '@material-ui/core';
 
 import Total_doc from './Total_doc';
 import Assigned_doctors from './Assigned_doctors';
-import Available_doc from './Available_doc';
 import Revoked_doc from './Revoked_doc';
+import Total_patients from './Available_doc';
 
 function Viewcard() {
     return ( <div>
