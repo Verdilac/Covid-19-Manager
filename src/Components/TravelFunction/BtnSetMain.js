@@ -23,26 +23,6 @@ export default function BtnSetMain() {
         <Grid item md={9}>
           <PopupForm></PopupForm>
         </Grid>
-        {/* <Grid container md={3}>
-          <Button variant="contained" className={classes.space} color="primary">
-            REQUEST REPORT
-          </Button>
-          <Button
-            variant="contained"
-            className={classes.space}
-            color="secondary"
-          >
-            WARN
-          </Button>
-          <Button
-            variant="contained"
-            disabled
-            className={classes.space}
-            color="primary"
-          >
-            INITIATE EVACUATION
-          </Button>
-        </Grid> */}
       </Grid>
     </div>
   );
