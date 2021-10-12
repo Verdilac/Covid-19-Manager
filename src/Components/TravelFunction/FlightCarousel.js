@@ -41,19 +41,19 @@ export default function FlightCarousel() {
     }
   }
 
-  // useEffect(() => {
-  //   fetch(`http://api.aviationstack.com/v1/flights?${aviPrams}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       {
-  //         setaviObj(data.data);
-  //       }
-  //     })
-  //     .then(console.log(aviObj))
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch(`http://api.aviationstack.com/v1/flights?${aviPrams}`)
+      .then((res) => res.json())
+      .then((data) => {
+        {
+          setaviObj(data.data);
+        }
+      })
+      .then(console.log(aviObj))
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div>
