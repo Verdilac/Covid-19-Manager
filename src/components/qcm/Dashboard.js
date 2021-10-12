@@ -34,7 +34,7 @@ class App extends Component {
     this.unsubscribe = null;
     this.state = {
       centers: [],
-
+      hospitals: [],
       qindividuals: []
     };
    
@@ -85,6 +85,28 @@ class App extends Component {
   } 
 
 
+
+  onCollectionUpdate3 = (querySnapshot) => {
+    const hospitals = [];
+    querySnapshot.forEach((doc3) => {
+      const { hospital_ID, hospital_name, district, treatment_wards, total_beds, total_icu_beds } = doc3.data();
+      hospitals.push({
+        key: doc3.id,
+        doc3, // DocumentSnapshot
+        hospital_ID,
+        hospital_name,
+        district,
+        treatment_wards,
+        total_beds,
+        total_icu_beds
+      });
+    });
+    this.setState({
+      hospitals
+   });
+  }
+
+
   componentDidMount() {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
 
@@ -92,6 +114,9 @@ class App extends Component {
     this.ref2 = firebase.firestore().collection('qindividuals').orderBy('qcid');
     this.unsubscribe = null;
     this.unsubscribe = this.ref2.onSnapshot(this.onCollectionUpdate2);
+
+    this.ref3 = firebase.firestore().collection('hospitals').orderBy('hospital_ID');
+    this.unsubscribe = this.ref3.onSnapshot(this.onCollectionUpdate3);
     
   }
 
@@ -106,6 +131,10 @@ class App extends Component {
 
               const totalcap=(this.state.centers.reduce((total,currentItem) =>  total = total+= parseInt(currentItem.capacity) , 0 ));
               var percent = (totalqiINT / totalcap * 100).toFixed(0); 
+
+
+              const total_hospitals = this.state.hospitals.reduce((count, currentItem) => (currentItem.hospital_ID === currentItem.hospital_ID ? count + 1 : count), 0);
+              
     return (
     <div>
         
@@ -119,7 +148,7 @@ class App extends Component {
 
                                                         <Grid item xs={12} md={5} lg={4} >
                                                           <Paper >
-                                                            <ScoreCard/>   <Typography component="p" variant="h4">  {totalqiINT}  </Typography>
+                                                            <ScoreCard/>   <Typography component="p" variant="h4">  {total_hospitals}  </Typography>
                                                           </Paper>
                                                         </Grid>
 
