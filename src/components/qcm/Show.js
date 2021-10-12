@@ -22,7 +22,7 @@ import { LocationSearchingRounded } from "@material-ui/icons";
 import { useState } from "react";
 //import listQindividuals from './listQindividuals';
 import Passenger from "./Passenger";
-import Passenger2 from "./Passenger2";
+
 
 class Show extends Component {
   constructor(props) {
@@ -247,23 +247,12 @@ class Show extends Component {
 
             <Container>
               <Typography variant="h3" style={style4}>
-                Quarantined Native Individuals in {this.state.center.centername}{" "}
+                Quarantined Individuals in {this.state.center.centername}{" "}
               </Typography>
             </Container>
 
             <Container>
             <Passenger pass={this.state.center.qcid} />
-            </Container>
-
-
-            <Container>
-              <Typography variant="h3" style={style4}>
-                Quarantined Foreign Individuals in {this.state.center.centername}{" "}
-              </Typography>
-            </Container>
-    
-            <Container>
-            <Passenger2 pass={this.state.center.qcid} />
             </Container>
 
           </div>

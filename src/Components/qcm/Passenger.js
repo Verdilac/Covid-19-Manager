@@ -17,6 +17,7 @@ import Container from "@material-ui/core/Container";
 
 export default function Passenger({ pass }) {
   const [pasdata, setpasdata] = useState([]);
+  const [fpData, setfpData] = useState([]);
 
   useEffect(() => {
     const firestore = firebase.database().ref("/Native");
@@ -42,12 +43,119 @@ export default function Passenger({ pass }) {
     });
   }, []);
 
+  useEffect(() => {
+    const firestore = firebase.database().ref("/Foreigner");
+    firestore.on("value", (response) => {
+        const Fdata = response.val();
+        const foreigninfo = [];
+        for (let id in Fdata) {
+          foreigninfo.push({
+            id: id,
+            Passport_no: Fdata[id].Passport_no,
+            Fname: Fdata[id].Fname,
+            Lname: Fdata[id].Lname,
+            Email_address: Fdata[id].Email_address,
+            Age: Fdata[id].Age,
+            Address: Fdata[id].Address,
+            Phone_no: Fdata[id].Phone_no,
+            Depature_date: Fdata[id].Depature_date,
+            Vissa_duration: Fdata[id].Vissa_duration,
+            Area_to_be_travled: Fdata[id].Area_to_be_travled,
+            Qcid: Fdata[id].Qcid,
+          });
+        }
+        setfpData(foreigninfo);
+    });
+  }, []);
+
   return (
    
-
-
     <>
-       <Container >
+
+        <Container>
+              <Typography variant="h3" style={style4}>
+                
+                Natives </Typography>                  
+        </Container>
+
+
+       <Container style={style2}>
+              <Container component={Paper}>
+                <Table>
+                  <TableHead>
+                    <TableRow align="Left">
+                      <TableCell align="Left">
+                        {" "}
+                        <Title> First Name  </Title>
+                      </TableCell>
+                      <TableCell align="Left">
+                        {" "}
+                        <Title> Last Name </Title>{" "}
+                      </TableCell>
+                      <TableCell align="Left">
+                        {" "}
+                        <Title> Email Address </Title>{" "}
+                      </TableCell>
+                      <TableCell align="Left">
+                        {" "}
+                        <Title> Age </Title>{" "}
+                      </TableCell>
+                      <TableCell align="Left">
+                        {" "}
+                        <Title> Address </Title>{" "}
+                      </TableCell>
+                      <TableCell align="Left">
+                        {" "}
+                        <Title></Title>{" "}
+                      </TableCell>
+                      <TableCell align="Left">
+                        {" "}
+                        <Title></Title>{" "}
+                      </TableCell>
+                    </TableRow>
+                  </TableHead>
+                  
+                  <TableBody>
+                          {pasdata.map((item, index) => {
+                            if (pass == item.Qcid)
+
+
+
+
+                              return (
+                                <>
+
+                                  <TableRow>
+                                    
+                                  <TableCell > <Typography variant="h6"></Typography>{item.Fname}  </TableCell>  
+
+                                  <TableCell > <Typography variant="h6"></Typography>{item.Lname}</TableCell>   
+
+                                  <TableCell > <Typography variant="h6"></Typography>{item.Email_address}</TableCell>  
+
+                                  <TableCell > <Typography variant="h6"></Typography>{item.Age}</TableCell>  
+
+                                  <TableCell > <Typography variant="h6"></Typography>{item.Address}</TableCell>  
+
+                                
+                                  </TableRow>
+                                </>
+                              );
+                          })}
+
+                  </TableBody>
+
+              </Table>
+            </Container>
+        </Container>
+
+        <Container>
+              <Typography variant="h3" style={style4}>
+                
+                Foreigners </Typography>                  
+        </Container>
+
+        <Container style={style2}>
               <Container component={Paper}>
                 <Table>
                   <TableHead>
@@ -84,7 +192,7 @@ export default function Passenger({ pass }) {
                   </TableHead>
                   
                   <TableBody>
-                          {pasdata.map((item, index) => {
+                          {fpData.map((item, index) => {
                             if (pass == item.Qcid)
                               return (
                                 <>
@@ -101,7 +209,6 @@ export default function Passenger({ pass }) {
 
                                   <TableCell > <Typography variant="h6"></Typography>{item.Address}</TableCell>  
 
-                                
                                   </TableRow>
                                 </>
                               );
@@ -112,6 +219,7 @@ export default function Passenger({ pass }) {
               </Table>
         </Container>
         </Container>
+
      
     </>
 
@@ -120,4 +228,11 @@ export default function Passenger({ pass }) {
 
 const style2 = {
   height: "200px",
+};
+
+const style4 = {
+  color: "#3e54af",
+  height: "80px",
+  display: "flex",
+  justifyContent: "center",
 };
