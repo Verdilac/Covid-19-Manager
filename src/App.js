@@ -17,6 +17,7 @@ import Overview from './Components/hospital-vacancy-management/Overview';
 import HCreate from './Components/hospital-vacancy-management/Create';
 import HShow from './Components/hospital-vacancy-management/Show';
 import HEdit from './Components/hospital-vacancy-management/Edit';
+import HBCreate from './Components/hospital-vacancy-management/hospital-beds/Create';
 
 //Admin Dashboard Imports :
 import AdminDashboard from './Components/AdminDashboard/Dashboard';
@@ -35,7 +36,7 @@ import UserAccessForgotPassword from './Components/UserAccess/Auth/ForgotPasswor
 import { AuthProvider } from "./Components/UserAccess/Contexts/AuthContext";
 import { Container } from "react-bootstrap"
 
-
+//Quarantine Center Management Imports :
 import QuarantineDashboard from './Components/qcm/Dashboard';
 import QCreate from './Components/qcm/Create';
 import QEdit from './Components/qcm/Edit';
@@ -78,6 +79,7 @@ function App (){
             <PrivateRoute path="/HCreate" component={HCreate} />
             <PrivateRoute path="/HShow/:id" component={HShow} />
             <PrivateRoute path="/HEdit/:id" component={HEdit} />
+            <PrivateRoute path="/HBCreate" component={HBCreate} />
 
             //Admin Dashboard Routes :
             <PrivateRoute path="/adminDashboard" component={AdminDashboard} />

@@ -22,9 +22,12 @@ import ScoreCard1 from './Scorecards/ScoreCard1';
 import ScoreCard2 from './Scorecards/ScoreCard2';
 import ScoreCard3 from './Scorecards/ScoreCard3';
 import ScoreCard4 from './Scorecards/ScoreCard4';
+import ScoreCard5 from './Scorecards/ScoreCard5';
+import ScoreCard6 from './Scorecards/ScoreCard6';
 
 //import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 
 const Styles = {
@@ -54,7 +57,9 @@ class Overview extends Component {
     this.ref = firebase.firestore().collection('hospitals').orderBy('hospital_ID');
     this.unsubscribe = null;
     this.state = {
-      hospitals: []
+      hospitals: [],
+      centers: [],
+      hospital_beds: []
     };
   }
 
@@ -78,8 +83,54 @@ class Overview extends Component {
    });
   }
 
+  //Pull Data from QCM
+  onCollectionUpdate2 = (querySnapshot) => {
+
+    const centers = [];
+    querySnapshot.forEach((doc2) => {
+      const { qcid, centername, district, capacity } = doc2.data();
+      centers.push({
+        key: doc2.id,
+        doc2, // DocumentSnapshot
+        qcid,
+        centername,
+        district,
+        capacity
+      });
+    });
+    this.setState({
+      centers
+   });
+
+  }
+
+  //Pull Data from Hospital Beds
+  onCollectionUpdate3 = (querySnapshot) => {
+
+    const hospital_beds = [];
+    querySnapshot.forEach((doc3) => {
+      const { HBID, HID, patientID, patientName } = doc3.data();
+      hospital_beds.push({
+        key: doc3.id,
+        doc3, // DocumentSnapshot
+        HBID, 
+        HID, 
+        patientID, 
+        patientName 
+      });
+    });
+    this.setState({
+      hospital_beds
+   });
+
+  }
+
   componentDidMount() {
+    this.ref2 = firebase.firestore().collection('centers').orderBy('qcid');
+    this.ref3 = firebase.firestore().collection('hospital_beds').orderBy('HBID');
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+    this.unsubscribe = this.ref2.onSnapshot(this.onCollectionUpdate2);
+    this.unsubscribe = this.ref3.onSnapshot(this.onCollectionUpdate3);
   }
 
   render() {
@@ -91,6 +142,14 @@ class Overview extends Component {
     const total_beds =(this.state.hospitals.reduce((total,currentItem) =>  total = total+= parseInt(currentItem.total_beds) , 0 ));
     const total_icu_beds =(this.state.hospitals.reduce((total,currentItem) =>  total = total+= parseInt(currentItem.total_icu_beds) , 0 ));
     const total_hospitals = this.state.hospitals.reduce((count, currentItem) => (currentItem.hospital_ID === currentItem.hospital_ID ? count + 1 : count), 0);
+
+    //Occupied Beds
+    var occupiedBeds=(this.state.hospital_beds.reduce((total,currentItem) =>  total = total+=  (currentItem.HBID ), '' ));
+    var totalHBint = occupiedBeds.length / 6;
+
+    //Total QCs
+    var totalqi=(this.state.centers.reduce((total,currentItem) =>  total = total+=  (currentItem.qcid ), '' ));
+    var totalqiINT = totalqi.length / 6;
 
     return (
     <div>
@@ -105,10 +164,22 @@ class Overview extends Component {
                         <ScoreCard4/> <Typography component="p" variant="h4" align="center">  {total_hospitals}  </Typography>
                     </Paper>
                     </Grid>
+                    
+                    <Grid item xs>
+                    <Paper className={fixedHeightPaper}>
+                        <ScoreCard5/> <Typography component="p" variant="h4" align="center">  {totalqiINT}  </Typography>
+                    </Paper>
+                    </Grid>
 
                     <Grid item xs>
                     <Paper className={fixedHeightPaper}>
                         <ScoreCard1/> <Typography component="p" variant="h4" align="center" >  {total_treatment_wards}  </Typography>
+                    </Paper>
+                    </Grid>
+
+                    <Grid item xs>
+                    <Paper className={fixedHeightPaper}>
+                        <ScoreCard6/> <Typography component="p" variant="h4" align="center">  {totalHBint}  </Typography>
                     </Paper>
                     </Grid>
 
@@ -123,6 +194,8 @@ class Overview extends Component {
                         <ScoreCard3/> <Typography component="p" variant="h4" align="center">  {total_icu_beds}  </Typography>
                     </Paper>
                     </Grid>
+
+                    
 
 
                 </Grid>
@@ -151,12 +224,12 @@ class Overview extends Component {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell><b>Hospital ID</b></TableCell>
-                            <TableCell align="Left"><b>Hospital Name</b></TableCell>
-                            <TableCell align="Left"><b>District</b></TableCell>
-                            <TableCell align="Right"><b>Treatment Wards</b></TableCell>
-                            <TableCell align="Right"><b>Total Beds</b></TableCell>
-                            <TableCell align="Right"><b>Total ICU Beds</b></TableCell>
+                            <TableCell><Typography variant="h6">Hospital ID</Typography></TableCell>
+                            <TableCell align="Left"><Typography variant="h6">Hospital Name</Typography></TableCell>
+                            <TableCell align="Left"><Typography variant="h6">District</Typography></TableCell>
+                            <TableCell align="Right"><Typography variant="h6">Treatment Wards</Typography></TableCell>
+                            <TableCell align="Right"><Typography variant="h6">Total Beds</Typography></TableCell>
+                            <TableCell align="Right"><Typography variant="h6">Total ICU Beds</Typography></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -164,7 +237,7 @@ class Overview extends Component {
                         {this.state.hospitals.map(row => (
                             <TableRow key={row.id}>
 
-                                <TableCell align="Left">{row.hospital_ID}</TableCell>
+                                <TableCell align="Left"><Typography variant="h6">{row.hospital_ID}</Typography></TableCell>
                                 
                                 <TableCell align="Left">
                                 <Button variant="contained"  color="primary" onClick={event =>  window.location.href=`/HShow/${row.key}`} >{row.hospital_name}
@@ -174,10 +247,10 @@ class Overview extends Component {
 
                                 </TableCell>
                                 
-                                <TableCell align="Left">{row.district}</TableCell>
-                                <TableCell align="Right">{row.treatment_wards}</TableCell>
-                                <TableCell align="Right">{row.total_beds}</TableCell>
-                                <TableCell align="Right">{row.total_icu_beds}</TableCell>
+                                <TableCell align="Left"><Typography variant="h6">{row.district}</Typography></TableCell>
+                                <TableCell align="Right"><Typography variant="h6">{row.treatment_wards}</Typography></TableCell>
+                                <TableCell align="Right"><Typography variant="h6">{row.total_beds}</Typography></TableCell>
+                                <TableCell align="Right"><Typography variant="h6">{row.total_icu_beds}</Typography></TableCell>
 
                             </TableRow>
                         ))}
@@ -185,7 +258,7 @@ class Overview extends Component {
                 </Table>
 
               </Container>
-
+              <Box pt={5}></Box>
             </div>
     );
   }

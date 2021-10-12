@@ -13,6 +13,11 @@ import TableRow from '@material-ui/core/TableRow';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Box from '@material-ui/core/Box';
 import EditIcon from '@material-ui/icons/Edit';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Title from '../hospital-vacancy-management/Scorecards/Title';
 
 class Show extends Component {
 
@@ -20,7 +25,9 @@ class Show extends Component {
     super(props);
     this.state = {
       hospital: {},
-      key: ''
+      key: '',
+
+      hospital_beds: []
     };
   }
 
@@ -40,7 +47,32 @@ class Show extends Component {
         console.log("No such document!");
       }
     });
+
+    this.ref2 = firebase.firestore().collection('hospital_beds').orderBy('HBID');
+    this.unsubscribe = this.ref2.onSnapshot(this.onCollectionUpdate);
   }
+
+  onCollectionUpdate = (querySnapshot) => {    
+   
+    const hospital_beds = [];
+    querySnapshot.forEach((doc2) => {
+      const { HBID, HID, patientID, patientName } = doc2.data();
+      hospital_beds.push({
+        key: doc2.id,
+        doc2, // DocumentSnapshot
+        HBID, 
+        HID, 
+        patientID, 
+        patientName
+      });
+
+    });
+    this.setState({
+      hospital_beds
+   });
+   
+  }
+
 
   delete(id){
     firebase.firestore().collection('hospitals').doc(id).delete().then(() => {
@@ -51,6 +83,17 @@ class Show extends Component {
     });
   }
 
+  deleteb(id){
+
+    console.log(id);
+
+    firebase.firestore().collection('hospital_beds').doc(id).delete().then(() => {
+      console.log("Record successfully deleted!");
+      
+    }).catch((error) => {
+      console.error("Error removing document: ", error);
+    });
+  }
 
   render() {
     return (
@@ -60,13 +103,11 @@ class Show extends Component {
         <div class="panel panel-default">
           <div class="panel-heading">
 
-          
-            <Typography variant="h4" style={style}>
-              {this.state.hospital.hospitalname}
-            </Typography>
-
-            
             <Box pt={0} marginTop={5} marginBottom={5}>  
+              <Typography  variant="h3" style={style4}>{this.state.hospital.hospital_name} </Typography>
+            </Box>
+            
+            <Box pt={0} marginTop={3} marginBottom={5}>  
               <Button variant="contained" color="primary" onClick={event => window.location.href=`/vacancy`}>
                       List of Hospitals
               </Button>
@@ -81,13 +122,13 @@ class Show extends Component {
             <Table>
                 <TableHead >
                             <TableRow>
-                                <TableCell align="left">HID</TableCell>
-                                <TableCell align="Left">Hospital Name</TableCell>
-                                <TableCell align="Left">District</TableCell>
-                                <TableCell align="Left">COVID-19 Treatment Wards</TableCell>
-                                <TableCell align="Left">Total Beds</TableCell>
-                                <TableCell align="Left">Total ICU Beds</TableCell>
-                                <TableCell align="Left">Actions</TableCell>
+                                <TableCell align="left"><Typography variant="h6">HID</Typography></TableCell>
+                                <TableCell align="Left"><Typography variant="h6">Hospital Name</Typography></TableCell>
+                                <TableCell align="Left"><Typography variant="h6">District</Typography></TableCell>
+                                <TableCell align="Left"><Typography variant="h6">COVID-19 Treatment Wards</Typography></TableCell>
+                                <TableCell align="Left"><Typography variant="h6">Total Beds</Typography></TableCell>
+                                <TableCell align="Left"><Typography variant="h6">Total ICU Beds</Typography></TableCell>
+                                <TableCell align="Left"><Typography variant="h6">Actions</Typography></TableCell>
                                 <TableCell align="Left"></TableCell>
                           
                             </TableRow>
@@ -95,17 +136,17 @@ class Show extends Component {
                 <TableBody>
                   <TableRow  >
 
-                        <TableCell align="Left">{this.state.hospital.hospital_ID}</TableCell>
+                        <TableCell align="Left"><Typography variant="h6">{this.state.hospital.hospital_ID}</Typography></TableCell>
 
-                        <TableCell align="Left">{this.state.hospital.hospital_name}</TableCell>
+                        <TableCell align="Left"><Typography variant="h6">{this.state.hospital.hospital_name}</Typography></TableCell>
 
-                        <TableCell align="Left">{this.state.hospital.district}</TableCell>
+                        <TableCell align="Left"><Typography variant="h6">{this.state.hospital.district}</Typography></TableCell>
 
-                        <TableCell align="Right">{this.state.hospital.treatment_wards}</TableCell>
+                        <TableCell align="Right"><Typography variant="h6">{this.state.hospital.treatment_wards}</Typography></TableCell>
 
-                        <TableCell align="Right">{this.state.hospital.total_beds}</TableCell>
+                        <TableCell align="Right"><Typography variant="h6">{this.state.hospital.total_beds}</Typography></TableCell>
 
-                        <TableCell align="Right">{this.state.hospital.total_icu_beds}</TableCell>
+                        <TableCell align="Right"><Typography variant="h6">{this.state.hospital.total_icu_beds}</Typography></TableCell>
 
                         <TableCell align="Left">
                           <Button variant="contained"  color="primary"  startIcon={<EditIcon />} onClick={event =>  window.location.href=`/HEdit/${this.state.key}`} >
@@ -125,6 +166,72 @@ class Show extends Component {
 
           </div>          
 
+          <Box pt={0} marginTop={15} marginBottom={1}>  
+          <Typography  variant="h4" style={style4}>Hospital Beds in {this.state.hospital.hospital_name} </Typography>
+          </Box>
+
+          <Box pt={0} marginTop={1} marginBottom={5}>  
+              <Button variant="contained" startIcon={<AddCircleOutlineIcon />} color="primary" onClick={event => window.location.href=`/HBCreate`}>
+                      Add Bed
+              </Button>
+          </Box>
+
+        {/*<Container  style={style2} > 
+          <Container component={Paper}  >*/}
+
+                <Table >
+
+                    <TableHead >
+
+                        <TableRow align="Left">
+                        
+                            <TableCell align="Left"><Typography variant="h6"> Hospital Bed ID</Typography> </TableCell> 
+                            <TableCell align="Left"><Typography variant="h6"> Hospital ID </Typography> </TableCell>
+                            <TableCell align="Left"><Typography variant="h6"> Patient ID </Typography> </TableCell>
+                            <TableCell align="Left"><Typography variant="h6"> Patient Name </Typography> </TableCell>
+                            <TableCell align="Left"><Typography variant="h6"> Actions </Typography> </TableCell>
+
+                        </TableRow>
+
+                    </TableHead>
+
+                    <TableBody>
+                                                {this.state.hospital_beds.map(row =>(
+
+                                                this.state.hospital.hospital_ID === row.HID ? (
+                                                
+                                                  
+                                                <TableRow key={row.id}  >
+
+                                                      <TableCell align="Left"> <Typography variant="h6">{row.HBID}</Typography></TableCell>    
+                                                        
+                                                      <TableCell align="Left"> <Typography variant="h6">{row.HID}</Typography> </TableCell>
+
+                                                      <TableCell align="Left"> <Typography variant="h6">{row.patientID}</Typography> </TableCell>
+
+                                                      <TableCell align="Left"> <Typography variant="h6">{row.patientName}</Typography> </TableCell>
+
+                                                      <TableCell align="Left">
+                                                        <Button variant="contained" color="secondary"  startIcon={<DeleteIcon />}  onClick={this.deleteb.bind(this, row.key)} > 
+                                                              Delete
+                                                        </Button>
+                                                      </TableCell>
+
+                                               </TableRow>
+
+                                                 
+                                                  
+                                                ):null
+
+                                                ))}
+
+                    </TableBody>
+
+                </Table>
+              {/*</Container>    
+        </Container>*/}
+        <Box pt={5}></Box>
+
         </div>
       </div>
      </> 
@@ -141,5 +248,28 @@ const formContainer = {
   display: 'flex',
   flexFlow: 'row wrap'
 };
+
+const style2 ={
+
+
+  height: '200px',
+
+
+}
+
+const style3 ={
+
+  color: '#3e54af',
+  height: '60px',
+
+}
+
+const style4 ={
+  color: '#3e54af',
+  height: '80px',
+  display: 'flex',
+  justifyContent: 'center'
+  
+}
 
 export default Show;
