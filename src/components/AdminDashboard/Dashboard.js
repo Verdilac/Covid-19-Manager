@@ -134,7 +134,7 @@ class App extends Component {
               userCount = (userCount / 9).toFixed(0);
 
               //total quarantine centers card
-              var totalqi=(this.state.centers.reduce((total,currentItem) =>  total = total+=  (currentItem.qcid ), '' ));
+              var totalqi=(this.state.centers.reduce((total,currentItem) =>  total = total+=  (currentItem.qcid ), '' )); 
               var totalqiINT = totalqi.length / 6;
 
               //total Health officials card

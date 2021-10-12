@@ -55,7 +55,7 @@ class Edit extends Component {
           count: user.count
         });
       } else {
-        console.log("No such document!");
+        console.log("Document not found!");
       }
     });
   }
@@ -125,10 +125,7 @@ class Edit extends Component {
     return (
 
       <>
-            {/*<div>
-            <NavBar/>
-        </div>*/}
-
+            
 
       <div class="container">
         <div class="panel panel-default">
