@@ -36,7 +36,7 @@ import { AuthProvider } from "./Components/UserAccess/Contexts/AuthContext";
 import { Container } from "react-bootstrap"
 
 
-import Dashboard from './Components/qcm/Dashboard';
+import QuarantineDashboard from './Components/qcm/Dashboard';
 import QCreate from './Components/qcm/Create';
 import QEdit from './Components/qcm/Edit';
 import QShow from './Components/qcm/Show';
@@ -85,6 +85,13 @@ function App (){
             <PrivateRoute path="/AdminShow/:id" component={AdminShow} />
             <PrivateRoute path="/AdminEdit/:id" component={AdminEdit} />
 
+            
+            //Quarantine Center Management Router :
+            <PrivateRoute path="/quarantine" component={QuarantineDashboard} />
+            <PrivateRoute path="/QCreate" component={QCreate} /> 
+            <PrivateRoute path="/QEdit/:id" component={QEdit} />  
+            <PrivateRoute path="/QShow/:id" component={QShow} />  
+
             //User Access Routes :
             <Container
               className="d-flex align-items-center justify-content-center"
@@ -100,11 +107,6 @@ function App (){
             </div>
             </Container>
 
-            //Quarantine Center Management Router :
-            <PrivateRoute path="/quarantine" component={Dashboard} />
-            <PrivateRoute path="/QCreate" component={QCreate} /> 
-            <PrivateRoute path="/QEdit/:id" component={QEdit} />  
-            <PrivateRoute path="/QShow/:id" component={QShow} />  
 
             <Route path="/vaccine">
               <VaccineApp />
