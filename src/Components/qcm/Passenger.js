@@ -46,183 +46,202 @@ export default function Passenger({ pass }) {
   useEffect(() => {
     const firestore = firebase.database().ref("/Foreigner");
     firestore.on("value", (response) => {
-        const Fdata = response.val();
-        const foreigninfo = [];
-        for (let id in Fdata) {
-          foreigninfo.push({
-            id: id,
-            Passport_no: Fdata[id].Passport_no,
-            Fname: Fdata[id].Fname,
-            Lname: Fdata[id].Lname,
-            Email_address: Fdata[id].Email_address,
-            Age: Fdata[id].Age,
-            Address: Fdata[id].Address,
-            Phone_no: Fdata[id].Phone_no,
-            Depature_date: Fdata[id].Depature_date,
-            Vissa_duration: Fdata[id].Vissa_duration,
-            Area_to_be_travled: Fdata[id].Area_to_be_travled,
-            Qcid: Fdata[id].Qcid,
-          });
-        }
-        setfpData(foreigninfo);
+      const Fdata = response.val();
+      const foreigninfo = [];
+      for (let id in Fdata) {
+        foreigninfo.push({
+          id: id,
+          Passport_no: Fdata[id].Passport_no,
+          Fname: Fdata[id].Fname,
+          Lname: Fdata[id].Lname,
+          Email_address: Fdata[id].Email_address,
+          Age: Fdata[id].Age,
+          Address: Fdata[id].Address,
+          Phone_no: Fdata[id].Phone_no,
+          Depature_date: Fdata[id].Depature_date,
+          Vissa_duration: Fdata[id].Vissa_duration,
+          Area_to_be_travled: Fdata[id].Area_to_be_travled,
+          Qcid: Fdata[id].Qcid,
+        });
+      }
+      setfpData(foreigninfo);
     });
   }, []);
 
   return (
-   
     <>
+      <Container>
+        <Typography variant="h3" style={style4}>
+          Natives{" "}
+        </Typography>
+      </Container>
 
-        <Container>
-              <Typography variant="h3" style={style4}>
-                
-                Natives </Typography>                  
+      <Container style={style2}>
+        <Container component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow align="Left">
+                <TableCell align="Left">
+                  {" "}
+                  <Title> First Name </Title>
+                </TableCell>
+                <TableCell align="Left">
+                  {" "}
+                  <Title> Last Name </Title>{" "}
+                </TableCell>
+                <TableCell align="Left">
+                  {" "}
+                  <Title> Email Address </Title>{" "}
+                </TableCell>
+                <TableCell align="Left">
+                  {" "}
+                  <Title> Age </Title>{" "}
+                </TableCell>
+                <TableCell align="Left">
+                  {" "}
+                  <Title> Address </Title>{" "}
+                </TableCell>
+                <TableCell align="Left">
+                  {" "}
+                  <Title></Title>{" "}
+                </TableCell>
+                <TableCell align="Left">
+                  {" "}
+                  <Title></Title>{" "}
+                </TableCell>
+              </TableRow>
+            </TableHead>
+
+            <TableBody>
+              {pasdata.map((item, index) => {
+                if (pass == item.Qcid)
+                  return (
+                    <>
+                      <TableRow>
+                        <TableCell>
+                          {" "}
+                          <Typography variant="h6"></Typography>
+                          {item.Fname}{" "}
+                        </TableCell>
+
+                        <TableCell>
+                          {" "}
+                          <Typography variant="h6"></Typography>
+                          {item.Lname}
+                        </TableCell>
+
+                        <TableCell>
+                          {" "}
+                          <Typography variant="h6"></Typography>
+                          {item.Email_address}
+                        </TableCell>
+
+                        <TableCell>
+                          {" "}
+                          <Typography variant="h6"></Typography>
+                          {item.Age}
+                        </TableCell>
+
+                        <TableCell>
+                          {" "}
+                          <Typography variant="h6"></Typography>
+                          {item.Address}
+                        </TableCell>
+                      </TableRow>
+                    </>
+                  );
+              })}
+            </TableBody>
+          </Table>
         </Container>
+      </Container>
 
+      <Container>
+        <Typography variant="h3" style={style4}>
+          Foreigners{" "}
+        </Typography>
+      </Container>
 
-       <Container style={style2}>
-              <Container component={Paper}>
-                <Table>
-                  <TableHead>
-                    <TableRow align="Left">
-                      <TableCell align="Left">
-                        {" "}
-                        <Title> First Name  </Title>
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title> Last Name </Title>{" "}
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title> Email Address </Title>{" "}
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title> Age </Title>{" "}
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title> Address </Title>{" "}
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title></Title>{" "}
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title></Title>{" "}
-                      </TableCell>
-                    </TableRow>
-                  </TableHead>
-                  
-                  <TableBody>
-                          {pasdata.map((item, index) => {
-                            if (pass == item.Qcid)
+      <Container style={style2}>
+        <Container component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow align="Left">
+                <TableCell align="Left">
+                  {" "}
+                  <Title> First Name</Title>
+                </TableCell>
+                <TableCell align="Left">
+                  {" "}
+                  <Title> Last Name </Title>{" "}
+                </TableCell>
+                <TableCell align="Left">
+                  {" "}
+                  <Title> Email Address </Title>{" "}
+                </TableCell>
+                <TableCell align="Left">
+                  {" "}
+                  <Title> Age </Title>{" "}
+                </TableCell>
+                <TableCell align="Left">
+                  {" "}
+                  <Title> Address </Title>{" "}
+                </TableCell>
+                <TableCell align="Left">
+                  {" "}
+                  <Title></Title>{" "}
+                </TableCell>
+                <TableCell align="Left">
+                  {" "}
+                  <Title></Title>{" "}
+                </TableCell>
+              </TableRow>
+            </TableHead>
 
+            <TableBody>
+              {fpData.map((item, index) => {
+                if (pass == item.Qcid)
+                  return (
+                    <>
+                      <TableRow>
+                        <TableCell>
+                          {" "}
+                          <Typography variant="h6"></Typography>
+                          {item.Fname}
+                        </TableCell>
 
+                        <TableCell>
+                          {" "}
+                          <Typography variant="h6"></Typography>
+                          {item.Lname}
+                        </TableCell>
 
+                        <TableCell>
+                          {" "}
+                          <Typography variant="h6"></Typography>
+                          {item.Email_address}
+                        </TableCell>
 
-                              return (
-                                <>
+                        <TableCell>
+                          {" "}
+                          <Typography variant="h6"></Typography>
+                          {item.Age}
+                        </TableCell>
 
-                                  <TableRow>
-                                    
-                                  <TableCell > <Typography variant="h6"></Typography>{item.Fname}  </TableCell>  
-
-                                  <TableCell > <Typography variant="h6"></Typography>{item.Lname}</TableCell>   
-
-                                  <TableCell > <Typography variant="h6"></Typography>{item.Email_address}</TableCell>  
-
-                                  <TableCell > <Typography variant="h6"></Typography>{item.Age}</TableCell>  
-
-                                  <TableCell > <Typography variant="h6"></Typography>{item.Address}</TableCell>  
-
-                                
-                                  </TableRow>
-                                </>
-                              );
-                          })}
-
-                  </TableBody>
-
-              </Table>
-            </Container>
+                        <TableCell>
+                          {" "}
+                          <Typography variant="h6"></Typography>
+                          {item.Address}
+                        </TableCell>
+                      </TableRow>
+                    </>
+                  );
+              })}
+            </TableBody>
+          </Table>
         </Container>
-
-        <Container>
-              <Typography variant="h3" style={style4}>
-                
-                Foreigners </Typography>                  
-        </Container>
-
-        <Container style={style2}>
-              <Container component={Paper}>
-                <Table>
-                  <TableHead>
-                    <TableRow align="Left">
-                      <TableCell align="Left">
-                        {" "}
-                        <Title> First Name</Title>
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title> Last Name </Title>{" "}
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title> Email Address </Title>{" "}
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title> Age </Title>{" "}
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title> Address </Title>{" "}
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title></Title>{" "}
-                      </TableCell>
-                      <TableCell align="Left">
-                        {" "}
-                        <Title></Title>{" "}
-                      </TableCell>
-                    </TableRow>
-                  </TableHead>
-                  
-                  <TableBody>
-                          {fpData.map((item, index) => {
-                            if (pass == item.Qcid)
-                              return (
-                                <>
-
-                                  <TableRow>
-                                    
-                                  <TableCell > <Typography variant="h6"></Typography>{item.Fname}</TableCell>  
-
-                                  <TableCell > <Typography variant="h6"></Typography>{item.Lname}</TableCell>   
-
-                                  <TableCell > <Typography variant="h6"></Typography>{item.Email_address}</TableCell>  
-
-                                  <TableCell > <Typography variant="h6"></Typography>{item.Age}</TableCell>  
-
-                                  <TableCell > <Typography variant="h6"></Typography>{item.Address}</TableCell>  
-
-                                  </TableRow>
-                                </>
-                              );
-                          })}
-
-                  </TableBody>
-
-              </Table>
-        </Container>
-        </Container>
-
-     
+      </Container>
     </>
-
   );
 }
 
