@@ -65,8 +65,8 @@ const AddPatient = () => {
     },[])
 
     const handleAddPatient = ()  => {
-        const isValid = formValidation();
-        if (isValid) {
+        /* const isValid = formValidation();
+        if (isValid) { */
             const firestore = firebase.database().ref("/PatientInfo");
             let data = {
                 PatientNIC:aPatientNIC,
@@ -90,7 +90,7 @@ const AddPatient = () => {
             setAGuardianAddress("");
             setAGuardianPhone("");
 
-        }
+        /* } */
     }
 
     const formValidation = () => {
