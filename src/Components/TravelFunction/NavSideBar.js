@@ -87,6 +87,9 @@ export default function NavSideBar() {
           <Link to="/vacancy">Vacancy Management</Link>
         </ListItem>
         <ListItem button >
+          <Link to="/patient">Patient Management</Link>
+        </ListItem>
+        <ListItem button >
           <Link to="/quarantine">Quarantine Management</Link>
         </ListItem>
         <ListItem button >
