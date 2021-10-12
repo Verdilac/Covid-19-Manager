@@ -9,22 +9,22 @@ import Revoked_doc from './Revoked_doc';
 
 function Viewcard() {
     return ( <div>
-    <Container maxWidth="xl" className="containerPadding">
-
-    <Grid container spacing={3}>
-    <Grid item xs={12} sm={6} md={3}>
-        <Total_doc />
-    </Grid>
-    <Grid item xs={12} sm={6} md={3}>
-        <Assigned_doctors/>
-    </Grid>
-    <Grid item xs={12} sm={6} md={3}>
-        <Available_doc />
-    </Grid>
-    <Grid item xs={12} sm={6} md={3}>
-        <Revoked_doc />
-    </Grid>
-    </Grid>
+        <Container maxWidth="xl" className="containerPadding">
+    
+        <Grid container spacing={3}>
+        <Grid item xs={12} sm={7} md={3}>
+            <Total_doc />
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+            <Assigned_doctors/>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+            <Total_patients/>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+            <Revoked_doc />
+        </Grid>
+        </Grid>
 
 </Container>
 

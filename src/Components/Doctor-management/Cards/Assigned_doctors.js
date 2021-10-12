@@ -4,34 +4,33 @@ import { Card, Typography } from '@material-ui/core';
 
 import {MdAssignment} from 'react-icons/md'
 
-export default function Assigned_doctors() {
+export default function Total_patients() {
 
-    const [doctordata , setDoctordata] = useState([]);
+    const [patientData,setPatientData] = useState([]);
 
-    useEffect(() => {
-        const firestore = firebase.database().ref("/DoctorInfo");
-        firestore.on("value", (response) => {
+    useEffect(()=>{
+        const firestore = firebase.database().ref("/PatientInfo");
+        firestore.on("value",(response) => {
             const data = response.val();
-            let doctorInfo = [];
-            for (let id in data) {
-                doctorInfo.push({
-                    id: id,
-                    FirstName: data[id].FirstName,
-                    LastName: data[id].LastName,
-                    Email: data[id].Email,
-                    PhoneNumber: data[id].PhoneNumber,
-                    Status: data[id].Status,
-                    PatientCount: data[id].PatientCount,
-                    Specialization: data[id].Specialization,
-                    UserName: data[id].UserName,
-                    Password: data[id].Password
+            let patientInfo = [];
+            for (let id in data){
+                patientInfo.push({
+                    id:id,
+                    PatientNIC: data[id].PatientNIC,
+                    PatientFirstName: data[id].PatientFirstName,
+                    PatientLastName: data[id].PatientLastName,
+                    PatientDOB: data[id].PatientDOB,
+                    PatientAddress: data[id].PatientAddress,
+                    GuardianNIC: data[id].GuardianNIC,
+                    GuardianName: data[id].GuardianName,
+                    GuardianAddress: data[id].GuardianAddress,
+                    GuardianPhone:data[id].GuardianPhone,
                 });
             }
-            setDoctordata(doctorInfo);
+            setPatientData(patientInfo);
         })
-    });
+    },[])
 
-    const assigned = doctordata.filter(item => item.Status === 'ASSIGNED');
 
     return (
 
@@ -41,12 +40,15 @@ export default function Assigned_doctors() {
                     <MdAssignment size="3em"/>
                 </div>
                 <div className="card_inner">
-                    <Typography className="title" variant="h5">Assigned Doctors</Typography>
-                    <Typography className="number" variant="h4">{assigned.length}</Typography>
+                    <Typography className="title" variant="h5">Total Patients</Typography>
+                    <Typography className="number" variant="h4">{patientData.length}</Typography>
                 </div>
             </div>
         </div>
     )
 }
+
+
+
 
 

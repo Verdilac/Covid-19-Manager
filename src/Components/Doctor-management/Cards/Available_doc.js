@@ -4,7 +4,7 @@ import { Card, Typography } from '@material-ui/core';
 
 import {MdEventAvailable} from 'react-icons/md'
 
-export default function Available_doc() {
+export default function Assigned_doctors() {
 
     const [doctordata , setDoctordata] = useState([]);
 
@@ -31,7 +31,7 @@ export default function Available_doc() {
         })
     });
 
-    const available = doctordata.filter(item => item.Status === 'NOT ASSIGNED');
+    const available = doctordata.filter(item => item.Status === 'ASSIGNED');
 
     return (
 
@@ -41,7 +41,7 @@ export default function Available_doc() {
                     <MdEventAvailable size="3em"/>
                 </div>
                 <div className="card_inner">
-                    <Typography className="title" variant="h5">Available Doctors</Typography>
+                    <Typography className="title" variant="h5">Assigned Doctors</Typography>
                     <Typography className="number" variant="h4">{available.length}</Typography>
                 </div>
             </div>
