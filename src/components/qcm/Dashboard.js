@@ -126,7 +126,7 @@ class App extends Component {
 
              
 
-              var totalqi=(this.state.qindividuals.reduce((total,currentItem) =>  total = total+=  (currentItem.qcid ), '' ));
+              var totalqi=(this.state.centers.reduce((total,currentItem) =>  total = total+=  (currentItem.qcid ), '' ));
               var totalqiINT = totalqi.length / 6;
 
               const totalcap=(this.state.centers.reduce((total,currentItem) =>  total = total+= parseInt(currentItem.capacity) , 0 ));
@@ -160,7 +160,7 @@ class App extends Component {
                                                 
                                                         <Grid item xs={12} md={5} lg={4}>
                                                           <Paper>
-                                                            <ScoreCard3/>   <Typography component="p" variant="h4"> {percent}% 	</Typography>
+                                                            <ScoreCard3/>   <Typography component="p" variant="h4"> {totalqiINT} 	</Typography>
                                                           </Paper>
                                                         </Grid>
                                                 
