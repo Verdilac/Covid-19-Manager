@@ -1,4 +1,4 @@
-import PatientSystem from './Components/PatientSystem.js';
+import PatientSystem from './Components/Patient-Management/PatientSystem.js';
 function App() {
 
   return (

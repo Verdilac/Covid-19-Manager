@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button, Form, Container, Row, Col} from 'react-bootstrap';
 import Typography from '@material-ui/core/Typography';
-import firebase from './Firebase.js';
+import firebase from '../../Firebase.js';
 import React, { useState, useEffect } from "react";
 import Modal from '@material-ui/core/Modal';
 import Box from '@material-ui/core/Box';

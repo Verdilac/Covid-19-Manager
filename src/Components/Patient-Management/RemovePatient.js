@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button, Container, Row, Col, Table} from 'react-bootstrap';
+import {Button, Form, Container, Row, Col, Table} from 'react-bootstrap';
 import Typography from '@material-ui/core/Typography';
-import firebase from './Firebase.js';
+import firebase from '../../Firebase.js';
 import React, { useState, useEffect } from "react";
 import Modal from '@material-ui/core/Modal';
 import Box from '@material-ui/core/Box';
@@ -12,13 +12,13 @@ const modalstyle = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 1200,
+    width: 1300,
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
 };
 
-const ViewPatient = () => {
+const RemovePatient = () => {
     const [patientData,setPatientData] = useState([]);
 
 
@@ -46,6 +46,14 @@ const ViewPatient = () => {
     },[])
 
     
+    const handleDelete = (id) => {
+        const firestore = firebase
+            .database()
+            .ref("/PatientInfo")
+            .child(id);
+        firestore.remove();
+    };
+
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -56,7 +64,7 @@ const ViewPatient = () => {
             <Container>
                 <Row>
                     <Col>
-                    <Button variant="info" onClick={handleOpen}>Patient Details</Button>
+                    <Button variant="danger" onClick={handleOpen}>Patient Removal</Button>
                     <Modal
                         open={open}
                         onClose={handleClose}
@@ -88,6 +96,7 @@ const ViewPatient = () => {
                                             <th>Guardian Name</th>
                                             <th>Guardian Address</th>
                                             <th>Guardian Phone</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     {
@@ -103,6 +112,15 @@ const ViewPatient = () => {
                                                     <td>{data.GuardianName}</td>
                                                     <td>{data.GuardianAddress}</td>
                                                     <td>{data.GuardianPhone}</td>
+                                                    <td>
+                                                    <Button 
+                                                        variant="danger"
+                                                        onClick={()=>{handleDelete(data.id)}} 
+                                                    >
+                                                        Discharge / Report Death
+                                                    
+                                                    </Button>
+                                                    </td>
                                                 </tr>
                                             </tbody>
 
@@ -118,13 +136,16 @@ const ViewPatient = () => {
                     </Modal>    
                     </Col>
                 </Row>
+
+
+
             </Container>
         </div>
 
     )
 };
 
-export default ViewPatient;
+export default RemovePatient;
 
 
 
