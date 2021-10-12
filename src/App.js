@@ -92,6 +92,15 @@ function App (){
             <PrivateRoute path="/QEdit/:id" component={QEdit} />  
             <PrivateRoute path="/QShow/:id" component={QShow} />  
 
+            <Route path="/vaccine">
+              <VaccineApp />
+            </Route>
+
+            <Route path="/doctor">
+              <DocTable />
+            </Route>
+
+
             //User Access Routes :
             <Container
               className="d-flex align-items-center justify-content-center"
@@ -108,13 +117,6 @@ function App (){
             </Container>
 
 
-            <Route path="/vaccine">
-              <VaccineApp />
-            </Route>
-
-            <Route path="/doctor">
-              <DocTable />
-            </Route>
 
 
           </Switch>
