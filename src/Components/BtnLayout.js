@@ -12,7 +12,6 @@ import EditPatient from './EditPatient';
 const BtnLayout = () => {
  return (
         <div>
-            <div> 
             <Container>
                 <Row/>
                 <Row>
@@ -52,43 +51,22 @@ const BtnLayout = () => {
                                 <RemovePatient/>
                             </Card.Body>
                     </Card>
-
-                    
-
-
-
                     </Col>
-
-
-                             
-
-                    
-
-
                 </Row>
 
                 <Row>
                     <Col>
-
                         <hr/>
                         <h4>Update Patient Details</h4>
-                        
                     </Col>
-
                 </Row>
+
                 <Row>
                     <Col> 
-
                         <EditPatient/>
-                        
                     </Col>
                 </Row>
             </Container>
-            
-            </div>
-
-            
-            
         </div>
     )
 };

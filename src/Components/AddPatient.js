@@ -30,6 +30,16 @@ const AddPatient = () => {
     const [aGuardianPhone, setAGuardianPhone] = useState('');
     const [patientData,setPatientData] = useState([]);
 
+    const [PatientNICErr, setAPatientNICErr] = useState({});
+    const [PatientFirstNameErr, setAPatientFirstNameErr] = useState({});
+    const [PatientLastNameErr, setAPatientLastNameErr] = useState({});
+    const [PatientDOBErr, setAPatientDOBErr] = useState({});
+    const [PatientAddressErr, setAPatientAddressErr] = useState({});
+    const [GuardianNICErr, setAGuardianNICErr] = useState({});
+    const [GuardianNameErr, setAGuardianNameErr] = useState({});
+    const [GuardianAddressErr, setAGuardianAddressErr] = useState({});
+    const [GuardianPhoneErr, setAGuardianPhoneErr] = useState({});
+
 
     useEffect(()=>{
         const firestore = firebase.database().ref("/PatientInfo");
@@ -55,19 +65,105 @@ const AddPatient = () => {
     },[])
 
     const handleAddPatient = ()  => {
-        const firestore = firebase.database().ref("/PatientInfo");
-        let data = {
-            PatientNIC:aPatientNIC,
-            PatientFirstName:aPatientFirstName,
-            PatientLastName:aPatientLastName,
-            PatientDOB:aPatientDOB,
-            PatientAddress:aPatientAddress,
-            GuardianNIC:aGuardianNIC,
-            GuardianName:aGuardianName,
-            GuardianAddress:aGuardianAddress,
-            GuardianPhone:aGuardianPhone
-        };
-        firestore.push(data);
+        const isValid = formValidation();
+        if (isValid) {
+            const firestore = firebase.database().ref("/PatientInfo");
+            let data = {
+                PatientNIC:aPatientNIC,
+                PatientFirstName:aPatientFirstName,
+                PatientLastName:aPatientLastName,
+                PatientDOB:aPatientDOB,
+                PatientAddress:aPatientAddress,
+                GuardianNIC:aGuardianNIC,
+                GuardianName:aGuardianName,
+                GuardianAddress:aGuardianAddress,
+                GuardianPhone:aGuardianPhone
+            };
+            firestore.push(data);
+            setAPatientNIC("");
+            setAPatientFirstName("");
+            setAPatientLastName("");
+            setAPatientDOB("");
+            setAPatientAddress("");
+            setAGuardianNIC("");
+            setAGuardianName("");
+            setAGuardianAddress("");
+            setAGuardianPhone("");
+
+        }
+    }
+
+    const formValidation = () => {
+        const PatientNICErr = {};
+        const PatientFirstNameErr = {};
+        const PatientLastNameErr = {};
+        /* const PatientDOBErr = {};
+        const PatientAddressErr = {}; */
+        const GuardianNICErr = {};
+        const GuardianNameErr = {};
+        /* const GuardianAddressErr = {}; */
+        const GuardianPhoneErr = {};
+        let isValid = true;
+
+        if(aPatientNIC.trim().length < 10){
+            PatientNICErr.PatientNICShort = "NIC number should be either 10 or 12 characters";
+            isValid = false;
+        }
+
+        if(aPatientNIC.trim().length > 12){
+            PatientNICErr.PatientNICLong = "NIC number should be either 10 or 12 characters";
+            isValid = false;
+        }
+
+        if(aPatientNIC.trim().length == 11){
+            PatientNICErr.PatientNICEleven = "NIC number should be either 10 or 12 characters";
+            isValid = false;
+        }
+
+        if(typeof aPatientFirstName !== 'string'){
+            PatientFirstNameErr.PatientFirstNameNumbers = "Patient's First Name should not include numbers";
+            isValid = false;
+        }
+
+        if(typeof aPatientLastName !== 'string'){
+            PatientLastNameErr.PatientLastNameNumbers = "Patient's Last Name should not include numbers";
+            isValid = false;
+        }
+
+        if(aGuardianNIC.trim().length < 10){
+            GuardianNICErr.GuardianNICShort = "NIC number should be either 10 or 12 characters";
+            isValid = false;
+        }
+
+        if(aGuardianNIC.trim().length > 12){
+            GuardianNICErr.GuardianNICLong = "NIC number should be either 10 or 12 characters";
+            isValid = false;
+        }
+
+        if(aGuardianNIC.trim().length = 11){
+            GuardianNICErr.GuardianNICEleven = "NIC number should be either 10 or 12 characters";
+            isValid = false;
+        }
+
+        if(aGuardianName.includes("1","2","3","4","5","6","7","8","9", "0")){
+            GuardianNameErr.GuardianNameNumbers = "Guardian's Name should not include numbers";
+            isValid = false;
+        }
+
+        if(aGuardianPhone.trim().length !== 10){
+            GuardianPhoneErr.GuardianPhoneLength = "Guardian's phone number should consist of 10 numbers";
+            isValid = false;
+        }
+
+        setAPatientNICErr(PatientNICErr);
+        setAPatientFirstNameErr(PatientFirstNameErr);
+        setAPatientLastNameErr(PatientLastNameErr);
+        setAGuardianNICErr(GuardianNICErr);
+        setAGuardianNameErr(GuardianNameErr);
+        setAGuardianPhone(GuardianPhoneErr);
+        return isValid;
+
+
     }
 
     const [open, setOpen] = React.useState(false);
@@ -100,9 +196,11 @@ const AddPatient = () => {
                                                     focus 
                                                     defaultValue={aPatientNIC}
                                                     onChange={(e) => {
-                                                        setAPatientNIC(e.target.value);
-                                                    }}
-                                                />
+                                                        setAPatientNIC(e.target.value);}}/>
+                                                <br/>
+                                                {Object.keys(PatientNICErr).map((key)=>{
+                                                    return <div style={{color: "red"}}>{PatientNICErr[key]}</div>
+                                                })}
                                             </Form.Group>
                                             <Form.Group className="PatientFirstName" controlId="formBasicPatientFirstName">
                                                 <Form.Label>Patient First Name</Form.Label>
@@ -113,6 +211,10 @@ const AddPatient = () => {
                                                     setAPatientFirstName(e.target.value);
                                                 }}
                                                 />
+                                                <br/>
+                                                {Object.keys(PatientFirstNameErr).map((key)=>{
+                                                    return <div style={{color : "red"}}>{PatientFirstNameErr[key]}</div>
+                                                })}
                                             </Form.Group>
                                             <Form.Group className="PatientLastName" controlId="formBasicPatientLastName">
                                                 <Form.Label>Patient Last Name</Form.Label>
@@ -123,6 +225,10 @@ const AddPatient = () => {
                                                     setAPatientLastName(e.target.value);
                                                 }}
                                                 />
+                                                <br/>
+                                                {Object.keys(PatientLastNameErr).map((key)=>{
+                                                    return <div style={{color : "red"}}>{PatientLastNameErr[key]}</div>
+                                                })}
                                             </Form.Group>
                                             <Form.Group className="PatientDOB" controlId="formBasicPatientDOB">
                                                 <Form.Label>Patient's Date of Birth</Form.Label>
@@ -158,6 +264,11 @@ const AddPatient = () => {
                                                     setAGuardianNIC(e.target.value);
                                                 }}
                                                 />
+                                                <br/>
+                                                {Object.keys(GuardianNICErr).map((key)=>{
+                                                    return <div style={{color : "red"}}>{GuardianNICErr[key]}</div>
+                                                })}
+
                                             </Form.Group>
                                             <Form.Group className="GuardianName" controlId="formBasicGuardianName">
                                                 <Form.Label>Guardian Name</Form.Label>
@@ -168,6 +279,10 @@ const AddPatient = () => {
                                                     setAGuardianName(e.target.value);
                                                 }}
                                                 />
+                                                <br/>
+                                                {Object.keys(GuardianNameErr).map((key)=>{
+                                                    return <div style={{color : "red"}}>{GuardianNameErr[key]}</div>
+                                                })}
                                             </Form.Group>
                                             <Form.Group className="GuardianAddress" controlId="formBasicGuardianAddress">
                                                 <Form.Label>Guardian Address</Form.Label>
@@ -188,11 +303,15 @@ const AddPatient = () => {
                                                     setAGuardianPhone(e.target.value);
                                                 }}
                                                 />
+                                                <br/>
+                                                {Object.keys(GuardianPhoneErr).map((key)=>{
+                                                    return <div style={{color : "red"}}>{GuardianPhoneErr[key]}</div>
+                                                })}
                                             </Form.Group>
                                         </Col>
                                     </Row>
                                 </Container>
-                                <Button variant="primary" type ="submit" onClick={()=>{handleAddPatient()}}>
+                                <Button variant="primary" type ="submit" onClick={()=>{handleAddPatient();}}>
                                     Submit
                                 </Button>
                             </Form>
